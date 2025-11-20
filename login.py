@@ -1,5 +1,5 @@
 import tkinter as tk
-from utils import x, y, MIN_ANCHO, MIN_ALTO
+from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO
 
 #Creacion de la ventana de Inicio de secion
 class Login():
@@ -10,7 +10,6 @@ class Login():
         self.root.config(background="#2b2b2b")
         self.root.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
         self.root.minsize(MIN_ANCHO, MIN_ALTO)
-        
         
         #               Iniciar secion
         
@@ -30,10 +29,14 @@ class Login():
         label_contrasena = tk.Label(self.root, text="Ingrese su contraseña", font=('Arial', 20), background="#2b2b2b", fg="#ffffff")
         label_contrasena.place(relx=0.1, rely=0.4)
         
-        entrada_contrasena = tk.Entry(self.root)
+        entrada_contrasena = tk.Entry(self.root, show='*')
         entrada_contrasena.place(relx=0.1, rely=0.5)
         
         #Boton iniciar sesion
+        
+        def iniciar_sesion():
+            pass
+        
         boton_sesion = tk.Button(self.root, text="Iniciar sesion")
         boton_sesion.place(relx = 0.1, rely=0.6)
         

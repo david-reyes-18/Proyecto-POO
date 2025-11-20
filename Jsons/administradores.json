@@ -1,3 +1,9 @@
 {
-    
+    "administradores": [
+        {
+            "nombre": "David Reyes",
+            "correo": "david.reyes@admin.escuelita.cl",
+            "contrasena": "contrasena"
+        }   
+    ]
 }
