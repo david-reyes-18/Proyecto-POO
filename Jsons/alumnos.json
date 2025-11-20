@@ -1,0 +1,11 @@
+{
+    "alumnos": [
+        {
+            "nombre": "Fabian Ignacio Rodriguez Smith",
+            "rut": "12.345.678-9",
+            "correo": "fabianignacio.rodriguez@escuelita.cl",
+            "carrera": "Ingenieria Civil en Informatica",
+            "asignaturas": ["Calculo", "Algebra", "Fisica"]
+        }
+    ]
+}
