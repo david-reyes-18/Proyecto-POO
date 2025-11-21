@@ -1,5 +1,5 @@
-from login import Login
+from Ventanas.login import Login
 
-if "__main__" == __name__:
+if __name__ == "__main__":
     login = Login()
-    login.iniciar()
+    login.mainloop()
