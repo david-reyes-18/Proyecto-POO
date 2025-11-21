@@ -1,5 +1,7 @@
 import tkinter as tk
 from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO
+from Utils.paths import ALUMNOS, PROFESORES, ADMINISTRADORES
+from Utils.funcions import cargar_jsons
 
 #Creacion de la ventana de Inicio de secion
 class Login():
@@ -35,9 +37,29 @@ class Login():
         #Boton iniciar sesion
         
         def iniciar_sesion():
-            pass
+            #Obtener la informacion que entrego el usuario
+            email = entrada_email.get()
+            contrasena = entrada_contrasena.get()
+            
+            #cargar los datos que se tienen en la base de datos
+            datos_alumnos = cargar_jsons(ALUMNOS)
+            datos_profesor = cargar_jsons(PROFESORES)
+            datos_administradores = cargar_jsons(ADMINISTRADORES)
+            
+            #Verificar el email y la contrasena
+            if email in datos_alumnos["alumnos"]:
+                if contrasena == datos_alumnos["alumnos"][email]["contrasena"]:
+                    print("entraste")
+                    
+            elif email in datos_profesor["profesores"]:
+                if contrasena == datos_profesor["profesores"][email]["contrasena"]:
+                    print("entraste")
+                    
+            elif email in datos_administradores["administradores"]:
+                if contrasena == datos_administradores["administradores"][email]["contrasena"]:
+                    print("entraste")
         
-        boton_sesion = tk.Button(self.root, text="Iniciar sesion")
+        boton_sesion = tk.Button(self.root, text="Iniciar sesion", command=iniciar_sesion)
         boton_sesion.place(relx = 0.1, rely=0.6)
         
         

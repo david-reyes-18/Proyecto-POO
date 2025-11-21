@@ -1,0 +1,9 @@
+{
+    "profesores": {
+        "juanp.molina@profes.escuelita.cl": {
+            "nombre": "Juan Pablo Molina",
+            "asignaturas": ["Calculo", "Programación", "Bases de Datos"],
+            "contrasena": "contrasena"
+        }
+    }
+}
