@@ -14,7 +14,7 @@ class VentanaProfe:
         self.root.minsize(MIN_ANCHO, MIN_ALTO)
         
         datos = cargar_jsons(PROFESORES)
-        info = datos["profesores"][email]
+        info = datos[email]
         profe = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"])
         
         #Creando el lienzo superior

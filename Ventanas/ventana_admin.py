@@ -1,33 +1,32 @@
-import tkinter as tk
+import customtkinter as ctk
 from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
 from Utils.funcions import cargar_jsons
 from Utils.paths import ADMINISTRADORES
 from Clases.administrador import Admin
 
-class VentanaAdmin:
+class VentanaAdmin(ctk.CTk):
     def __init__(self, email):
         self.email = email
-        self.root = tk.Tk()
-        self.root.title("Administración de Escuelita")
-        self.root.config(background="#2b2b2b")
-        self.root.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
-        self.root.minsize(MIN_ANCHO, MIN_ALTO)
+        self.title("Administración de Escuelita")
+        self.config(background="#2b2b2b")
+        self.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
+        self.minsize(MIN_ANCHO, MIN_ALTO)
         
         datos = cargar_jsons(ADMINISTRADORES)
-        info = datos["administradores"][email]
+        info = datos[email]
         admin = Admin(email, info["nombre"], info["rut"], info["contrasena"])
         
-        #Creando el lienzo superior
-        lienzo_superior = tk.Canvas(self.root, width=ANCHO, height=ALTO*0.1, background="#3b3b3b")
-        lienzo_superior.place(relx=0, rely=0)
+        #Creando el frame superior (Datos del estudiante)
+        frame_superior = ctk.CTkFrame(self, fg_color="#F90808", height=ALTO*0.1)
+        frame_superior.pack(fill="both", expand = True)
         
-        #Texto del lienzo superior
-        tk.Label(lienzo_superior, text=f"Bienvenido admin {admin.nombre}", font=("Arial", 20)).place(relx=0.02, rely=0.25)
-        tk.Label(lienzo_superior, text=f"{admin.rut}", font=("Arial", 15)).place(relx=0.02, rely=0.6)
+        #Información que irá en la parte superior
+        ctk.CTkLabel(frame_superior, text=f"Bienvenido admin {admin.nombre}", font=("Arial", 20)).place(relx=0.02, rely=0.25)
+        ctk.CTkLabel(frame_superior, text=f"{admin.rut}", font=("Arial", 15)).place(relx=0.02, rely=0.6)
         
-        #Creando el lienzo inferior
-        lienzo_inferior = tk.Canvas(self.root, width=ANCHO, height=ALTO*0.9, background="#B12727")
-        lienzo_inferior.place(relx= 0, y=ALTO*0.1)
+        #Creando el frame inferior (DOnde se mostrará las asignaturas del alumno)
+        frame_inferior = ctk.CTkScrollableFrame(self, width=ANCHO, height=ALTO*0.9, fg_color="#999999")
+        frame_inferior.pack(fill="both", expand=True)
     
     def iniciar(self):
-        self.root.mainloop()
+        self.mainloop()
