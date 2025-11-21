@@ -3,6 +3,7 @@ from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO
 from Utils.paths import ALUMNOS, PROFESORES, ADMINISTRADORES
 from Utils.funcions import cargar_jsons
 from ventana_alumno import VentanaAlumno
+from ventana_admin import VentanaAdmin
 
 #Creacion de la ventana de Inicio de secion
 class Login():
@@ -60,7 +61,9 @@ class Login():
                     
             elif email in datos_administradores["administradores"]:
                 if contrasena == datos_administradores["administradores"][email]["contrasena"]:
-                    print("entraste")
+                    ventanita = VentanaAdmin(email)
+                    self.root.destroy()
+                    ventanita.iniciar()
         
         boton_sesion = tk.Button(self.root, text="Iniciar sesion", command=iniciar_sesion)
         boton_sesion.place(relx = 0.1, rely=0.6)
