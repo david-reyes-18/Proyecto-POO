@@ -2,6 +2,7 @@
     "profesores": {
         "juanp.molina@profes.escuelita.cl": {
             "nombre": "Juan Pablo Molina",
+            "rut": "16.456.765-7",
             "asignaturas": ["Calculo", "Programación", "Bases de Datos"],
             "contrasena": "contrasena"
         }

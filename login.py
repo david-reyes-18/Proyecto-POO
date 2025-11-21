@@ -2,6 +2,7 @@ import tkinter as tk
 from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO
 from Utils.paths import ALUMNOS, PROFESORES, ADMINISTRADORES
 from Utils.funcions import cargar_jsons
+from ventana_alumno import VentanaAlumno
 
 #Creacion de la ventana de Inicio de secion
 class Login():
@@ -49,7 +50,9 @@ class Login():
             #Verificar el email y la contrasena
             if email in datos_alumnos["alumnos"]:
                 if contrasena == datos_alumnos["alumnos"][email]["contrasena"]:
-                    print("entraste")
+                    ventanita = VentanaAlumno(email)
+                    self.root.destroy()
+                    ventanita.iniciar()
                     
             elif email in datos_profesor["profesores"]:
                 if contrasena == datos_profesor["profesores"][email]["contrasena"]:

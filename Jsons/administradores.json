@@ -2,6 +2,7 @@
     "administradores": {
         "david.reyes@admin.escuelita.cl": {
             "nombre": "David Reyes",
+            "rut": "22.187.370-k",
             "contrasena": "contrasena"
         }
     }

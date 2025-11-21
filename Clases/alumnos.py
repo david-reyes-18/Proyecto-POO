@@ -1,6 +1,6 @@
-from usuario import Usuario
+from Clases.usuario import Usuarios
 
-class Alumno(Usuario):
+class Alumno(Usuarios):
     def __init__(self, correo, nombre, rut, contrasena, carrera, asignaturas):
         super().__init__(correo, nombre, rut, contrasena)
         self.carrera = carrera
