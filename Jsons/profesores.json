@@ -2,8 +2,17 @@
     "juanp.molina@profes.escuelita.cl": {
         "nombre": "Juan Pablo Molina",
         "rut": "16.456.765-7",
-        "asignaturas": ["Cálculo I", "Programación", "Bases de Datos"],
+        "asignaturas": [
+            "C\u00e1lculo I",
+            "Programaci\u00f3n",
+            "Bases de Datos"
+        ],
         "contrasena": "contrasena"
+    },
+    "gasparfacundo.guerra@alumnos.escuelita.cl": {
+        "nombre": "Gaspar Facundo Guerra Aguila",
+        "rut": "15.654.765-5",
+        "asignaturas": [],
+        "contrasena": "15654"
     }
 }
-

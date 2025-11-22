@@ -4,7 +4,7 @@
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [
-            "Calculo",
+            "Cálculo I",
             "Algebra",
             "Fisica"
         ],
@@ -15,30 +15,7 @@
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [
-            "Calculo",
-            "Algebra",
-            "Fisica",
-            "Ciudadania",
-            "Algebra Linear",
-            "Calculo II",
-            "Calculo III",
-            "Programacion"
-        ],
-        "contrasena": "hola"
-    },
-    "pepito": {
-        "nombre": "Pepe Fabrizio Loyarca Alarcon",
-        "rut": "12.345.678-9",
-        "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": [
-            "Calculo",
-            "Algebra",
-            "Fisica",
-            "Ciudadania",
-            "Algebra Linear",
-            "Calculo II",
-            "Calculo III",
-            "Programacion"
+            "Cálculo I"
         ],
         "contrasena": "hola"
     },

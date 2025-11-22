@@ -1,8 +1,19 @@
 {
-    "calculo i": {
-        "nombre": "Cálculo I",
-        "estudiantes": ["fabianignacio.rodriguez@escuelita.cl", "hola"],
-        "profesores": ["juanp.molina@profes.escuelita.cl"],
+    "C\u00e1lculo I": {
+        "nombre": "C\u00e1lculo I",
+        "estudiantes": [
+            "fabianignacio.rodriguez@escuelita.cl",
+            "hola"
+        ],
+        "profesores": [
+            "Juan Pablo Molina"
+        ],
         "cantidad_estudiantes": 2
+    },
+    "POO": {
+        "nombre": "POO",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
     }
 }
