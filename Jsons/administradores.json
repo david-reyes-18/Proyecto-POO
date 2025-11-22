@@ -3,6 +3,11 @@
         "nombre": "David Reyes",
         "rut": "22.187.370-k",
         "contrasena": "contrasena"
+    },
+    "ppp": {
+        "nombre": "ppp",
+        "rut": "44.542.254-2",
+        "contrasena": "ppp"
     }
 }
 

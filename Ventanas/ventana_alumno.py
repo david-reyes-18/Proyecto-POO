@@ -47,6 +47,3 @@ class VentanaAlumno(ctk.CTk):
             frame_inferior.rowconfigure(f, weight=1)
         for c in range(3):
             frame_inferior.columnconfigure(c, weight=1)
-    
-    def iniciar(self):
-        self.root.mainloop()

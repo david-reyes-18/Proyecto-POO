@@ -59,21 +59,21 @@ class Login(ctk.CTk):
                 if contrasena == datos_alumnos[email]["contrasena"]:
                     ventanita = VentanaAlumno(email)
                     self.destroy()
-                    ventanita.iniciar()
+                    ventanita.mainloop()
             
             #Verificar si es profesor
-            elif email in datos_profesor["profesores"]:
-                if contrasena == datos_profesor["profesores"][email]["contrasena"]:
+            elif email in datos_profesor:
+                if contrasena == datos_profesor[email]["contrasena"]:
                     ventanita = VentanaProfe(email)
                     self.destroy()
-                    ventanita.iniciar()
+                    ventanita.mainloop()
                     
             #Verificar si es administrador
-            elif email in datos_administradores["administradores"]:
-                if contrasena == datos_administradores["administradores"][email]["contrasena"]:
+            elif email in datos_administradores:
+                if contrasena == datos_administradores[email]["contrasena"]:
                     ventanita = VentanaAdmin(email)
                     self.destroy()
-                    ventanita.iniciar()
+                    ventanita.mainloop()
         
         #Boton de inicio de sesión
         boton_sesion = ctk.CTkButton(self, text="Iniciar sesion", command=iniciar_sesion)
