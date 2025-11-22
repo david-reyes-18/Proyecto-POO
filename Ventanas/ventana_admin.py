@@ -1,9 +1,9 @@
 import customtkinter as ctk
 from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
-from Utils.funcions import cargar_jsons
+from Utils.funcions import cargar_jsons, eliminar_alumno
 from Utils.paths import ADMINISTRADORES, ALUMNOS
 from Clases.administrador import Admin
-from Ventanas.ventanas_top import VentanaDatosAlumno
+from Ventanas.ventanas_top import VentanaDatosAlumno, VentanaMatricula
 
 class VentanaAdmin(ctk.CTkToplevel):
     def __init__(self, email, master):
@@ -26,6 +26,8 @@ class VentanaAdmin(ctk.CTkToplevel):
         #Información que irá en la parte superior
         ctk.CTkLabel(self.frame_superior, text=f"Bienvenido admin {admin.nombre}", font=("Arial", 20)).place(relx=0.02, rely=0.25)
         ctk.CTkLabel(self.frame_superior, text=f"{admin.rut}", font=("Arial", 15)).place(relx=0.02, rely=0.6)
+        
+        ctk.CTkButton(self.frame_superior, text="Matricular", command=VentanaMatricula).place(relx=0.8, rely=0.3)
         
         #       Creando el frame inferior (En donde se verá las pestañas de alumnos, profesores y asignaturas)
         self.frame_inferior = ctk.CTkScrollableFrame(self, width=ANCHO, height=ALTO*0.9, fg_color="#999999")
@@ -93,6 +95,9 @@ class VentanaAdmin(ctk.CTkToplevel):
             ctk.CTkLabel(contenedor, text=f"{nombre}").place(relx=0.03, rely=0.2)
             ctk.CTkLabel(contenedor, text=f"{email}").place(relx=0.27, rely=0.2)
             
-            boton = ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e))
-            boton.place(relx=0.8, rely=0.2)
-            
+            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e)).place(relx=0.7, rely=0.2)
+            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: self.recargar_alumnos(e)).place(relx=0.8, rely=0.2)
+    
+    def recargar_alumnos(self, email):
+        eliminar_alumno(email)
+        self.mostrar_alumnos()

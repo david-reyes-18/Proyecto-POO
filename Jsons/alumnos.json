@@ -3,19 +3,50 @@
         "nombre": "Fabian Ignacio Rodriguez Smith",
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": ["Calculo", "Algebra", "Fisica"],
+        "asignaturas": [
+            "Calculo",
+            "Algebra",
+            "Fisica"
+        ],
         "contrasena": "contrasena"
-    }, "hola": {
+    },
+    "hola": {
         "nombre": "Alejandro Ignacio Rodriguez Smith",
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": ["Calculo", "Algebra", "Fisica", "Ciudadania", "Algebra Linear", "Calculo II", "Calculo III","Programacion"],
+        "asignaturas": [
+            "Calculo",
+            "Algebra",
+            "Fisica",
+            "Ciudadania",
+            "Algebra Linear",
+            "Calculo II",
+            "Calculo III",
+            "Programacion"
+        ],
         "contrasena": "hola"
-    }, "pepito": {
+    },
+    "pepito": {
         "nombre": "Pepe Fabrizio Loyarca Alarcon",
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": ["Calculo", "Algebra", "Fisica", "Ciudadania", "Algebra Linear", "Calculo II", "Calculo III","Programacion"],
+        "asignaturas": [
+            "Calculo",
+            "Algebra",
+            "Fisica",
+            "Ciudadania",
+            "Algebra Linear",
+            "Calculo II",
+            "Calculo III",
+            "Programacion"
+        ],
         "contrasena": "hola"
+    },
+    "benjaminmarcos.gonzalo@alumnos.escuelita.cl": {
+        "nombre": "Benjamin Marcos Gonzalo Aguilar",
+        "rut": "12.345.678-k",
+        "carrera": "Ingenieria Electrica",
+        "asignaturas": [],
+        "contrasena": "12345"
     }
 }
