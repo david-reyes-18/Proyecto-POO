@@ -71,9 +71,8 @@ class Login(ctk.CTk):
             #Verificar si es administrador
             elif email in datos_administradores:
                 if contrasena == datos_administradores[email]["contrasena"]:
-                    ventanita = VentanaAdmin(email)
-                    self.destroy()
-                    ventanita.mainloop()
+                    ventanita = VentanaAdmin(email, master=self)
+                    self.withdraw()
         
         #Boton de inicio de sesión
         boton_sesion = ctk.CTkButton(self, text="Iniciar sesion", command=iniciar_sesion)

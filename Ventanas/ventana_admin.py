@@ -3,10 +3,12 @@ from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
 from Utils.funcions import cargar_jsons
 from Utils.paths import ADMINISTRADORES, ALUMNOS
 from Clases.administrador import Admin
+from Ventanas.ventanas_top import VentanaDatosAlumno
 
-class VentanaAdmin(ctk.CTk):
-    def __init__(self, email):
-        super().__init__()
+class VentanaAdmin(ctk.CTkToplevel):
+    def __init__(self, email, master):
+        super().__init__(master)
+        self.master = master
         self.email = email
         self.title("Administración de Escuelita")
         self.config(background="#2b2b2b")
@@ -60,6 +62,11 @@ class VentanaAdmin(ctk.CTk):
         for c in range(3):
             self.frame_inferior.columnconfigure(c, weight=1)
         self.frame_inferior.rowconfigure(0, weight=1)
+        
+        self.protocol("WM_DELETE_WINDOW", self.cerrar)
+
+    def cerrar(self):
+        self.master.destroy()
     
     
     def limpiar_widgets(self):
@@ -71,19 +78,21 @@ class VentanaAdmin(ctk.CTk):
         
         datos_alumnos = cargar_jsons(ALUMNOS)
         
-        frame = ctk.CTkFrame(self.frame_inferior, fg_color="#195e28", width=ANCHO*0.6, height=ALTO*0.4)
-        frame.pack(pady=20)
+        self.frame = ctk.CTkFrame(self.frame_inferior, fg_color="#195e28", width=ANCHO*0.6, height=ALTO*0.4)
+        self.frame.pack(pady=20)
         
-        i = 1
-        total_alumnos = [ y for y in datos_alumnos.items()]
-        
-        print(total_alumnos)
-        for alumno in total_alumnos:
+        total_alumnos = sorted(datos_alumnos.items(), key=lambda x: x[1]["nombre"])
+        total_alumnos = [(info["nombre"], email) for email, info in total_alumnos]
+
+        for i, (nombre, email) in enumerate(total_alumnos, start=1):
             
-            contenedor = ctk.CTkFrame(frame, height=ALTO*0.05, width=ANCHO*0.6)
+            contenedor = ctk.CTkFrame(self.frame, height=ALTO*0.05, width=ANCHO*0.6)
             contenedor.pack(padx= 10,pady = 10, fill="x")
             
-            #ctk.CTkLabel(contenedor, text=f"{i}.-").place(relx=0.1, rely=0.5, anchor="center")
-            #ctk.CTkLabel(contenedor, text=f"{alumno}").place(relx=0.2, rely=0.5, anchor="center")
-            #ctk.CTkLabel(contenedor, text=f"{datos_alumnos[alumno]['rut']}").place(relx=0.4, rely=0.5, anchor="center")
+            ctk.CTkLabel(contenedor, text=f"{i}.-").place(relx=0.01, rely=0.2)
+            ctk.CTkLabel(contenedor, text=f"{nombre}").place(relx=0.03, rely=0.2)
+            ctk.CTkLabel(contenedor, text=f"{email}").place(relx=0.27, rely=0.2)
+            
+            boton = ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e))
+            boton.place(relx=0.8, rely=0.2)
             
