@@ -9,7 +9,7 @@ Consiste en un sistema de matriculas de un cierto instituto, en el cual puede in
 
 ### Estudiantes
 
-Se les mostrará una interfaz en la cual podrán ver sus cursos inscritos y un poco de información más.
+Se les mostrará una interfaz en la cual podrán ver sus cursos inscritos y le permitirá inscribir más cursos
 
 ### Profesores
 
@@ -17,4 +17,4 @@ Se les mostrará una interfaz en la cual podrán ver sus asignaturas las cuales 
 
 ### Administradores
 
-Son los que controlan la interfaz, pueden ver todos los alumnos, a los profesores, las asignaturas, pueden crear y eliminar alumnos, profesores y asignaturas. Tienen total control del sistema.
+Son los que controlan la interfaz, pueden ver todos los alumnos, profesores y asignaturas. Además, pueden crear y eliminar alumnos, profesores y asignaturas. Tienen total control del sistema.
