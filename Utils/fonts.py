@@ -20,7 +20,7 @@ class Fonts:
         
         
         Fonts.i1 = ctk.CTkFont(family=INTER, size=25, weight="bold")
-        Fonts.i2 = ctk.CTkFont(family=INTER, size=20)
+        Fonts.i2 = ctk.CTkFont(family=INTER, size=19)
         Fonts.i3 = ctk.CTkFont(family=INTER, size=15)
         
         
