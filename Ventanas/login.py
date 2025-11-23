@@ -6,38 +6,45 @@ from Utils.funcions import cargar_jsons
 from Ventanas.ventana_alumno import VentanaAlumno
 from Ventanas.ventana_admin import VentanaAdmin
 from Ventanas.ventana_profe import VentanaProfe
+from Utils.fonts import Fonts
 
-#Creacion de la ventana de Inicio de sesión con customtkinter
+#Creación de la ventana de Inicio de sesión con customtkinter
 class Login(ctk.CTk):
     def __init__(self):
         super().__init__()
         
         #Configuracion de la ventana
-        self.title("Iniciar Sesión")
+        self.title("Iniciar Sesión en el Instituto Epsilon")
         self.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
         self.minsize(MIN_ANCHO, MIN_ALTO)
         
-        #               Iniciar sesión
+        Fonts.cargar()
         
-        #   Label inicio de sesión
-        label_inicio = ctk.CTkLabel(self, text="Iniciar sesión", font=('Arial', 30))
-        label_inicio.place(relx=0.1, rely=0.1)
+        
+        #                           Iniciar sesión
+        
+        #Label inicio de sesión
+        label_inicio = ctk.CTkLabel(self, text="Iniciar sesión", font=Fonts.m1)
+        label_inicio.place(relx=0.05, rely=0.1)
         
         #    Sección de email
         
-        label_email = ctk.CTkLabel(self, text="Ingrese su email", font=('Arial', 20))
-        label_email.place(relx=0.1, rely=0.2)
+        label_email = ctk.CTkLabel(self, text="Ingrese su email:", font=Fonts.i1)
+        label_email.place(relx=0.05, rely=0.25)
         
-        entrada_email = ctk.CTkEntry(self)
-        entrada_email.place(relx=0.1, rely=0.3)
+        entrada_email = ctk.CTkEntry(self, placeholder_text="correo.institucional@rol.epsilon.cl", font=Fonts.m3, width=MIN_ANCHO*0.3)
+        entrada_email.place(relx=0.05, rely=0.33)
+        
+        label_error_email = ctk.CTkLabel(self, text="", font=Fonts.i4)
+        label_error_email.place(relx=0.5, rely=0.35)
         
         #    Sección contraseña
         
         label_contrasena = ctk.CTkLabel(self, text="Ingrese su contraseña", font=('Arial', 20))
-        label_contrasena.place(relx=0.1, rely=0.4)
+        label_contrasena.place(relx=0.05, rely=0.4)
         
         entrada_contrasena = ctk.CTkEntry(self, show='*')
-        entrada_contrasena.place(relx=0.1, rely=0.5)
+        entrada_contrasena.place(relx=0.05, rely=0.5)
         
         #                  Boton iniciar sesión
         
