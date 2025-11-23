@@ -18,8 +18,8 @@ class Login(ctk.CTk):
         self.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
         self.minsize(MIN_ANCHO, MIN_ALTO)
         
+        #Se cargan los tipos de letra que usará la aplicación
         Fonts.cargar()
-        
         
         #                           Iniciar sesión
         
@@ -64,14 +64,14 @@ class Login(ctk.CTk):
         
         #                  Boton iniciar sesión
         
-        #Funcion que verifica el inicio de sesión, verifica si el correo y la contraseña estan correctos
+        #Función que verifica el inicio de sesión, verifica si el correo y la contraseña son correctas para iniciar su ventana correspondiente
         
         def iniciar_sesion():
-            #Obtener la informacion que entrego el usuario
+            #Obtener la información que entrego el usuario
             email = entrada_email.get()
             contrasena = entrada_contrasena.get()
             
-            #cargar los datos que se tienen en la base de datos
+            #Cargar los datos que se tienen en la base de datos
             datos_alumnos = cargar_jsons(ALUMNOS)
             datos_profesor = cargar_jsons(PROFESORES)
             datos_administradores = cargar_jsons(ADMINISTRADORES)
@@ -114,6 +114,7 @@ class Login(ctk.CTk):
                     entrada_contrasena.configure(border_color="red")
                     label_error_contra.configure(text="Contraseña Incorrecta", text_color="red")
             
+            #De no estar el correo en la base de datos se le dirá al usuario que el correo esta incorrecto
             else:
                 entrada_email.configure(border_color="red")
                 label_error_email.configure(text="Email Incorrecto", text_color="red")

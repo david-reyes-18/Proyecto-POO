@@ -10,8 +10,8 @@ ALTO = ventana.winfo_screenheight()
 ventana.destroy()
 
 #El minimo alto y ancho que debe tener la ventana
-MIN_ANCHO = int(ANCHO * 0.75)
-MIN_ALTO = int(ALTO * 0.75)
+MIN_ANCHO = int(ANCHO * 0.8)
+MIN_ALTO = int(ALTO * 0.8)
 
 
 #Coordenadas para centrar las ventanas
