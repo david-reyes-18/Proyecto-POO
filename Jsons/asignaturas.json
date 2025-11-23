@@ -12,7 +12,9 @@
     },
     "POO": {
         "nombre": "POO",
-        "estudiantes": [],
+        "estudiantes": [
+            "Alejandro Ignacio Rodriguez Smith"
+        ],
         "profesores": [],
         "cantidad_estudiantes": 0
     }

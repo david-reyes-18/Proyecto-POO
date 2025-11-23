@@ -57,9 +57,8 @@ class Login(ctk.CTk):
             #Verificar si es alumno
             if email in datos_alumnos:
                 if contrasena == datos_alumnos[email]["contrasena"]:
-                    ventanita = VentanaAlumno(email)
-                    self.destroy()
-                    ventanita.mainloop()
+                    ventanita = VentanaAlumno(email, master=self)
+                    self.withdraw()
             
             #Verificar si es profesor
             elif email in datos_profesor:

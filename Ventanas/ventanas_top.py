@@ -61,6 +61,38 @@ class VentanaMatricula(ctk.CTkToplevel):
         
         ctk.CTkButton(frame_interno, text="Matricular Alumno", command=matricular).pack()
 
+class VentanaInscribir(ctk.CTkToplevel):
+    def __init__(self, email):
+        super().__init__()
+        self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
+        self.resizable(False, False)
+        self.title("Inscribir Asignatura")
+        
+        datos_alumnos = cargar_jsons(ALUMNOS)
+        datos_asignaturas = cargar_jsons(ASIGNATURAS)
+        
+        opciones = [asignatura for asignatura in datos_asignaturas if datos_alumnos[email]["nombre"] not in datos_asignaturas[asignatura]["estudiantes"]]
+        
+        ctk.CTkLabel(self, text="Seleccione el ramo a inscribir: ").pack()
+        
+        menu_asignaturas = ctk.CTkOptionMenu(self, values=opciones)
+        menu_asignaturas.set("Seleccione una asignatura")
+        menu_asignaturas.pack()
+        
+        def inscribir():
+            asignatura = menu_asignaturas.get()
+            
+            datos_alumnos[email]["asignaturas"].append(asignatura)
+            datos_asignaturas[asignatura]["estudiantes"].append(datos_alumnos[email]["nombre"])
+            
+            guardar_datos(ALUMNOS, datos_alumnos)
+            guardar_datos(ASIGNATURAS, datos_asignaturas)
+            
+            self.destroy()
+        
+        ctk.CTkButton(self, text="Inscribir", command=inscribir).pack()
+
+
 class VentanaAñadirAsignatura(ctk.CTkToplevel):
     def __init__(self):
         super().__init__()

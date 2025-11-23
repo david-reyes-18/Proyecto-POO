@@ -6,13 +6,15 @@ from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
 from Utils.funcions import cargar_jsons
 from Utils.paths import ALUMNOS
 from Clases.alumnos import Alumno
+from Ventanas.ventanas_top import VentanaInscribir
 
 #Creación de la ventana que verá el alumno
-class VentanaAlumno(ctk.CTk):
-    def __init__(self, email):
-        super().__init__()
+class VentanaAlumno(ctk.CTkToplevel):
+    def __init__(self, email, master):
+        super().__init__(master)
         
         #Configuración de la ventana
+        self.master = master
         self.email = email
         self.title("Escuelita")
         self.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
@@ -33,6 +35,8 @@ class VentanaAlumno(ctk.CTk):
         ctk.CTkLabel(frame_superior, text=f"{alumno.rut}", font=("Arial", 15)).place(relx=0.02, rely=0.6)
         ctk.CTkLabel(frame_superior, text=f"{alumno.carrera}", font=("Arial", 15)).place(relx=0.5, rely=0.4)
         
+        ctk.CTkButton(frame_superior, text="Inscribir Asignatura", command=lambda: VentanaInscribir(email)).place(relx=0.8, rely=0.3)
+        
         #Creando el frame inferior (DOnde se mostrará las asignaturas del alumno)
         frame_inferior = ctk.CTkScrollableFrame(self, width=ANCHO, height=ALTO*0.9, fg_color="#999999")
         frame_inferior.pack(fill="both", expand=True)
@@ -47,3 +51,7 @@ class VentanaAlumno(ctk.CTk):
             frame_inferior.rowconfigure(f, weight=1)
         for c in range(3):
             frame_inferior.columnconfigure(c, weight=1)
+        self.protocol("WM_DELETE_WINDOW", self.cerrar)
+
+    def cerrar(self):
+        self.master.destroy()
