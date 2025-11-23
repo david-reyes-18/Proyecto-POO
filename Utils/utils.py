@@ -19,5 +19,5 @@ x = int((ANCHO // 2) - (MIN_ANCHO // 2))
 y = int((ALTO // 2) - (MIN_ALTO // 2))
 
 #Tamaño de las ventanas Top Level
-TOPLEVEL_ANCHO = 600
-TOPLEVEL_ALTO = 500
+TOPLEVEL_ANCHO = 800
+TOPLEVEL_ALTO = 700

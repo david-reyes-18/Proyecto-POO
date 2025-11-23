@@ -45,8 +45,8 @@ class VentanaAdmin(ctk.CTkToplevel):
         self.frame_superior.pack(fill="both", expand=True)
 
         #Información que irá en la parte superior
-        ctk.CTkLabel(self.frame_superior, text=f"Bienvenido admin {admin.nombre}", font=Fonts.m2).place(relx=0.02, rely=0.2)
-        ctk.CTkLabel(self.frame_superior, text=f"{admin.rut}", font=("Arial", 15)).place(relx=0.02, rely=0.6)
+        ctk.CTkLabel(self.frame_superior, text=f"Bienvenido admin {admin.nombre}", font=Fonts.m2bold).place(relx=0.02, rely=0.15)
+        ctk.CTkLabel(self.frame_superior, text=f"{admin.rut}", font=Fonts.i3).place(relx=0.02, rely=0.6)
         
         
         #       Creando el frame inferior (En donde se verá las pestañas de alumnos, profesores y asignaturas)

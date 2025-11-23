@@ -1,51 +1,121 @@
+#Librerias nesesarias
 import customtkinter as ctk
 from Utils.utils import TOPLEVEL_ANCHO, TOPLEVEL_ALTO, x, y
 from Utils.funcions import cargar_jsons, correo_institucional, contrasena, guardar_datos, profesores_totales, asignaturas_totales
 from Utils.paths import ADMINISTRADORES, ALUMNOS, ASIGNATURAS, PROFESORES
 from Clases.administrador import Admin
+from Utils.fonts import Fonts
 
+#       Aquí se encuentran todas las ventanas TopLevel que el sistema usa, ya sea para la creacion, visualización o eliminación de datos
+
+#Ventana que sirve para matricular un alumno nuevo, de esta manera se le entrega un correo y contraseña institucionales
 class VentanaMatricula(ctk.CTkToplevel):
     def __init__(self):
         super().__init__()
+        
+        #Configuracción de la ventana
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
-        self.title("Mtricula Alumno Nuevo")
+        self.title("Matricula Alumno Nuevo")
         
+        #Creación del frame
         frame_interno = ctk.CTkScrollableFrame(self)
         frame_interno.pack(fill="both", expand=True)
         
-        ctk.CTkLabel(frame_interno, text="Formulario de matricula").pack(fill="x")
-        ctk.CTkLabel(frame_interno, text="Ingrese adecuadamente los datos del estudiante a matricular, indicando sus nombres, apellidos, rut y la carrera en la cual se va a matricular. Posterior a la matricula al alumno se le asignará un correo institucional y una contraseña para ingresar a visualizar sus asignaturas, después podrá cambiar la contraseña a voluntas.", wraplength=TOPLEVEL_ANCHO* 0.7).pack(fill="x")
+            #Labeles de cabecera del formulario
+        ctk.CTkLabel(frame_interno, text="Formulario de matricula", font=Fonts.m2bold).pack(fill="x", pady=40)
+        ctk.CTkLabel(frame_interno, text="Ingrese adecuadamente los datos del estudiante a matricular, indicando sus nombres, apellidos, rut y la carrera en la cual se va a matricular. Posterior a la matricula al alumno se le asignará un correo institucional y una contraseña para ingresar a visualizar sus asignaturas, después podrá cambiar la contraseña a voluntas.", wraplength=TOPLEVEL_ANCHO* 0.75, font=Fonts.i2, justify="left").pack(fill="x")
         
-        ctk.CTkLabel(frame_interno, text="Nombres: ").pack(fill="x")
-        nombres_alumnos = ctk.CTkEntry(frame_interno)
+        #Ingresar los nombres
+        ctk.CTkLabel(frame_interno, text="Nombres: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w").pack(pady=40)
+        
+        nombres_alumnos = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Alejandro Ignacio", border_width=2)
         nombres_alumnos.pack()
         
-        ctk.CTkLabel(frame_interno, text="Apellidos: ").pack(fill="x")
-        apellidos_alumnos = ctk.CTkEntry(frame_interno)
+        label_nombres = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_nombres.pack()
+        
+        #Ingresar los apellidos
+        ctk.CTkLabel(frame_interno, text="Apellidos: ", font=Fonts.i1, width=TOPLEVEL_ANCHO*0.75, anchor="w").pack(pady=40)
+        apellidos_alumnos = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Gonzales Diaz", border_width=2)
         apellidos_alumnos.pack()
         
-        ctk.CTkLabel(frame_interno, text="Ingrese su rut: ").pack(fill="x")
-        rut_alumnos = ctk.CTkEntry(frame_interno)
+        label_apellidos = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_apellidos.pack()
+        
+        #Ingresar rut
+        ctk.CTkLabel(frame_interno, text="Ingrese su rut: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w", ).pack(pady=40)
+        rut_alumnos = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: 12.345.678-9", border_width=2)
         rut_alumnos.pack()
         
-        ctk.CTkLabel(frame_interno, text="Ingrese la carrera: ").pack(fill="x")
-        carrera_alumno = ctk.CTkEntry(frame_interno)
+        label_rut = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_rut.pack()
+        
+        #Ingresar carrera
+        ctk.CTkLabel(frame_interno, text="Ingrese la carrera: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w").pack(pady=40)
+        carrera_alumno = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Ingenieria Civil en Informatica", border_width=2)
         carrera_alumno.pack()
         
+        label_carrera = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_carrera.pack()
+        
+        #Función que ejecuta el botón para matricular
         def matricular():
+            
+            #Obtener los datos ingresados por el administrador
             nombres = nombres_alumnos.get()
             apellidos = apellidos_alumnos.get()
             rut = rut_alumnos.get()
             carrera = carrera_alumno.get()
             
+            #Verificación de que el formato del nombre sea correcto
+            if len(nombres.split()) > 3 or len(nombres.split()) < 2:
+                label_nombres.configure(text="Nombres invalido", text_color="red")
+                nombres_alumnos.configure(border_color="red")
+                return
+
+            #Si la verificación del nombre es exitosa se marca verde
+            nombres_alumnos.configure(border_color = "green")
+            
+            #Verificación de los apellidoss
+            if len(nombres.split()) > 3 or len(nombres.split()) < 2:
+                label_apellidos.configure(text="Apellidos invalido", text_color="red")
+                apellidos_alumnos.configure(border_color="red")
+                return
+
+            #Si la verificación de los apellidos es correcta se marca verde
+            apellidos_alumnos.configure(border_color = "green")
+            
+            #Verificación del rut
+            rut_limpio = rut.replace(".", "").replace("-", "")
+            
+            if not rut_limpio[:-1].isdigit() or len(rut_limpio) != 9:
+                label_rut.configure(text="Rut invalido", text_color="red")
+                rut_alumnos.configure(border_color="red")
+                return
+            
+            #Si la verificación del rut es exitosa se marca verde
+            rut_alumnos.configure(border_color = "green")
+            
+            #Verificación de la carrera
+            if len(carrera) < 3:
+                label_carrera.configure(text="Carrera invalida", text_color="red")
+                carrera_alumno.configure(border_color="red")
+                return
+            
+            #Si la verificación de la carrera es correcta se marca verde
+            carrera_alumno.configure(border_colr="green")
+
+            #Se le da el formato para poder añadirlo a la base de datos
             nombre_completo = f"{nombres} {apellidos}"
             correo = correo_institucional(nombres, apellidos, "alumno")
             contra = contrasena(rut)
             asignaturas = []
             
+            #Se carga el archivo
             datos = cargar_jsons(ALUMNOS)
             
+            #Se añade al nuevo alumno
             datos[correo] = {
                 "nombre": nombre_completo,
                 "rut": rut,
@@ -54,12 +124,39 @@ class VentanaMatricula(ctk.CTkToplevel):
                 "contrasena": contra
             }
             
+            #Se guarda en la base de datos
             guardar_datos(ALUMNOS, datos)
             
+            #Se destruye la ventana
             self.destroy()
             
         
-        ctk.CTkButton(frame_interno, text="Matricular Alumno", command=matricular).pack()
+        #Boton que ejecuta la función matricula
+        ctk.CTkButton(frame_interno, text="Matricular Alumno", command=matricular, font=Fonts.m2).pack(pady=100)
+
+        #Se defune la funcion para mover el frame scrolleable
+        def scroll(event):
+            #Accerder al scroll
+            canvas = frame_interno._parent_canvas  
+
+            #       Scroll tanto para Windows, MacOS y Linux
+            
+            #Si el scroll es positivo (en caso de Linux el scroll hacia arriba se considera el boton 4), se realiza el scroll
+            if event.num == 4 or event.delta > 0:
+                canvas.yview_scroll(-1, "units")
+                
+            #Si el scroll es negativo (en caso de Linux el scroll hacia abajo se considera el boton 5), se realiza el scroll
+            elif event.num == 5 or event.delta < 0:
+                canvas.yview_scroll(1, "units")
+        
+        #Scroll para Windows y MacOS
+        frame_interno.bind_all("<MouseWheel>", scroll)
+        
+        #Scroll para Linux
+        frame_interno.bind_all("<Button-4>", scroll)
+        frame_interno.bind_all("<Button-5>", scroll)  
+
+
 
 class VentanaInscribir(ctk.CTkToplevel):
     def __init__(self, email):
