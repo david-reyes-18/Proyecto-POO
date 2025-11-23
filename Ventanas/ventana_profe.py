@@ -4,9 +4,10 @@ from Utils.funcions import cargar_jsons
 from Utils.paths import PROFESORES
 from Clases.profesor import Profesor
 
-class VentanaProfe(ctk.CTk):
-    def __init__(self, email):
-        super().__init__()
+class VentanaProfe(ctk.CTkToplevel):
+    def __init__(self, email, master):
+        super().__init__(master)
+        self.master = master
         self.email = email
         self.title("Escuelita")
         self.config(background="#2b2b2b")
