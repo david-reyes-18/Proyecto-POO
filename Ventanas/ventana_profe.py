@@ -16,5 +16,5 @@ class VentanaProfe(ctk.CTkToplevel):
         
         datos = cargar_jsons(PROFESORES)
         info = datos[email]
-        profe = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"])
+        profe = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"], info["alumnos"])
         

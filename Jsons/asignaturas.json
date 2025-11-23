@@ -2,20 +2,22 @@
     "C\u00e1lculo I": {
         "nombre": "C\u00e1lculo I",
         "estudiantes": [
-            "fabianignacio.rodriguez@escuelita.cl",
-            "hola"
+            "Alejandro Ignacio Rodriguez Smith"
         ],
         "profesores": [
-            "Juan Pablo Molina"
+            "Juan Pablo Molina",
+            "Alex Joaquin Rojas Jefferson"
         ],
         "cantidad_estudiantes": 2
     },
     "POO": {
         "nombre": "POO",
-        "estudiantes": [
-            "Alejandro Ignacio Rodriguez Smith"
+        "estudiantes": [],
+        "profesores": [
+            "Alex Joaquin Rojas Jefferson",
+            "Juan Pablo Molina",
+            "Aurora Estefania Hernandez Rojas"
         ],
-        "profesores": [],
         "cantidad_estudiantes": 0
     }
 }

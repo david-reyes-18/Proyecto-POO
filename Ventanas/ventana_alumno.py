@@ -23,7 +23,7 @@ class VentanaAlumno(ctk.CTkToplevel):
         #Cargar los datos del estudiante y guardarlos en la clase Alumno
         datos = cargar_jsons(ALUMNOS)
         info = datos[email]
-        alumno = Alumno(email, info["nombre"], info["rut"],info["carrera"],info["asignaturas"],info["contrasena"])
+        alumno = Alumno(email, info["nombre"], info["rut"],info["carrera"],info["asignaturas"],info["contrasena"], info["profesores"])
         
         
         #Creando el frame superior (Datos del estudiante)

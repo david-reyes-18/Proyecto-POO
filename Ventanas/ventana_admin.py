@@ -2,7 +2,7 @@
 
 import customtkinter as ctk
 from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
-from Utils.funcions import cargar_jsons, eliminar_datos
+from Utils.funcions import cargar_jsons, eliminar_datos_alumno, eliminar_datos_profesor
 from Utils.paths import ADMINISTRADORES, ALUMNOS, ASIGNATURAS, PROFESORES
 from Clases.administrador import Admin
 from Clases.asignatura import Asignatura
@@ -130,6 +130,50 @@ class VentanaAdmin(ctk.CTkToplevel):
             ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e), font=Fonts.m3).place(relx=0.7, rely=0.2)
             ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: self.recargar_alumnos(e), font=Fonts.m3).place(relx=0.85, rely=0.2)
 
+    #Ventana que muestra todos los prodesores, en el cual se puede añadir profesores, eliminar, ver datos y asignar a un profesor una asignatura
+    def mostrar_profesores(self):
+        
+        #Se limpia el frame principal
+        self.limpiar_widgets()
+        
+        #Se cargan todos los datos de los profesores de la base de datos para mostrarlos
+        datos_profesores = cargar_jsons(PROFESORES)
+        
+        #Se crean los botones para añadir y asignar profesores
+        ctk.CTkButton(self.frame_superior, text="Añadir Profesor", command=VentanaAñadirProfe, font=Fonts.m3).place(relx=0.7, rely=0.3)
+        ctk.CTkButton(self.frame_superior, text="Asignar Profesor", command=VentanaAsignacion, font=Fonts.m3).place(relx=0.85, rely=0.3)
+        
+        #Listado de profesores
+        ctk.CTkLabel(self.frame_inferior, text="Listado de Profesores", font=Fonts.m2).place(relx=0.5, rely=0.1, anchor="center")
+        
+        self.frame = ctk.CTkFrame(self.frame_inferior, fg_color="#2b2b2c", width=ANCHO*0.6, height=ALTO*0.4)
+        self.frame.pack(pady=100)
+        
+        #Se ordenan los profesores en orden alfabetico
+        total_profesores = sorted(datos_profesores.items(), key=lambda x: x[1]["nombre"])
+        
+        #Se guarda una tupla con (nombre profesor, email profesor) para cada profesor
+        total_profesores = [(info["nombre"], email) for email, info in total_profesores]
+
+        #Boton para volver a la ventana principal
+        ctk.CTkButton(self.frame_inferior, text="Volver", command=self.volver).place(relx=0.01, rely=0.05)
+        
+        #Se hace el listado de profesores
+        for i, (nombre, email) in enumerate(total_profesores, start=1):
+            
+            #Por cada profesor se creará un nuevo contenedor
+            contenedor = ctk.CTkFrame(self.frame, height=ALTO*0.05, width=ANCHO*0.68, border_width=1, border_color="black")
+            contenedor.pack(fill="x")
+            
+            #Se muestra la información básica del profesor
+            ctk.CTkLabel(contenedor, text=f"{i}.-", font=Fonts.i3).place(relx=0.01, rely=0.2)
+            ctk.CTkLabel(contenedor, text=f"{nombre}", font=Fonts.i3).place(relx=0.03, rely=0.2)
+            ctk.CTkLabel(contenedor, text=f"{email}", font=Fonts.i3).place(relx=0.3, rely=0.2)
+            
+            #Botones par ver información y eliminar profesores del sistema
+            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosProfesor(e), font=Fonts.m3).place(relx=0.7, rely=0.2)
+            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: self.recargar_profesores(e), font=Fonts.m3).place(relx=0.85, rely=0.2)
+    
     #Funcion la cual al cerrar una CTkTopLevel cierra todo el programa
     def cerrar(self):
         self.master.destroy()
@@ -150,11 +194,11 @@ class VentanaAdmin(ctk.CTkToplevel):
 
     
     def recargar_alumnos(self, email):
-        eliminar_datos(ALUMNOS, email)
+        eliminar_datos_alumno(email)
         self.mostrar_alumnos()
         
     def recargar_profesores(self, email):
-        eliminar_datos(PROFESORES, email)
+        eliminar_datos_profesor(email)
         self.mostrar_profesores()
     
     def mostrar_asignaturas(self):
@@ -186,26 +230,4 @@ class VentanaAdmin(ctk.CTkToplevel):
             self.frame_inferior.columnconfigure(c, weight=1)
         
     
-    def mostrar_profesores(self):
-        self.limpiar_widgets()
-        
-        datos_profesores = cargar_jsons(PROFESORES)
-        ctk.CTkButton(self.frame_superior, text="Añadir Profesor", command=VentanaAñadirProfe).place(relx=0.7, rely=0.3)
-        ctk.CTkButton(self.frame_superior, text="Asignar Profesor", command=VentanaAsignacion).place(relx=0.9, rely=0.3)
-        self.frame = ctk.CTkFrame(self.frame_inferior, fg_color="#195e28", width=ANCHO*0.6, height=ALTO*0.4)
-        self.frame.pack(pady=20)
-        
-        total_alumnos = sorted(datos_profesores.items(), key=lambda x: x[1]["nombre"])
-        total_alumnos = [(info["nombre"], email) for email, info in total_alumnos]
-
-        for i, (nombre, email) in enumerate(total_alumnos, start=1):
-            
-            contenedor = ctk.CTkFrame(self.frame, height=ALTO*0.05, width=ANCHO*0.6)
-            contenedor.pack(padx= 10,pady = 10, fill="x")
-            
-            ctk.CTkLabel(contenedor, text=f"{i}.-").place(relx=0.01, rely=0.2)
-            ctk.CTkLabel(contenedor, text=f"{nombre}").place(relx=0.03, rely=0.2)
-            ctk.CTkLabel(contenedor, text=f"{email}").place(relx=0.27, rely=0.2)
-            
-            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosProfesor(e)).place(relx=0.7, rely=0.2)
-            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: self.recargar_profesores(e)).place(relx=0.8, rely=0.2)
+    

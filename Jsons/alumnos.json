@@ -1,30 +1,36 @@
 {
-    "fabianignacio.rodriguez@escuelita.cl": {
-        "nombre": "Fabian Ignacio Rodriguez Smith",
-        "rut": "12.345.678-9",
-        "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": [
-            "C\u00e1lculo I",
-            "Algebra",
-            "Fisica"
-        ],
-        "contrasena": "contrasena"
-    },
     "hola": {
         "nombre": "Alejandro Ignacio Rodriguez Smith",
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [
-            "C\u00e1lculo I",
-            "POO"
+            "C\u00e1lculo I"
         ],
-        "contrasena": "hola"
+        "contrasena": "hola",
+        "profesores": [
+            "Juan Pablo Molina"
+        ]
     },
     "benjaminmarcos.gonzalo@alumnos.escuelita.cl": {
         "nombre": "Benjamin Marcos Gonzalo Aguilar",
         "rut": "12.345.678-k",
         "carrera": "Ingenieria Electrica",
         "asignaturas": [],
-        "contrasena": "12345"
+        "contrasena": "12345",
+        "profesores": []
+    },
+    "tomasignacio.guerrero@alumnos.epsilon.cl": {
+        "nombre": "Tomas Ignacio Guerrero Alguer",
+        "rut": "20.924.354-k",
+        "carrera": "Ingenieria Comercial",
+        "asignaturas": [],
+        "contrasena": "20924"
+    },
+    "vicentebenjamin.diaz@alumnos.epsilon.cl": {
+        "nombre": "Vicente Benjamin Diaz Fresa",
+        "rut": "19.346.876-5",
+        "carrera": "Ingenieria Civil en Informatica",
+        "asignaturas": [],
+        "contrasena": "19346"
     }
 }

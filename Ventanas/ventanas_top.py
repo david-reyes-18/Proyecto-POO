@@ -104,7 +104,7 @@ class VentanaMatricula(ctk.CTkToplevel):
                 return
             
             #Si la verificación de la carrera es correcta se marca verde
-            carrera_alumno.configure(border_colr="green")
+            carrera_alumno.configure(border_color="green")
 
             #Se le da el formato para poder añadirlo a la base de datos
             nombre_completo = f"{nombres} {apellidos}"
@@ -158,28 +158,48 @@ class VentanaMatricula(ctk.CTkToplevel):
 
 
 
+#Ventana para la inscripción de asignaturas
 class VentanaInscribir(ctk.CTkToplevel):
     def __init__(self, email):
         super().__init__()
+        
+        #Configuración de la ventana
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
         self.title("Inscribir Asignatura")
         
+        #Cargar datos
         datos_alumnos = cargar_jsons(ALUMNOS)
         datos_asignaturas = cargar_jsons(ASIGNATURAS)
         
-        opciones = [asignatura for asignatura in datos_asignaturas if datos_alumnos[email]["nombre"] not in datos_asignaturas[asignatura]["estudiantes"]]
+        opciones_asignaturas = [asignatura for asignatura in datos_asignaturas if datos_alumnos[email]["nombre"] not in datos_asignaturas[asignatura]["estudiantes"]]
         
         ctk.CTkLabel(self, text="Seleccione el ramo a inscribir: ").pack()
         
-        menu_asignaturas = ctk.CTkOptionMenu(self, values=opciones)
+        def actualizar_profes(asignatura):
+            profes = [profe for profe in datos_asignaturas[asignatura]["profesores"]]
+            menu_profes.configure(values =profes, state="normal")
+        
+        
+        menu_asignaturas = ctk.CTkOptionMenu(self, values=opciones_asignaturas, command=actualizar_profes)
         menu_asignaturas.set("Seleccione una asignatura")
         menu_asignaturas.pack()
         
+        ctk.CTkLabel(self, text="Seleccione el profesor: ").pack()
+        
+        
+        menu_profes = ctk.CTkOptionMenu(self, state="disabled")
+        menu_profes.set("Seleccione a un profesor")
+        menu_profes.pack()
+        
+
+        
         def inscribir():
             asignatura = menu_asignaturas.get()
+            profesor = menu_profes.get()
             
             datos_alumnos[email]["asignaturas"].append(asignatura)
+            datos_alumnos[email]["profesores"].append(profesor)
             datos_asignaturas[asignatura]["estudiantes"].append(datos_alumnos[email]["nombre"])
             
             guardar_datos(ALUMNOS, datos_alumnos)
