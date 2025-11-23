@@ -16,10 +16,11 @@ class Fonts:
     def cargar():
         Fonts.m1 = ctk.CTkFont(family=MONTSERRAT, size=50, weight="bold")
         Fonts.m2 =ctk.CTkFont(family=MONTSERRAT, size=30)
-        Fonts.m3 = ctk.CTkFont(family=MONTSERRAT, size=15)
+        Fonts.m3 = ctk.CTkFont(family=MONTSERRAT, size=20)
         
         
         Fonts.i1 = ctk.CTkFont(family=INTER, size=20, weight="bold")
+        Fonts.i2 = ctk.CTkFont(family=INTER, size=17)
         
         
         
