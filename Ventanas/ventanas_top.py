@@ -40,7 +40,7 @@ class VentanaMatricula(ctk.CTkToplevel):
             carrera = carrera_alumno.get()
             
             nombre_completo = f"{nombres} {apellidos}"
-            correo = correo_institucional(nombres, apellidos)
+            correo = correo_institucional(nombres, apellidos, "alumno")
             contra = contrasena(rut)
             asignaturas = []
             
@@ -179,7 +179,7 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
             rut = rut_profe.get()
             
             nombre_completo = f"{nombres} {apellidos}"
-            correo = correo_institucional(nombres, apellidos)
+            correo = correo_institucional(nombres, apellidos, "profesor")
             contra = contrasena(rut)
             asignaturas = []
             
@@ -219,6 +219,27 @@ class VentanaAsignacion(ctk.CTkToplevel):
         self.menu_asignaturas = ctk.CTkOptionMenu(self, state="disabled")
         self.menu_asignaturas.set("Escoger asignatura")
         self.menu_asignaturas.pack()
+        
+        def asignacion():
+            profesor = self.menu_profes.get()
+            asignatura = self.menu_asignaturas.get()
+            
+            datos_profesores = cargar_jsons(PROFESORES)
+            datos_asignaturas = cargar_jsons(ASIGNATURAS)
+            
+            for profe in datos_profesores:
+                if datos_profesores[profe]["nombre"] == profesor:
+                    datos_profesores[profe]["asignaturas"].append(asignatura)
+            
+            
+            datos_asignaturas[asignatura]["profesores"].append(profesor)
+            
+            guardar_datos(PROFESORES, datos_profesores)
+            guardar_datos(ASIGNATURAS, datos_asignaturas)
+            
+            self.destroy()
+        
+        ctk.CTkButton(self, text="Asignar asignatura",command=asignacion).pack()
         
     def actualizar_asignaturas(self, profesor):
         asignaturas = asignaturas_totales()
