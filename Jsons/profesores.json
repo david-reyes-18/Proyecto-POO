@@ -14,7 +14,9 @@
     "gasparalonso.moncada@profe.escuelita.cl": {
         "nombre": "Gaspar Alonso Moncada Aquilar",
         "rut": "22.434.535-6",
-        "asignaturas": [],
+        "asignaturas": [
+            "Programaci\u00f3n"
+        ],
         "contrasena": "22434",
         "alumnos": []
     },
@@ -31,7 +33,8 @@
         "nombre": "Aurora Estefania Hernandez Rojas",
         "rut": "19.523.978.2",
         "asignaturas": [
-            "POO"
+            "POO",
+            "C\u00e1lculo II"
         ],
         "contrasena": "19523"
     }

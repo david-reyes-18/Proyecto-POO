@@ -1,14 +1,16 @@
 {
-    "hola": {
+    "alum": {
         "nombre": "Alejandro Ignacio Rodriguez Smith",
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [
-            "C\u00e1lculo I"
+            "C\u00e1lculo I",
+            "C\u00e1lculo II"
         ],
-        "contrasena": "hola",
+        "contrasena": "alum",
         "profesores": [
-            "Juan Pablo Molina"
+            "Juan Pablo Molina",
+            "Aurora Estefania Hernandez Rojas"
         ]
     },
     "benjaminmarcos.gonzalo@alumnos.escuelita.cl": {

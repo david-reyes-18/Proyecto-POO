@@ -130,6 +130,7 @@ class VentanaAdmin(ctk.CTkToplevel):
             ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e), font=Fonts.m3).place(relx=0.7, rely=0.2)
             ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: self.recargar_alumnos(e), font=Fonts.m3).place(relx=0.85, rely=0.2)
 
+
     #Ventana que muestra todos los prodesores, en el cual se puede añadir profesores, eliminar, ver datos y asignar a un profesor una asignatura
     def mostrar_profesores(self):
         

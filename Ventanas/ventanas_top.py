@@ -160,10 +160,12 @@ class VentanaMatricula(ctk.CTkToplevel):
 
 #Ventana para la inscripción de asignaturas
 class VentanaInscribir(ctk.CTkToplevel):
-    def __init__(self, email):
+    def __init__(self, email, ventana_alumno):
         super().__init__()
         
         #Configuración de la ventana
+        self.email = email
+        self.ventana_alumnos = ventana_alumno
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
         self.title("Inscribir Asignatura")
@@ -198,12 +200,24 @@ class VentanaInscribir(ctk.CTkToplevel):
             asignatura = menu_asignaturas.get()
             profesor = menu_profes.get()
             
+            if profesor == "Seleccione a un profesor":
+                return
+            
+            datos_profesor = cargar_jsons(PROFESORES)
+            
             datos_alumnos[email]["asignaturas"].append(asignatura)
             datos_alumnos[email]["profesores"].append(profesor)
             datos_asignaturas[asignatura]["estudiantes"].append(datos_alumnos[email]["nombre"])
             
+            for profe in datos_profesor:
+                if datos_profesor[profe]["nombre"] == profesor:
+                    datos_profesor[profe]["alumnos"].append(datos_alumnos[email]["nombre"])
+            
             guardar_datos(ALUMNOS, datos_alumnos)
             guardar_datos(ASIGNATURAS, datos_asignaturas)
+            guardar_datos(PROFESORES,datos_profesor)
+            
+            self.ventana_alumnos.actualizar_asignaturas()
             
             self.destroy()
         
