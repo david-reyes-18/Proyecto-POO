@@ -24,7 +24,7 @@ class Login(ctk.CTk):
         #                           Iniciar sesión
         
         #       Label inicio de sesión
-        label_inicio = ctk.CTkLabel(self, text="Iniciar sesión", font=Fonts.m1, text_color="purple")
+        label_inicio = ctk.CTkLabel(self, text="Iniciar sesión", font=Fonts.m1)
         label_inicio.place(relx=0.05, rely=0.1)
         
         #       Sección de email

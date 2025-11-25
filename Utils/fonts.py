@@ -19,6 +19,7 @@ class Fonts:
         Fonts.m2 =ctk.CTkFont(family=MONTSERRAT, size=31)
         Fonts.m2bold =ctk.CTkFont(family=MONTSERRAT, size=31, weight="bold")
         Fonts.m3 = ctk.CTkFont(family=MONTSERRAT, size=20)
+        Fonts.m4 = ctk.CTkFont(family=MONTSERRAT, size=15)
         
         
         Fonts.i1 = ctk.CTkFont(family=INTER, size=25, weight="bold")

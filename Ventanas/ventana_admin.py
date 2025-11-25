@@ -2,7 +2,7 @@
 
 import customtkinter as ctk
 from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
-from Utils.funcions import cargar_jsons, eliminar_datos_alumno, eliminar_datos_profesor
+from Utils.funcions import cargar_jsons, eliminar_datos_alumno, eliminar_datos_profesor, eliminar_datos_asignatura
 from Utils.paths import ADMINISTRADORES, ALUMNOS, ASIGNATURAS, PROFESORES
 from Clases.administrador import Admin
 from Clases.asignatura import Asignatura
@@ -98,7 +98,7 @@ class VentanaAdmin(ctk.CTkToplevel):
         datos_alumnos = cargar_jsons(ALUMNOS)
         
         #Boton de matricular
-        ctk.CTkButton(self.frame_superior, text="Matricular", command=VentanaMatricula, font=Fonts.m3).place(relx=0.85, rely=0.3)
+        ctk.CTkButton(self.frame_superior, text="Matricular", command=lambda: VentanaMatricula(master=self), font=Fonts.m3).place(relx=0.85, rely=0.3)
         
         #       Listado de alumnos
         ctk.CTkLabel(self.frame_inferior, text="Listado de Alumnos", font=Fonts.m2).place(relx=0.5, rely=0.1, anchor="center")
@@ -175,6 +175,76 @@ class VentanaAdmin(ctk.CTkToplevel):
             ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosProfesor(e), font=Fonts.m3).place(relx=0.7, rely=0.2)
             ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: self.recargar_profesores(e), font=Fonts.m3).place(relx=0.85, rely=0.2)
     
+    
+    #Ventana que mostrará las asignaturas totales que se imparten en el instituto, donde se podrá visualizar, añadir y eliminar asignaturas
+    def mostrar_asignaturas(self):
+        
+        #Se limpia el espacio donde se verán las asignaturas
+        self.limpiar_widgets()
+        
+        #Se cargan los datos de todas las asignaturas
+        datos = cargar_jsons(ASIGNATURAS)
+        
+        #Enlistar todas las asignaturas que estan en el sistema
+        asignaturas = [asignatura for asignatura in datos]
+            
+        #Boton para añadir asignaturas
+        ctk.CTkButton(self.frame_superior, text="Añadir Asignatura", command=lambda: VentanaAñadirAsignatura(master=self), font=Fonts.m3).place(relx=0.8, rely=0.3)
+        #Boton para volver a la ventana principal
+        ctk.CTkButton(self.frame_inferior, text="Volver", command=self.volver).place(relx=0.01, rely=0.01)
+        
+        #Se crea un contenedor por cada asignatura en la lista
+        for i, asignatura in enumerate(asignaturas):
+            #Por cada asignatura se crea un objeto asignatura
+            ramo = Asignatura(asignatura, datos[asignatura]["estudiantes"], datos[asignatura]["profesores"], datos[asignatura]["cantidad_estudiantes"])
+            
+            #Irán 3 asignaturas por fila
+            filas = i // 3
+            #Sabe en que columna poner
+            columnas = i % 3
+            
+            #Contenedor de la información 
+            frame_asignatura = ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.3, fg_color="#2b2b2b")
+            frame_asignatura.grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=60)
+            
+            #Información de la asignatura del alumno
+            ctk.CTkLabel(frame_asignatura, text=ramo.nombre, font=Fonts.m2bold, wraplength=ANCHO*0.2).place(relx = 0.1, rely=0.15)
+            ctk.CTkLabel(frame_asignatura, text=f"Cantidad Alumnos: {ramo.cantidad_estudiantes}", font=Fonts.i2).place(relx = 0.1, rely=0.5)
+            
+            #Boton para ver alumnos de la asignatura, para ver
+            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", command=lambda: VisualizarAlumnosProfes("alumno"), font=Fonts.m4).place(relx=0.05, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Ver Profesores", command=lambda: VisualizarAlumnosProfes("profesor"), font=Fonts.m4).place(relx=0.34, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Eliminar", command=lambda a=asignatura: self.recargar_asignaturas(a), font=Fonts.m4).place(relx=0.72, rely=0.8)
+        
+        num_filas = (len(datos) + 2) // 3 
+        for f in range(num_filas):
+            self.frame_inferior.rowconfigure(f, weight=1)
+        for c in range(3):
+            self.frame_inferior.columnconfigure(c, weight=1)
+            
+        def scroll(event):
+            #Accerder al scroll
+            canvas = self.frame_inferior._parent_canvas  
+
+            #       Scroll tanto para Windows, MacOS y Linux
+            
+            #Si el scroll es positivo (en caso de Linux el scroll hacia arriba se considera el boton 4), se realiza el scroll
+            if event.num == 4 or event.delta > 0:
+                canvas.yview_scroll(-1, "units")
+                
+            #Si el scroll es negativo (en caso de Linux el scroll hacia abajo se considera el boton 5), se realiza el scroll
+            elif event.num == 5 or event.delta < 0:
+                canvas.yview_scroll(1, "units")
+        
+        #Scroll para Windows y MacOS
+        self.frame_inferior.bind_all("<MouseWheel>", scroll)
+        
+        #Scroll para Linux
+        self.frame_inferior.bind_all("<Button-4>", scroll)
+        self.frame_inferior.bind_all("<Button-5>", scroll)  
+    
+    
+    
     #Funcion la cual al cerrar una CTkTopLevel cierra todo el programa
     def cerrar(self):
         self.master.destroy()
@@ -202,33 +272,8 @@ class VentanaAdmin(ctk.CTkToplevel):
         eliminar_datos_profesor(email)
         self.mostrar_profesores()
     
-    def mostrar_asignaturas(self):
-        self.limpiar_widgets()
-        datos = cargar_jsons(ASIGNATURAS)
-        asignaturas = [asignatura for asignatura in datos]
-            
-        ctk.CTkButton(self.frame_superior, text="Añadir Asignatura", command=VentanaAñadirAsignatura).place(relx=0.8, rely=0.3)
-        
-        ctk.CTkButton(self.frame_inferior, text="Volver", command=self.volver).place(relx=0.01, rely=0.01)
-        
-        for i, asignatura in enumerate(asignaturas):
-            ramo = Asignatura(asignatura, datos[asignatura]["estudiantes"], datos[asignatura]["profesores"], datos[asignatura]["cantidad_estudiantes"])
-            
-            filas = i // 3
-            columnas = i % 3
-            
-            frame_asignatura = ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.2, height=ALTO*0.5, fg_color="#ffffff")
-            frame_asignatura.grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=50)
-            ctk.CTkLabel(frame_asignatura, text=ramo.nombre).place(relx = 0.3, rely=0.1)
-            ctk.CTkLabel(frame_asignatura, text=f"Cantidad Alumnos: {ramo.cantidad_estudiantes}").place(relx = 0.3, rely=0.3)
-            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", command=lambda: VisualizarAlumnosProfes("alumno")).place(relx=0.6, rely=0.8)
-            ctk.CTkButton(frame_asignatura, text="Ver Profesores", command=lambda: VisualizarAlumnosProfes("profesor")).place(relx=0.8, rely=0.8)
-        
-        num_filas = (len(datos) + 2) // 3 
-        for f in range(num_filas):
-            self.frame_inferior.rowconfigure(f, weight=1)
-        for c in range(3):
-            self.frame_inferior.columnconfigure(c, weight=1)
-        
+    def recargar_asignaturas(self, asignatura):
+        eliminar_datos_asignatura(asignatura)
+        self.mostrar_asignaturas()
     
     

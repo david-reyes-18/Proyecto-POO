@@ -1,51 +1,12 @@
 {
     "C\u00e1lculo I": {
         "nombre": "C\u00e1lculo I",
-        "estudiantes": [
-            "Alejandro Ignacio Rodriguez Smith"
-        ],
-        "profesores": [
-            "Juan Pablo Molina",
-            "Alex Joaquin Rojas Jefferson"
-        ],
-        "cantidad_estudiantes": 2
-    },
-    "POO": {
-        "nombre": "POO",
-        "estudiantes": [],
-        "profesores": [
-            "Alex Joaquin Rojas Jefferson",
-            "Juan Pablo Molina",
-            "Aurora Estefania Hernandez Rojas"
-        ],
-        "cantidad_estudiantes": 0
-    },
-    "Fisica": {
-        "nombre": "Fisica",
         "estudiantes": [],
         "profesores": [],
         "cantidad_estudiantes": 0
     },
-    "Programaci\u00f3n": {
-        "nombre": "Programaci\u00f3n",
-        "estudiantes": [],
-        "profesores": [
-            "Gaspar Alonso Moncada Aquilar"
-        ],
-        "cantidad_estudiantes": 0
-    },
     "C\u00e1lculo II": {
         "nombre": "C\u00e1lculo II",
-        "estudiantes": [
-            "Alejandro Ignacio Rodriguez Smith"
-        ],
-        "profesores": [
-            "Aurora Estefania Hernandez Rojas"
-        ],
-        "cantidad_estudiantes": 0
-    },
-    "\u00c1lgebra": {
-        "nombre": "\u00c1lgebra",
         "estudiantes": [],
         "profesores": [],
         "cantidad_estudiantes": 0

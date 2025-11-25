@@ -38,40 +38,34 @@ class VentanaAlumno(ctk.CTkToplevel):
         
         ctk.CTkButton(frame_superior, text="Inscribir Asignatura", command=lambda: VentanaInscribir(email, self), font=Fonts.m2).place(relx=0.75, rely=0.3)
         
-        #Creando el frame inferior (DOnde se mostrará las asignaturas del alumno)
+        #Creando el frame inferior (Donde se mostrará las asignaturas del alumno)
         self.frame_inferior = ctk.CTkScrollableFrame(self, width=ANCHO, height=ALTO*0.9, fg_color="#1b1b1b")
         self.frame_inferior.pack(fill="both", expand=True)
         
+        self.actualizar_asignaturas(email)
+
+        self.protocol("WM_DELETE_WINDOW", self.cerrar)
+
+
+    def actualizar_asignaturas(self, email):
+        #Cargar los datos del estudiante y guardarlos en la clase Alumno
+        datos = cargar_jsons(ALUMNOS)
+        info = datos[email]
+        alumno = Alumno(email, info["nombre"], info["rut"],info["carrera"],info["asignaturas"],info["contrasena"], info["profesores"])
+        #Se crea un contenedor por cada asignatura que tenga el estudiante
         for i in range(len(alumno.asignaturas)):
+            
+            #Iran 3 asignaturas por cada fila
             filas = i // 3
+            #Sirve para saber en que columa poner la asignatura
             columnas = i % 3
-            ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.35, fg_color="#2b2b2b").grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=20)
+            ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.35, fg_color="#2b2b2b").grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=60)
         
         num_filas = (len(alumno.asignaturas) + 2) // 3 
         for f in range(num_filas):
             self.frame_inferior.rowconfigure(f, weight=1)
         for c in range(3):
             self.frame_inferior.columnconfigure(c, weight=1)
-        self.protocol("WM_DELETE_WINDOW", self.cerrar)
-
-
-    def actualizar_asignaturas(self):
-        # borrar el contenido actual del frame inferior
-        for widget in self.frame_inferior.winfo_children():
-            widget.destroy()
-
-        # recargar datos del alumno
-        datos = cargar_jsons(ALUMNOS)
-        info = datos[self.email]
-        alumno = Alumno(self.email, info["nombre"], info["rut"],
-                        info["carrera"], info["asignaturas"],
-                        info["contrasena"], info["profesores"])
-
-        # volver a crear las tarjetas de asignaturas
-        for i in range(len(alumno.asignaturas)):
-            filas = i // 3
-            columnas = i % 3
-            ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.35,fg_color="#2b2b2b").grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=20)
-
+    
     def cerrar(self):
         self.master.destroy()

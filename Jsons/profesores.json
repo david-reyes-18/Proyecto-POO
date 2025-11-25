@@ -1,41 +1,16 @@
 {
-    "juanp.molina@profes.escuelita.cl": {
-        "nombre": "Juan Pablo Molina",
-        "rut": "16.456.765-7",
-        "asignaturas": [
-            "C\u00e1lculo I",
-            "Programaci\u00f3n",
-            "Bases de Datos",
-            "POO"
-        ],
-        "contrasena": "contrasena",
+    "estevanaquiles.torres@profe.epsilon.cl": {
+        "nombre": "Estevan Aquiles Torres Labarca",
+        "rut": "18.344.543-1",
+        "asignaturas": [],
+        "contrasena": "18344",
         "alumnos": []
     },
-    "gasparalonso.moncada@profe.escuelita.cl": {
-        "nombre": "Gaspar Alonso Moncada Aquilar",
-        "rut": "22.434.535-6",
-        "asignaturas": [
-            "Programaci\u00f3n"
-        ],
-        "contrasena": "22434",
+    "auroraestefania.garrida@profe.epsilon.cl": {
+        "nombre": "Aurora Estefania Garrida jimenez",
+        "rut": "19.432.745-k",
+        "asignaturas": [],
+        "contrasena": "19432",
         "alumnos": []
-    },
-    "alexjoaquin.rojas@profe.epsilon.cl": {
-        "nombre": "Alex Joaquin Rojas Jefferson",
-        "rut": "17.533.453-6",
-        "asignaturas": [
-            "POO",
-            "C\u00e1lculo I"
-        ],
-        "contrasena": "17533"
-    },
-    "auroraestefania.hernandez@profe.epsilon.cl": {
-        "nombre": "Aurora Estefania Hernandez Rojas",
-        "rut": "19.523.978.2",
-        "asignaturas": [
-            "POO",
-            "C\u00e1lculo II"
-        ],
-        "contrasena": "19523"
     }
 }

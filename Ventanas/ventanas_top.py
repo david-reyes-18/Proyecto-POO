@@ -10,10 +10,11 @@ from Utils.fonts import Fonts
 
 #Ventana que sirve para matricular un alumno nuevo, de esta manera se le entrega un correo y contraseña institucionales
 class VentanaMatricula(ctk.CTkToplevel):
-    def __init__(self):
+    def __init__(self, master):
         super().__init__()
         
         #Configuracción de la ventana
+        self.master = master
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
         self.title("Matricula Alumno Nuevo")
@@ -127,6 +128,9 @@ class VentanaMatricula(ctk.CTkToplevel):
             #Se guarda en la base de datos
             guardar_datos(ALUMNOS, datos)
             
+            #Muetra nuevamente la pantalla de los alumnos, actualizando asi su contenido
+            master.mostrar_alumnos()
+            
             #Se destruye la ventana
             self.destroy()
             
@@ -224,19 +228,36 @@ class VentanaInscribir(ctk.CTkToplevel):
         ctk.CTkButton(self, text="Inscribir", command=inscribir).pack()
 
 
+#Ventana para añadir una asignatura al sistema
 class VentanaAñadirAsignatura(ctk.CTkToplevel):
-    def __init__(self):
+    def __init__(self, master):
         super().__init__()
+        
+        #Configuración de la ventana
+        self.master = master
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
         self.title("Añadir Asignatura")
         
-        ctk.CTkLabel(self, text ="Añada el nombre de la asignatura que desee agregar:").pack(fill="x")
-        nueva_asignatura = ctk.CTkEntry(self)
+        #Texto del Inicio
+        ctk.CTkLabel(self, text ="Añadir Asignatura", font=Fonts.m2bold).pack(fill="x", pady=60)
+        ctk.CTkLabel(self, text ="Al momento de añadir una asignatura, esta quedará registrada en el sistema, por lo tanto se le deberá asignar al menos un profesor a cargo y será liberada para que los alumnos puedan inscribir dicha asignatura.", font=Fonts.i3, wraplength=TOPLEVEL_ANCHO*0.75, justify="left").pack(fill="x")
+        ctk.CTkLabel(self, text ="Añada la asignatura:", font=Fonts.m3, anchor="w", width=TOPLEVEL_ANCHO*0.75).pack(pady=40)
+        
+        
+        nueva_asignatura = ctk.CTkEntry(self, placeholder_text="Asignatura", width=TOPLEVEL_ANCHO*0.5, font=Fonts.m3, border_width=2)
         nueva_asignatura.pack()
+        
+        confirmacion = ctk.CTkLabel(self, text="", font=Fonts.i4)
+        confirmacion.pack(fill="x", pady=20)
         
         def añadir_asignatura():
             ramo_nuevo = nueva_asignatura.get()
+            
+            if len(ramo_nuevo) < 3:
+                confirmacion.configure(text="Asignatura Inválida", text_color="red")
+                nueva_asignatura.configure(border_color="red")
+                return
             
             datos = cargar_jsons(ASIGNATURAS)
             
@@ -247,10 +268,10 @@ class VentanaAñadirAsignatura(ctk.CTkToplevel):
                 "cantidad_estudiantes": 0
             }
             guardar_datos(ASIGNATURAS, datos)
-            
+            master.mostrar_asignaturas()
             self.destroy()
         
-        ctk.CTkButton(self, text="Añadir", command=añadir_asignatura).pack()
+        ctk.CTkButton(self, text="Añadir", command=añadir_asignatura, font=Fonts.m2).pack(pady=50)
 
 
 class VisualizarAlumnosProfes(ctk.CTkToplevel):
@@ -345,6 +366,7 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
             correo = correo_institucional(nombres, apellidos, "profesor")
             contra = contrasena(rut)
             asignaturas = []
+            alumnos = []
             
             datos = cargar_jsons(PROFESORES)
             
@@ -352,7 +374,8 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
                 "nombre": nombre_completo,
                 "rut": rut,
                 "asignaturas": asignaturas,
-                "contrasena": contra
+                "contrasena": contra,
+                "alumnos": alumnos
             }
             
             guardar_datos(PROFESORES, datos)
