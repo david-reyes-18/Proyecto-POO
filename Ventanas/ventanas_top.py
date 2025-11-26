@@ -221,7 +221,7 @@ class VentanaInscribir(ctk.CTkToplevel):
             guardar_datos(ASIGNATURAS, datos_asignaturas)
             guardar_datos(PROFESORES,datos_profesor)
             
-            self.ventana_alumnos.actualizar_asignaturas()
+            self.ventana_alumnos.mostrar_asignaturas(email)
             
             self.destroy()
         
@@ -332,12 +332,17 @@ class VentanaDatosProfesor(ctk.CTkToplevel):
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
 
+
+#Ventana para añadir profesores
 class VentanaAñadirProfe(ctk.CTkToplevel):
     def __init__(self):
         super().__init__()
+        
+        #Configuración de la ventana
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
-        self.title("Ingresar nuevo profesor")
+        self.title("Añadir nuevo profesor")
+        
         
         frame_interno = ctk.CTkScrollableFrame(self)
         frame_interno.pack(fill="both", expand=True)

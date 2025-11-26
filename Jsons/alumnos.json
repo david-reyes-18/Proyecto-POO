@@ -3,9 +3,17 @@
         "nombre": "Alejandro Ignacio Rodriguez Smith",
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": [],
+        "asignaturas": [
+            "C\u00e1lculo I",
+            "C\u00e1lculo III",
+            "POO"
+        ],
         "contrasena": "alum",
-        "profesores": []
+        "profesores": [
+            "Estevan Aquiles Torres Labarca",
+            "Estevan Aquiles Torres Labarca",
+            "Estevan Aquiles Torres Labarca"
+        ]
     },
     "josealfredo.torres@alumnos.epsilon.cl": {
         "nombre": "Jose Alfredo Torres Sanchez",
@@ -20,13 +28,6 @@
         "carrera": "Ingenieria Comercial",
         "asignaturas": [],
         "contrasena": "19323"
-    },
-    "joaquinignacio.palmera@alumnos.epsilon.cl": {
-        "nombre": "Joaquin Ignacio Palmera Garrido",
-        "rut": "22.324.523-7",
-        "carrera": "Ingenieria Civil Industrial",
-        "asignaturas": [],
-        "contrasena": "22324"
     },
     "felipealvaro.almendra@alumnos.epsilon.cl": {
         "nombre": "Felipe Alvaro Almendra Uribes",

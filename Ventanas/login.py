@@ -81,7 +81,7 @@ class Login(ctk.CTk):
             #Verificar si es alumno
             if email in datos_alumnos:
                 if contrasena == datos_alumnos[email]["contrasena"]:
-                    ventanita = VentanaAlumno(email, master=self)
+                    VentanaAlumno(email, master=self)
                     self.withdraw()
                 else:
                     entrada_email.configure(border_color="green")
@@ -93,8 +93,8 @@ class Login(ctk.CTk):
             #Verificar si es profesor
             elif email in datos_profesor:
                 if contrasena == datos_profesor[email]["contrasena"]:
-                    ventanita = VentanaProfe(email, master=self)
-                    self.withdraw
+                    VentanaProfe(email, master=self)
+                    self.withdraw()
                 else:
                     entrada_email.configure(border_color="green")
                     label_error_email.configure(text="Email correcto", text_color="green")
@@ -105,7 +105,7 @@ class Login(ctk.CTk):
             #Verificar si es administrador
             elif email in datos_administradores:
                 if contrasena == datos_administradores[email]["contrasena"]:
-                    ventanita = VentanaAdmin(email, master=self)
+                    VentanaAdmin(email, master=self)
                     self.withdraw()
                 else:
                     entrada_email.configure(border_color="green")

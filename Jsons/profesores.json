@@ -1,10 +1,19 @@
 {
-    "estevanaquiles.torres@profe.epsilon.cl": {
+    "profe": {
         "nombre": "Estevan Aquiles Torres Labarca",
         "rut": "18.344.543-1",
-        "asignaturas": [],
-        "contrasena": "18344",
-        "alumnos": []
+        "asignaturas": [
+            "C\u00e1lculo I",
+            "C\u00e1lculo II",
+            "C\u00e1lculo III",
+            "POO"
+        ],
+        "contrasena": "profe",
+        "alumnos": [
+            "Alejandro Ignacio Rodriguez Smith",
+            "Alejandro Ignacio Rodriguez Smith",
+            "Alejandro Ignacio Rodriguez Smith"
+        ]
     },
     "auroraestefania.garrida@profe.epsilon.cl": {
         "nombre": "Aurora Estefania Garrida jimenez",

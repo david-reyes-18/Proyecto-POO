@@ -1,12 +1,50 @@
 {
     "C\u00e1lculo I": {
         "nombre": "C\u00e1lculo I",
-        "estudiantes": [],
-        "profesores": [],
+        "estudiantes": [
+            "Alejandro Ignacio Rodriguez Smith"
+        ],
+        "profesores": [
+            "Estevan Aquiles Torres Labarca"
+        ],
         "cantidad_estudiantes": 0
     },
     "C\u00e1lculo II": {
         "nombre": "C\u00e1lculo II",
+        "estudiantes": [],
+        "profesores": [
+            "Estevan Aquiles Torres Labarca"
+        ],
+        "cantidad_estudiantes": 0
+    },
+    "C\u00e1lculo III": {
+        "nombre": "C\u00e1lculo III",
+        "estudiantes": [
+            "Alejandro Ignacio Rodriguez Smith"
+        ],
+        "profesores": [
+            "Estevan Aquiles Torres Labarca"
+        ],
+        "cantidad_estudiantes": 0
+    },
+    "Programaci\u00f3n": {
+        "nombre": "Programaci\u00f3n",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "POO": {
+        "nombre": "POO",
+        "estudiantes": [
+            "Alejandro Ignacio Rodriguez Smith"
+        ],
+        "profesores": [
+            "Estevan Aquiles Torres Labarca"
+        ],
+        "cantidad_estudiantes": 0
+    },
+    "Fisica": {
+        "nombre": "Fisica",
         "estudiantes": [],
         "profesores": [],
         "cantidad_estudiantes": 0

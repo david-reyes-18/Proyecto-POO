@@ -17,7 +17,7 @@ class VentanaAlumno(ctk.CTkToplevel):
         #Configuración de la ventana
         self.master = master
         self.email = email
-        self.title("Escuelita")
+        self.title("Instituto Epsilon")
         self.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
         self.minsize(MIN_ANCHO, MIN_ALTO)
         
@@ -42,12 +42,12 @@ class VentanaAlumno(ctk.CTkToplevel):
         self.frame_inferior = ctk.CTkScrollableFrame(self, width=ANCHO, height=ALTO*0.9, fg_color="#1b1b1b")
         self.frame_inferior.pack(fill="both", expand=True)
         
-        self.actualizar_asignaturas(email)
+        self.mostrar_asignaturas(email)
 
         self.protocol("WM_DELETE_WINDOW", self.cerrar)
 
 
-    def actualizar_asignaturas(self, email):
+    def mostrar_asignaturas(self, email):
         #Cargar los datos del estudiante y guardarlos en la clase Alumno
         datos = cargar_jsons(ALUMNOS)
         info = datos[email]
