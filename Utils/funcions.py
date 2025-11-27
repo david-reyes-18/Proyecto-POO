@@ -44,8 +44,13 @@ def eliminar_datos_alumno(email):
 #Elimina todos los datos de un profesor
 def eliminar_datos_profesor(email):
     datos = cargar_jsons(PROFESORES)
+    
     nombre_profesor = datos[email]["nombre"]
+    
+    print(nombre_profesor)
+    
     del datos[email]
+    
     guardar_datos(PROFESORES, datos)
     
     datos = cargar_jsons(ASIGNATURAS)
@@ -54,7 +59,7 @@ def eliminar_datos_profesor(email):
         if nombre_profesor in datos[asignatura]["profesores"]:
             datos[asignatura]["profesores"].remove(nombre_profesor)
     
-    guardar_datos(PROFESORES, datos)
+    guardar_datos(ASIGNATURAS, datos)
     
     datos = cargar_jsons(ALUMNOS)
     

@@ -1,25 +1,13 @@
 {
     "profe": {
-        "nombre": "Estevan Aquiles Torres Labarca",
-        "rut": "18.344.543-1",
+        "nombre": "Alfonso Alejandro Rojas Huerta",
+        "rut": "17.534.253-k",
         "asignaturas": [
-            "C\u00e1lculo I",
-            "C\u00e1lculo II",
-            "C\u00e1lculo III",
-            "POO"
+            "Programaci\u00f3n"
         ],
         "contrasena": "profe",
         "alumnos": [
-            "Alejandro Ignacio Rodriguez Smith",
-            "Alejandro Ignacio Rodriguez Smith",
-            "Alejandro Ignacio Rodriguez Smith"
+            "Alejandro Ignacio Rodriguez Smith,Programaci\u00f3n"
         ]
-    },
-    "auroraestefania.garrida@profe.epsilon.cl": {
-        "nombre": "Aurora Estefania Garrida jimenez",
-        "rut": "19.432.745-k",
-        "asignaturas": [],
-        "contrasena": "19432",
-        "alumnos": []
     }
 }

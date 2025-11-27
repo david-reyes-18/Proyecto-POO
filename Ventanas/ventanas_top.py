@@ -5,6 +5,7 @@ from Utils.funcions import cargar_jsons, correo_institucional, contrasena, guard
 from Utils.paths import ADMINISTRADORES, ALUMNOS, ASIGNATURAS, PROFESORES
 from Clases.administrador import Admin
 from Utils.fonts import Fonts
+from Clases.alumnos import Alumno
 
 #       Aquí se encuentran todas las ventanas TopLevel que el sistema usa, ya sea para la creacion, visualización o eliminación de datos
 
@@ -79,7 +80,7 @@ class VentanaMatricula(ctk.CTkToplevel):
             nombres_alumnos.configure(border_color = "green")
             
             #Verificación de los apellidoss
-            if len(nombres.split()) > 3 or len(nombres.split()) < 2:
+            if len(apellidos.split()) > 3 or len(apellidos.split()) < 2:
                 label_apellidos.configure(text="Apellidos invalido", text_color="red")
                 apellidos_alumnos.configure(border_color="red")
                 return
@@ -122,7 +123,8 @@ class VentanaMatricula(ctk.CTkToplevel):
                 "rut": rut,
                 "carrera": carrera,
                 "asignaturas": asignaturas,
-                "contrasena": contra
+                "contrasena": contra,
+                "profesores": []
             }
             
             #Se guarda en la base de datos
@@ -178,54 +180,74 @@ class VentanaInscribir(ctk.CTkToplevel):
         datos_alumnos = cargar_jsons(ALUMNOS)
         datos_asignaturas = cargar_jsons(ASIGNATURAS)
         
+        #Se guardan en una lista las opciones de asignaturas que puede optar el estudiante
         opciones_asignaturas = [asignatura for asignatura in datos_asignaturas if datos_alumnos[email]["nombre"] not in datos_asignaturas[asignatura]["estudiantes"]]
         
-        ctk.CTkLabel(self, text="Seleccione el ramo a inscribir: ").pack()
+        #Texto de inicio
+        ctk.CTkLabel(self, text="Inscripción de Asignatura", font=Fonts.m2bold).pack(fill="x", pady=30)
+        ctk.CTkLabel(self, text="Seleccione el ramo a inscribir:", font=Fonts.i1, width=TOPLEVEL_ANCHO*0.8, anchor="w").pack(pady=30)
         
+        #Funcion que se actualiza al pinchar un ramo, busca los profesores que imparten el ramo elegido
         def actualizar_profes(asignatura):
             profes = [profe for profe in datos_asignaturas[asignatura]["profesores"]]
             menu_profes.configure(values =profes, state="normal")
         
-        
-        menu_asignaturas = ctk.CTkOptionMenu(self, values=opciones_asignaturas, command=actualizar_profes)
+        #Menú desplegable para ver las asignaturas que puede inscribit
+        menu_asignaturas = ctk.CTkOptionMenu(self, values=opciones_asignaturas, command=actualizar_profes, font=Fonts.m3, dropdown_font=Fonts.i2, width=TOPLEVEL_ANCHO*0.5)
         menu_asignaturas.set("Seleccione una asignatura")
         menu_asignaturas.pack()
         
-        ctk.CTkLabel(self, text="Seleccione el profesor: ").pack()
+        #Label para el profesor
+        ctk.CTkLabel(self, text="Seleccione el profesor:", font=Fonts.i1, width=TOPLEVEL_ANCHO*0.8, anchor="w").pack(pady=30)
         
-        
-        menu_profes = ctk.CTkOptionMenu(self, state="disabled")
+        #Menú desplegable para ver los profesores que imparten dicha materia (estará desabilitado hasta que el alumno escoja una materia)
+        menu_profes = ctk.CTkOptionMenu(self, state="disabled", font=Fonts.m3, dropdown_font=Fonts.i2, width=TOPLEVEL_ANCHO*0.5)
         menu_profes.set("Seleccione a un profesor")
         menu_profes.pack()
         
 
-        
+        #Función que se ejecutará al presionar un botón de inscribir
         def inscribir():
+            
+            #Se toman los valores de la asignatura y el profesor
             asignatura = menu_asignaturas.get()
             profesor = menu_profes.get()
             
+            #Se verifica que se haya seleccionado un profesor, sino el botón no funciona
             if profesor == "Seleccione a un profesor":
                 return
             
+            #Se cargan los datos de los profesores
             datos_profesor = cargar_jsons(PROFESORES)
             
+            #Se añade la asignatura a la base de datos del alumno
             datos_alumnos[email]["asignaturas"].append(asignatura)
+            #SE añade el profesor que eligió el alumno para su asignatura en la base de datos
             datos_alumnos[email]["profesores"].append(profesor)
+            #En la asignatura elegida se guarda el nombre del estudiante
             datos_asignaturas[asignatura]["estudiantes"].append(datos_alumnos[email]["nombre"])
             
+            #Se busca al profesor que el alumno eligio en la base de datos
             for profe in datos_profesor:
+                #Si lo encuentra se agregara el nombre del alumno y la asignatura que eligió en la base de datos del profesor
                 if datos_profesor[profe]["nombre"] == profesor:
-                    datos_profesor[profe]["alumnos"].append(datos_alumnos[email]["nombre"])
+                    datos_profesor[profe]["alumnos"].append(f"{datos_alumnos[email]["nombre"]},{asignatura}")
             
+            #Se actualiza la cantidad de alumnos que hay en la asigantura elegida
+            datos_asignaturas[asignatura]["cantidad_estudiantes"] = len(datos_asignaturas[asignatura]["estudiantes"])
+            
+            #Se guardan los datos
             guardar_datos(ALUMNOS, datos_alumnos)
             guardar_datos(ASIGNATURAS, datos_asignaturas)
             guardar_datos(PROFESORES,datos_profesor)
             
+            #Se actualiza la ventana de alumnos, para que muestre la asigantura recien elegida
             self.ventana_alumnos.mostrar_asignaturas(email)
-            
+            #SE destruye la ventana de inscipción
             self.destroy()
         
-        ctk.CTkButton(self, text="Inscribir", command=inscribir).pack()
+        #Botón para inscribir
+        ctk.CTkButton(self, text="Inscribir", command=inscribir, font=Fonts.m2).pack(pady=60)
 
 
 #Ventana para añadir una asignatura al sistema
@@ -274,45 +296,81 @@ class VentanaAñadirAsignatura(ctk.CTkToplevel):
         ctk.CTkButton(self, text="Añadir", command=añadir_asignatura, font=Fonts.m2).pack(pady=50)
 
 
+#Ventana que permite ver todos los alumnos o profesores, dependiendo el rol que  se le de a la ventana, del instituto que estan inscritos a dicha asignatura
 class VisualizarAlumnosProfes(ctk.CTkToplevel):
-    def __init__(self, rol: str):
+    def __init__(self, rol: str, asignatura: str):
         super().__init__()
+        
+        #Se configura la ventana
         self.rol = rol
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
         
+        #Si es un alumno entonces se le mostrará todos los alumnos que estan inscritos a la asignatura
         if rol == "alumno":
-            datos_alumnos = cargar_jsons(ALUMNOS)
-            self.frame = ctk.CTkScrollableFrame(self, fg_color="#195e28", width=TOPLEVEL_ANCHO, height=TOPLEVEL_ALTO)
-            self.frame.pack(pady=20)
+            #Se configura el titulo de la ventana
+            self.title("Alumnos")
             
+            #Se cargan los datos de todos los alumnos
+            datos_alumnos = cargar_jsons(ALUMNOS)
+            
+            #Titulo
+            ctk.CTkLabel(self, text="Listado de Alumnos", font=Fonts.m2bold).pack(fill="x", pady=10)
+            
+            #Se crea el frame scrolleable
+            self.frame = ctk.CTkScrollableFrame(self, fg_color="#2b2b2b", width=TOPLEVEL_ANCHO*0.9, height=TOPLEVEL_ALTO*0.9)
+            self.frame.pack()
+            
+            #Se ordenan los datos de los estudiantes por el nombre
             total_alumnos = sorted(datos_alumnos.items(), key=lambda x: x[1]["nombre"])
-            total_alumnos = [(info["nombre"], email) for email, info in total_alumnos]
+            #Se crea una tupla con los valores de (nombre, email) si el alumno tiene inscrita dicha asignatura
+            total_alumnos = [(info["nombre"], email) for email, info in total_alumnos if asignatura in info["asignaturas"]]
 
+            
+            #Se crea el listado de alumnos iterando en cada alumno
             for i, (nombre, email) in enumerate(total_alumnos, start=1):
                 
-                contenedor = ctk.CTkFrame(self.frame)
-                contenedor.pack(padx= 10,pady = 10, fill="x")
+                #Frame que contendrá la información de cada alumno
+                contenedor = ctk.CTkFrame(self.frame, border_width=1, border_color="black", height=TOPLEVEL_ALTO*0.15)
+                contenedor.pack(fill="x")
                 
-                ctk.CTkLabel(contenedor, text=f"{i}.-").place(relx=0.01, rely=0.2)
-                ctk.CTkLabel(contenedor, text=f"{nombre}").place(relx=0.03, rely=0.2)
-                ctk.CTkLabel(contenedor, text=f"{email}").place(relx=0.27, rely=0.2)
+                #Información del estudiante
+                ctk.CTkLabel(contenedor, text=f"{i}.-", font=Fonts.i3).place(relx=0.01, rely=0.2)
+                ctk.CTkLabel(contenedor, text=f"{nombre}", font=Fonts.i3).place(relx=0.03, rely=0.2)
+                ctk.CTkLabel(contenedor, text=f"{datos_alumnos[email]["rut"]}", font=Fonts.i3).place(relx=0.6, rely=0.2)
+        
+        #Si es un profesor entonces se le mostrará todos los profesores que imparten dicha asigantura
         elif rol == "profesor":
-            datos_profesor = cargar_jsons(PROFESORES)
-            self.frame = ctk.CTkScrollableFrame(self, fg_color="#195e28", width=TOPLEVEL_ANCHO, height=TOPLEVEL_ALTO)
-            self.frame.pack(pady=20)
+            #Se configura el titulo de la ventana
+            self.title("Profesores")
             
-            total_profesores = sorted(datos_profesor.items(), key=lambda x: x[1]["nombre"])
-            total_profesores = [(info["nombre"], email) for email, info in total_profesores]
+            #Se cargan los datos de todos los profesores
+            datos_profesores = cargar_jsons(PROFESORES)
+            
+            #Titulo
+            ctk.CTkLabel(self, text="Listado de Profesores", font=Fonts.m2bold).pack(fill="x", pady=10)
+            
+            #Se crea el frame scrolleable
+            self.frame = ctk.CTkScrollableFrame(self, fg_color="#2b2b2b", width=TOPLEVEL_ANCHO*0.9, height=TOPLEVEL_ALTO*0.9)
+            self.frame.pack()
+            
+            #Se ordenan los datos de los profesores por el nombre
+            total_profesores = sorted(datos_profesores.items(), key=lambda x: x[1]["nombre"])
+            #Se crea una tupla con los valores de (nombre, email) si el alumno tiene inscrita dicha asignatura
+            total_profesores = [(info["nombre"], email) for email, info in total_profesores if asignatura in info["asignaturas"]]
 
+            
+            #Se crea el listado de los profesores iterando en cada profesor
             for i, (nombre, email) in enumerate(total_profesores, start=1):
                 
-                contenedor = ctk.CTkFrame(self.frame)
-                contenedor.pack(padx= 10,pady = 10, fill="x")
+                #Frame que contendrá la información de cada profesor
+                contenedor = ctk.CTkFrame(self.frame, border_width=1, border_color="black", height=TOPLEVEL_ALTO*0.15)
+                contenedor.pack(fill="x")
                 
-                ctk.CTkLabel(contenedor, text=f"{i}.-").place(relx=0.01, rely=0.2)
-                ctk.CTkLabel(contenedor, text=f"{nombre}").place(relx=0.03, rely=0.2)
-                ctk.CTkLabel(contenedor, text=f"{email}").place(relx=0.27, rely=0.2)
+                #Información del estudiante
+                ctk.CTkLabel(contenedor, text=f"{i}.-", font=Fonts.i3).place(relx=0.01, rely=0.2)
+                ctk.CTkLabel(contenedor, text=f"{nombre}", font=Fonts.i3).place(relx=0.03, rely=0.2)
+                ctk.CTkLabel(contenedor, text=f"{datos_profesores[email]["rut"]}", font=Fonts.i3).place(relx=0.6, rely=0.2)
         
 
 class VentanaDatosAlumno(ctk.CTkToplevel):
@@ -335,46 +393,95 @@ class VentanaDatosProfesor(ctk.CTkToplevel):
 
 #Ventana para añadir profesores
 class VentanaAñadirProfe(ctk.CTkToplevel):
-    def __init__(self):
+    def __init__(self, master):
         super().__init__()
         
         #Configuración de la ventana
+        self.master = master
         self.minsize(TOPLEVEL_ANCHO, TOPLEVEL_ALTO)
         self.resizable(False, False)
         self.title("Añadir nuevo profesor")
         
-        
+        #Creación del frame scrolleable interno
         frame_interno = ctk.CTkScrollableFrame(self)
         frame_interno.pack(fill="both", expand=True)
         
-        ctk.CTkLabel(frame_interno, text="Ingresar nuevo Profesor").pack(fill="x")
-        ctk.CTkLabel(frame_interno, text="Ingrese adecuadamente los datos del profesor", wraplength=TOPLEVEL_ANCHO* 0.7).pack(fill="x")
+        #Textos que aparecen al inicio
+        ctk.CTkLabel(frame_interno, text="Añadir nuevo Profesor", font=Fonts.m2bold).pack(fill="x", pady=40)
+        ctk.CTkLabel(frame_interno, text="Ingrese adecuadamente los datos del profesor", wraplength=TOPLEVEL_ANCHO* 0.7, font=Fonts.i1).pack(fill="x")
         
-        ctk.CTkLabel(frame_interno, text="Nombres: ").pack(fill="x")
-        nombres_profe = ctk.CTkEntry(frame_interno)
+        #Ingresar nombres del profesor
+        ctk.CTkLabel(frame_interno, text="Ingrese los nombres:", font=Fonts.i1, anchor="w", width=TOPLEVEL_ANCHO*0.75).pack(pady=40)
+        nombres_profe = ctk.CTkEntry(frame_interno, width=TOPLEVEL_ANCHO*0.5, border_width=2, font=Fonts.m3, placeholder_text="Ej: Alejandro Ignacio")
         nombres_profe.pack()
+        label_nombre = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_nombre.pack(fill="x")
         
-        ctk.CTkLabel(frame_interno, text="Apellidos: ").pack(fill="x")
-        apellidos_profe = ctk.CTkEntry(frame_interno)
+        #Ingresar los apellidos del profesor
+        ctk.CTkLabel(frame_interno, text="Ingrese los apellidos:", font=Fonts.i1, anchor="w", width=TOPLEVEL_ANCHO*0.75).pack(pady=40)
+        apellidos_profe = ctk.CTkEntry(frame_interno, width=TOPLEVEL_ANCHO*0.5, border_width=2, font=Fonts.m3, placeholder_text="Ej: Gonzalo Diaz")
         apellidos_profe.pack()
+        label_apellido = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_apellido.pack(fill="x")
         
-        ctk.CTkLabel(frame_interno, text="Ingrese su rut: ").pack(fill="x")
-        rut_profe = ctk.CTkEntry(frame_interno)
+        #Ingresar el rut del profesor
+        ctk.CTkLabel(frame_interno, text="Ingrese su rut: ", font=Fonts.i1, anchor="w", width=TOPLEVEL_ANCHO*0.75).pack(pady=40)
+        rut_profe = ctk.CTkEntry(frame_interno, width=TOPLEVEL_ANCHO*0.5, border_width=2, font=Fonts.m3, placeholder_text="Ej: 12.345.678-9")
         rut_profe.pack()
+        label_rut = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
+        label_rut.pack(fill="x")
         
+        
+        #Función que se ejecutará al presionar el boton para añadir al profesor
         def añadir_profesor():
+            #Obtener datos que ingreso el admin
             nombres = nombres_profe.get()
             apellidos = apellidos_profe.get()
             rut = rut_profe.get()
             
+            #Comprobar que los nombres estan correctos
+            if len(nombres.split()) > 3 or len(nombres.split()) < 2:
+                label_nombre.configure(text="Nombres invalido", text_color="red")
+                nombres_profe.configure(border_color="red")
+                return
+            #Si pasa la verificación se pondrá de color verde el entry de los nombres
+            else:
+                label_nombre.configure(text="", text_color="green")
+                nombres_profe.configure(border_color="green")
+            
+            #Comprobar que los apellidos estan correctos
+            if len(apellidos.split()) > 3 or len(apellidos.split()) < 2:
+                label_apellido.configure(text="Nombres invalido", text_color="red")
+                apellidos_profe.configure(border_color="red")
+                return
+            #Si pasa la verificación se pondrá verde el entry de los apellidos
+            else:
+                label_apellido.configure(text="", text_color="green")
+                apellidos_profe.configure(border_color="green")
+            
+            #El rut sin puntos ni guión
+            rut_limpio = rut.replace(".", "").replace("-", "")
+            
+            #Verificae si el rut tiene el formato correcto
+            if not rut_limpio[:-1].isdigit() or len(rut_limpio) != 9:
+                label_rut.configure(text="Rut Invalido", text_color="red")
+                rut_profe.configure(border_color="red")
+            #Si tiene el formato correcto se pondra verde el entry
+            else:
+                label_rut.configure(text="", text_color="green")
+                rut_profe.configure(border_color="green")
+            
+            #Se preparan los datos que serán guardados en la base de datos
             nombre_completo = f"{nombres} {apellidos}"
             correo = correo_institucional(nombres, apellidos, "profesor")
             contra = contrasena(rut)
             asignaturas = []
             alumnos = []
             
+            #Se abre el archivo de los profesores
             datos = cargar_jsons(PROFESORES)
             
+            #Se añade el profesor con el formato de antes
             datos[correo] = {
                 "nombre": nombre_completo,
                 "rut": rut,
@@ -383,11 +490,40 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
                 "alumnos": alumnos
             }
             
+            #Se guarda en la base de datos de los profesores
             guardar_datos(PROFESORES, datos)
+            
+            #Se actualiza la ventana de los profesores con el nuevo profesor
+            master.mostrar_profesores()
+            #Se destruye la ventana de añadir profesores
             self.destroy()
             
         
-        ctk.CTkButton(frame_interno, text="Matricular Alumno", command=añadir_profesor).pack()
+        #Botón añadir profe
+        ctk.CTkButton(frame_interno, text="Añadir Profesor", command=añadir_profesor, font=Fonts.m2bold).pack(pady=50)
+        
+                #Se defune la funcion para mover el frame scrolleable
+        def scroll(event):
+            #Accerder al scroll
+            canvas = frame_interno._parent_canvas  
+
+            #       Scroll tanto para Windows, MacOS y Linux
+            
+            #Si el scroll es positivo (en caso de Linux el scroll hacia arriba se considera el boton 4), se realiza el scroll
+            if event.num == 4 or event.delta > 0:
+                canvas.yview_scroll(-1, "units")
+                
+            #Si el scroll es negativo (en caso de Linux el scroll hacia abajo se considera el boton 5), se realiza el scroll
+            elif event.num == 5 or event.delta < 0:
+                canvas.yview_scroll(1, "units")
+        
+        #Scroll para Windows y MacOS
+        frame_interno.bind_all("<MouseWheel>", scroll)
+        
+        #Scroll para Linux
+        frame_interno.bind_all("<Button-4>", scroll)
+        frame_interno.bind_all("<Button-5>", scroll)  
+
 
 class VentanaAsignacion(ctk.CTkToplevel):
     def __init__(self):

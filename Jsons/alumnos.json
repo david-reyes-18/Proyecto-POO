@@ -4,43 +4,19 @@
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [
-            "C\u00e1lculo I",
-            "C\u00e1lculo III",
-            "POO"
+            "Programaci\u00f3n"
         ],
         "contrasena": "alum",
         "profesores": [
-            "Estevan Aquiles Torres Labarca",
-            "Estevan Aquiles Torres Labarca",
-            "Estevan Aquiles Torres Labarca"
+            "Alfonso Alejandro Rojas Huerta"
         ]
     },
-    "josealfredo.torres@alumnos.epsilon.cl": {
-        "nombre": "Jose Alfredo Torres Sanchez",
-        "rut": "21.342.634-7",
+    "joaquinalvaro.rojas@alumnos.epsilon.cl": {
+        "nombre": "Joaquin Alvaro Rojas Huerta",
+        "rut": "22.321.365-4",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [],
-        "contrasena": "21342"
-    },
-    "alejandropepe.kafka@alumnos.epsilon.cl": {
-        "nombre": "Alejandro Pepe Kafka Homer",
-        "rut": "19.323.345-6",
-        "carrera": "Ingenieria Comercial",
-        "asignaturas": [],
-        "contrasena": "19323"
-    },
-    "felipealvaro.almendra@alumnos.epsilon.cl": {
-        "nombre": "Felipe Alvaro Almendra Uribes",
-        "rut": "20.455.765-9",
-        "carrera": "Ingenieria Civil en Informatica",
-        "asignaturas": [],
-        "contrasena": "20455"
-    },
-    "kevinfrancisco.delgado@alumnos.epsilon.cl": {
-        "nombre": "Kevin Francisco Delgado Barca",
-        "rut": "22.543.681-1",
-        "carrera": "Ingenieria Civil en Obras Civiles",
-        "asignaturas": [],
-        "contrasena": "22543"
+        "contrasena": "22321",
+        "profesores": []
     }
 }

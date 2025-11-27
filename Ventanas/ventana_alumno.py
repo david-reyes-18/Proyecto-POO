@@ -53,14 +53,18 @@ class VentanaAlumno(ctk.CTkToplevel):
         info = datos[email]
         alumno = Alumno(email, info["nombre"], info["rut"],info["carrera"],info["asignaturas"],info["contrasena"], info["profesores"])
         #Se crea un contenedor por cada asignatura que tenga el estudiante
-        for i in range(len(alumno.asignaturas)):
+        for i, asignatura in enumerate(alumno.asignaturas):
             
             #Iran 3 asignaturas por cada fila
             filas = i // 3
             #Sirve para saber en que columa poner la asignatura
             columnas = i % 3
-            ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.35, fg_color="#2b2b2b").grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=60)
-        
+            frame_asignatura = ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.25, fg_color="#2b2b2b")
+            frame_asignatura.grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=60)
+            
+            ctk.CTkLabel(frame_asignatura, text=asignatura, font=Fonts.m2bold, wraplength=ANCHO*0.2).place(relx = 0.1, rely=0.15)
+            ctk.CTkLabel(frame_asignatura, text=f"Profesor/a: {alumno.profesores[i]}", font=Fonts.i3).place(relx = 0.1, rely=0.5)
+            
         num_filas = (len(alumno.asignaturas) + 2) // 3 
         for f in range(num_filas):
             self.frame_inferior.rowconfigure(f, weight=1)
