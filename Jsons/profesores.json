@@ -1,13 +1,46 @@
 {
     "profe": {
-        "nombre": "Alfonso Alejandro Rojas Huerta",
-        "rut": "17.534.253-k",
+        "nombre": "Adolfo Mathei P\u00e9rez Hinostrosa",
+        "rut": "17.432.452-5",
         "asignaturas": [
-            "Programaci\u00f3n"
+            "C\u00e1lculo I",
+            "Electromagnetismo"
         ],
         "contrasena": "profe",
         "alumnos": [
-            "Alejandro Ignacio Rodriguez Smith,Programaci\u00f3n"
+            "Alejandro Ignacio Rodriguez Smith,Electromagnetismo"
         ]
+    },
+    "armandojulio.paredes@profe.epsilon.cl": {
+        "nombre": "Armando Julio Paredes Rojas",
+        "rut": "18.542.543-2",
+        "asignaturas": [],
+        "contrasena": "18542",
+        "alumnos": []
+    },
+    "anamaria.delcarmen@profe.epsilon.cl": {
+        "nombre": "Ana Maria DelCarmen Del Solar",
+        "rut": "18.424.423-5",
+        "asignaturas": [
+            "C\u00e1lculo I"
+        ],
+        "contrasena": "18424",
+        "alumnos": [
+            "Alejandro Ignacio Rodriguez Smith,C\u00e1lculo I"
+        ]
+    },
+    "ricardoalejandro.rodriguez@profe.epsilon.cl": {
+        "nombre": "Ricardo Alejandro Rodriguez Soto",
+        "rut": "15.432.129-5",
+        "asignaturas": [],
+        "contrasena": "15432",
+        "alumnos": []
+    },
+    "gerardojulian.pacheco@profe.epsilon.cl": {
+        "nombre": "Gerardo Julian Pacheco Fuentes ",
+        "rut": "16.653.736-5",
+        "asignaturas": [],
+        "contrasena": "16653",
+        "alumnos": []
     }
 }

@@ -7,6 +7,7 @@ from Utils.funcions import cargar_jsons
 from Utils.paths import PROFESORES
 from Utils.fonts import Fonts
 from Clases.profesor import Profesor
+from Ventanas.ventanas_top import VentanaVerAlumnos
 
 #Creación de la ventana que verá el alumno
 class VentanaProfe(ctk.CTkToplevel):
@@ -55,17 +56,25 @@ class VentanaProfe(ctk.CTkToplevel):
             filas = i // 3
             #Sirve para saber en que columa poner la asignatura
             columnas = i % 3
+            
+            cantidad_alumnos = 0
+            
+            for alumno in profe.alumnos:
+                if alumno.split(",")[1] == asignatura:
+                    cantidad_alumnos += 1
+            
             frame_asignatura = ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.25, fg_color="#2b2b2b")
             frame_asignatura.grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=60)
             
             ctk.CTkLabel(frame_asignatura, text=asignatura, font=Fonts.m2bold, wraplength=ANCHO*0.2).place(relx = 0.1, rely=0.15)
-            ctk.CTkLabel(frame_asignatura, text=f"Profesor/a:", font=Fonts.i3).place(relx = 0.1, rely=0.5)
+            ctk.CTkLabel(frame_asignatura, text=f"Alumnos Inscritos: {cantidad_alumnos}", font=Fonts.i3).place(relx = 0.1, rely=0.5)
+            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", font=Fonts.m3, command=lambda e=email, a=asignatura: VentanaVerAlumnos(e, a)).place(rely=0.8, relx=0.6)
             
         num_filas = (len(profe.asignaturas) + 2) // 3 
         for f in range(num_filas):
             self.frame_inferior.rowconfigure(f, weight=1)
         for c in range(3):
             self.frame_inferior.columnconfigure(c, weight=1)
-    
+                
     def cerrar(self):
         self.master.destroy()

@@ -43,31 +43,40 @@ def eliminar_datos_alumno(email):
 
 #Elimina todos los datos de un profesor
 def eliminar_datos_profesor(email):
-    datos = cargar_jsons(PROFESORES)
+    #Se cargan los datos de los profesores, asiganturas y alumnos
+    datos_profe = cargar_jsons(PROFESORES)
+    datos_asignatura = cargar_jsons(ASIGNATURAS)
+    datos_alumno = cargar_jsons(ALUMNOS)
     
-    nombre_profesor = datos[email]["nombre"]
+    #Se guarda ek nombre del profesor
+    nombre_profesor = datos_profe[email]["nombre"]
     
-    print(nombre_profesor)
+    #Se eliminan todos los datos del profesor
+    del datos_profe[email]
     
-    del datos[email]
+    #Se elimina el nombre del profesor de todas las asignaturas en las que imparte
+    for asignatura in datos_asignatura:
+        if nombre_profesor in datos_asignatura[asignatura]["profesores"]:
+            datos_asignatura[asignatura]["profesores"].remove(nombre_profesor)
     
-    guardar_datos(PROFESORES, datos)
     
-    datos = cargar_jsons(ASIGNATURAS)
+    for alumno in datos_alumno:
+        if nombre_profesor in datos_alumno[alumno]["profesores"]:
+            nombre_alumno = datos_alumno[alumno]["nombre"]
+            indice = datos_alumno[alumno]["profesores"].index(nombre_profesor)
+            datos_alumno[alumno]["profesores"].remove(nombre_profesor)
+            del datos_alumno[alumno]["asignaturas"][indice]
+            
+    #Se elimina el nombre del profesor de todas las asignaturas en las que imparte
+    for asignatura in datos_asignatura:
+        if nombre_profesor in datos_asignatura[asignatura]["profesores"]:
+            datos_asignatura[asignatura]["profesores"].remove(nombre_profesor)
+            datos_asignatura[asignatura]["alumnos"].remove(nombre_alumno)
     
-    for asignatura in datos:
-        if nombre_profesor in datos[asignatura]["profesores"]:
-            datos[asignatura]["profesores"].remove(nombre_profesor)
-    
-    guardar_datos(ASIGNATURAS, datos)
-    
-    datos = cargar_jsons(ALUMNOS)
-    
-    for alumno in datos:
-        if nombre_profesor in datos[alumno]["profesores"]:
-            datos[alumno]["profesores"].remove(nombre_profesor)
-    
-    guardar_datos(ALUMNOS, datos)
+            
+    guardar_datos(PROFESORES, datos_profe)
+    guardar_datos(ASIGNATURAS, datos_asignatura)
+    guardar_datos(ALUMNOS, datos_alumno)
 
 def eliminar_datos_asignatura(asignatura):
     

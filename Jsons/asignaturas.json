@@ -1,11 +1,82 @@
 {
-    "Programaci\u00f3n": {
-        "nombre": "Programaci\u00f3n",
+    "Lengua y literatura": {
+        "nombre": "Lengua y literatura",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "C\u00e1lculo I": {
+        "nombre": "C\u00e1lculo I",
         "estudiantes": [
             "Alejandro Ignacio Rodriguez Smith"
         ],
         "profesores": [
-            "Alfonso Alejandro Rojas Huerta"
+            "Ana Maria DelCarmen Del Solar",
+            "Adolfo Mathei P\u00e9rez Hinostrosa"
+        ],
+        "cantidad_estudiantes": 1
+    },
+    "Biologia": {
+        "nombre": "Biologia",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Anatomia": {
+        "nombre": "Anatomia",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Fisica": {
+        "nombre": "Fisica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Historia": {
+        "nombre": "Historia",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Teologia": {
+        "nombre": "Teologia",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Programaci\u00f3n": {
+        "nombre": "Programaci\u00f3n",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "C\u00e1lculo II": {
+        "nombre": "C\u00e1lculo II",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "C\u00e1lculo III": {
+        "nombre": "C\u00e1lculo III",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Quimica": {
+        "nombre": "Quimica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
+    },
+    "Electromagnetismo": {
+        "nombre": "Electromagnetismo",
+        "estudiantes": [
+            "Alejandro Ignacio Rodriguez Smith"
+        ],
+        "profesores": [
+            "Adolfo Mathei P\u00e9rez Hinostrosa"
         ],
         "cantidad_estudiantes": 1
     }

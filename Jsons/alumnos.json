@@ -4,11 +4,13 @@
         "rut": "12.345.678-9",
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [
-            "Programaci\u00f3n"
+            "C\u00e1lculo I",
+            "Electromagnetismo"
         ],
         "contrasena": "alum",
         "profesores": [
-            "Alfonso Alejandro Rojas Huerta"
+            "Ana Maria DelCarmen Del Solar",
+            "Adolfo Mathei P\u00e9rez Hinostrosa"
         ]
     },
     "joaquinalvaro.rojas@alumnos.epsilon.cl": {
@@ -17,6 +19,70 @@
         "carrera": "Ingenieria Civil en Informatica",
         "asignaturas": [],
         "contrasena": "22321",
+        "profesores": []
+    },
+    "pedroalejandro.delgado@alumnos.epsilon.cl": {
+        "nombre": "Pedro Alejandro Delgado Castillo",
+        "rut": "20.523.657-k",
+        "carrera": "Ingenieria Civil en Informatica",
+        "asignaturas": [],
+        "contrasena": "20523",
+        "profesores": []
+    },
+    "matiascristobal.guajardo@alumnos.epsilon.cl": {
+        "nombre": "Matias Cristobal Guajardo Pastel",
+        "rut": "21.765.953-6",
+        "carrera": "Ingenieria Civil Electrica",
+        "asignaturas": [],
+        "contrasena": "21765",
+        "profesores": []
+    },
+    "paulinaantonia.riquelme@alumnos.epsilon.cl": {
+        "nombre": "Paulina Antonia Riquelme Saez",
+        "rut": "22.542.735-6",
+        "carrera": "Derecho",
+        "asignaturas": [],
+        "contrasena": "22542",
+        "profesores": []
+    },
+    "alonsoignacio.gonzalez@alumnos.epsilon.cl": {
+        "nombre": "Alonso Ignacio Gonzalez Tapia",
+        "rut": "20.634.532-2",
+        "carrera": "Pedagogia en Ense\u00f1anza media",
+        "asignaturas": [],
+        "contrasena": "20634",
+        "profesores": []
+    },
+    "sebastianignacio.toledo@alumnos.epsilon.cl": {
+        "nombre": "Sebastian Ignacio Toledo Rios",
+        "rut": "19.326.674-9",
+        "carrera": "Ingenieria Civil",
+        "asignaturas": [],
+        "contrasena": "19326",
+        "profesores": []
+    },
+    "martinaisabel.noboa@alumnos.epsilon.cl": {
+        "nombre": "Martina Isabel Noboa Rodriguez",
+        "rut": "20.324.763-6",
+        "carrera": "Pedagog\u00eda en educaci\u00f3n fisica",
+        "asignaturas": [],
+        "contrasena": "20324",
+        "profesores": []
+    },
+    "alexandracatalina.fernandez@alumnos.epsilon.cl": {
+        "nombre": "Alexandra Catalina Fernandez Nu\u00f1ez",
+        "rut": "22.834.636-k",
+        "carrera": "Obstetricia",
+        "asignaturas": [],
+        "contrasena": "22834",
+        "profesores": []
+    },
+    "javierafernanda.az\u00f3car@alumnos.epsilon.cl": {
+        "nombre": "Javiera Fernanda Az\u00f3car Lagos",
+        "rut": "18.654.823-7",
+        "carrera": "Medicina",
+        "asignaturas": [],
+        "contrasena": "18654",
         "profesores": []
     }
 }

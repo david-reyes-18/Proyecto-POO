@@ -51,14 +51,14 @@ class Login(ctk.CTk):
         
         #       Mostrar/Ocultar contraseña
         
-        def mostrar_ocultar():
+        def mostrar_contrasena():
             if check_val.get() == "on":
                 entrada_contrasena.configure(show="*")
             elif check_val.get() == "off":
                 entrada_contrasena.configure(show="")
         
         check_val = ctk.StringVar(value="on")
-        seccion_checkeo = ctk.CTkCheckBox(self, variable=check_val, command=mostrar_ocultar, onvalue="off", offvalue="on", text="Mostrar Contraseña", font=Fonts.i2)
+        seccion_checkeo = ctk.CTkCheckBox(self, variable=check_val, command=mostrar_contrasena, onvalue="off", offvalue="on", text="Mostrar Contraseña", font=Fonts.i2)
         seccion_checkeo.place(relx = 0.08, rely=0.56)
         
         

@@ -212,8 +212,8 @@ class VentanaAdmin(ctk.CTkToplevel):
             ctk.CTkLabel(frame_asignatura, text=f"Cantidad Alumnos: {ramo.cantidad_estudiantes}", font=Fonts.i2).place(relx = 0.1, rely=0.5)
             
             #Boton para ver alumnos de la asignatura, para ver
-            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", command=lambda: VisualizarAlumnosProfes("alumno", asignatura), font=Fonts.m4).place(relx=0.05, rely=0.8)
-            ctk.CTkButton(frame_asignatura, text="Ver Profesores", command=lambda: VisualizarAlumnosProfes("profesor", asignatura), font=Fonts.m4).place(relx=0.34, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", command=lambda a=asignatura: VisualizarAlumnosProfes("alumno", a), font=Fonts.m4).place(relx=0.05, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Ver Profesores", command=lambda a=asignatura: VisualizarAlumnosProfes("profesor", a), font=Fonts.m4).place(relx=0.34, rely=0.8)
             ctk.CTkButton(frame_asignatura, text="Eliminar", command=lambda a=asignatura: self.recargar_asignaturas(a), font=Fonts.m4).place(relx=0.72, rely=0.8)
         
         num_filas = (len(datos) + 2) // 3 

@@ -3,4 +3,4 @@ class Usuarios:
         self.correo = correo
         self.nombre = nombre
         self.rut = rut
-        self.contrasena = contrasena
+        self.__contrasena = contrasena
