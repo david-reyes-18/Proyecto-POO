@@ -1,11 +1,9 @@
 #Librerias nesesarias
 import customtkinter as ctk
 from Utils.utils import TOPLEVEL_ANCHO, TOPLEVEL_ALTO, x, y
-from Utils.funcions import cargar_jsons, correo_institucional, contrasena, guardar_datos, profesores_totales, asignaturas_totales
-from Utils.paths import ADMINISTRADORES, ALUMNOS, ASIGNATURAS, PROFESORES
-from Clases.administrador import Admin
+from Utils.functions import cargar_jsons, correo_institucional, contrasena, guardar_datos, profesores_totales, asignaturas_totales, es_string, verificar_rut
+from Utils.paths import ALUMNOS, ASIGNATURAS, PROFESORES
 from Utils.fonts import Fonts
-from Clases.alumnos import Alumno
 from Clases.profesor import Profesor
 
 #       Aquí se encuentran todas las ventanas TopLevel que el sistema usa, ya sea para la creacion, visualización o eliminación de datos
@@ -72,42 +70,42 @@ class VentanaMatricula(ctk.CTkToplevel):
             carrera = carrera_alumno.get()
             
             #Verificación de que el formato del nombre sea correcto
-            if len(nombres.split()) > 3 or len(nombres.split()) < 2:
+            if (len(nombres.split()) > 3 or len(nombres.split()) < 2) or (not es_string(nombres)):
                 label_nombres.configure(text="Nombres invalido", text_color="red")
                 nombres_alumnos.configure(border_color="red")
                 return
-
-            #Si la verificación del nombre es exitosa se marca verde
-            nombres_alumnos.configure(border_color = "green")
+            else:
+                label_nombres.configure(text="")
+                nombres_alumnos.configure(border_color = "green")
             
             #Verificación de los apellidoss
-            if len(apellidos.split()) > 3 or len(apellidos.split()) < 2:
+            if not (len(apellidos.split()) == 2 and es_string(apellidos)):
                 label_apellidos.configure(text="Apellidos invalido", text_color="red")
                 apellidos_alumnos.configure(border_color="red")
                 return
+            else:
+                label_apellidos.configure(text="")
+                apellidos_alumnos.configure(border_color="green")
 
-            #Si la verificación de los apellidos es correcta se marca verde
-            apellidos_alumnos.configure(border_color = "green")
-            
             #Verificación del rut
-            rut_limpio = rut.replace(".", "").replace("-", "")
             
-            if not rut_limpio[:-1].isdigit() or len(rut_limpio) != 9:
+            if not verificar_rut(rut):
                 label_rut.configure(text="Rut invalido", text_color="red")
                 rut_alumnos.configure(border_color="red")
                 return
-            
-            #Si la verificación del rut es exitosa se marca verde
-            rut_alumnos.configure(border_color = "green")
+            else:
+                label_rut.configure(text="")
+                rut_alumnos.configure(border_color="green")
             
             #Verificación de la carrera
-            if len(carrera) < 3:
+            if (len(carrera) < 3) or (not es_string(carrera)):
                 label_carrera.configure(text="Carrera invalida", text_color="red")
                 carrera_alumno.configure(border_color="red")
                 return
+            else:
+                label_carrera.configure(text="")
+                carrera_alumno.configure(border_color="green")
             
-            #Si la verificación de la carrera es correcta se marca verde
-            carrera_alumno.configure(border_color="green")
 
             #Se le da el formato para poder añadirlo a la base de datos
             nombre_completo = f"{nombres} {apellidos}"
@@ -374,6 +372,7 @@ class VisualizarAlumnosProfes(ctk.CTkToplevel):
                 ctk.CTkLabel(contenedor, text=f"{datos_profesores[email]['rut']}", font=Fonts.i3).place(relx=0.6, rely=0.2)
         
 
+
 class VentanaDatosAlumno(ctk.CTkToplevel):
     def __init__(self, email):
         super().__init__()
@@ -487,7 +486,7 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
             rut = rut_profe.get()
             
             #Comprobar que los nombres estan correctos
-            if len(nombres.split()) > 3 or len(nombres.split()) < 2:
+            if (len(nombres.split()) > 3 or len(nombres.split()) < 2) or (not es_string(nombres)):
                 label_nombre.configure(text="Nombres invalido", text_color="red")
                 nombres_profe.configure(border_color="red")
                 return
@@ -497,7 +496,7 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
                 nombres_profe.configure(border_color="green")
             
             #Comprobar que los apellidos estan correctos
-            if len(apellidos.split()) > 3 or len(apellidos.split()) < 2:
+            if not (len(apellidos.split()) == 2 and es_string(apellidos)):
                 label_apellido.configure(text="Nombres invalido", text_color="red")
                 apellidos_profe.configure(border_color="red")
                 return
@@ -506,11 +505,8 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
                 label_apellido.configure(text="", text_color="green")
                 apellidos_profe.configure(border_color="green")
             
-            #El rut sin puntos ni guión
-            rut_limpio = rut.replace(".", "").replace("-", "")
-            
             #Verificae si el rut tiene el formato correcto
-            if not rut_limpio[:-1].isdigit() or len(rut_limpio) != 9:
+            if not verificar_rut(rut):
                 label_rut.configure(text="Rut Invalido", text_color="red")
                 rut_profe.configure(border_color="red")
             #Si tiene el formato correcto se pondra verde el entry
@@ -582,29 +578,39 @@ class VentanaAsignacion(ctk.CTkToplevel):
         self.resizable(False, False)
         self.title("Asignar Profesor")
         
-        ctk.CTkLabel(self, text="Asignar Profesor a una asignatura").pack()
-        ctk.CTkLabel(self, text="Elija al profesor: ").pack()
+        #Texto inicial
+        ctk.CTkLabel(self, text="Asignar Profesor a una asignatura", font=Fonts.m2bold).pack(pady=40)
+        ctk.CTkLabel(self, text="Elija al profesor: ", font=Fonts.i2, width=TOPLEVEL_ANCHO*0.8, anchor="w").pack(pady=20)
         
+        #Opciones que tendrá el Option Menu
         total_profesores = profesores_totales()
         
-        self.menu_profes = ctk.CTkOptionMenu(self, values=total_profesores, command=self.actualizar_asignaturas)
+        #SE crea las opciones de todos los profesores para poder asignarlos a una asignatura
+        self.menu_profes = ctk.CTkOptionMenu(self, values=total_profesores, command=self.actualizar_asignaturas, width=TOPLEVEL_ANCHO*0.5, font=Fonts.m3)
         self.menu_profes.set("Escoger profesor")
         self.menu_profes.pack()
         
-        ctk.CTkLabel(self, text="Elija la asignatura: ").pack()
+        #Label elegir asignatura
+        ctk.CTkLabel(self, text="Elija la asignatura: ", font=Fonts.i2, width=TOPLEVEL_ANCHO*0.8, anchor="w").pack(pady=40)
         
-        self.menu_asignaturas = ctk.CTkOptionMenu(self, state="disabled")
+        #Se crea el option menu para seleccionar la asignatura, aunque al inicio aparece bloqueado
+        self.menu_asignaturas = ctk.CTkOptionMenu(self, state="disabled", width=TOPLEVEL_ANCHO*0.5, font=Fonts.m3)
         self.menu_asignaturas.set("Escoger asignatura")
         self.menu_asignaturas.pack()
         
+        #Función que se ejecuta al presionar el botón para asignar a el profesor elegido con la asignatura elegida
         def asignacion():
+            #Se obtienen los valores que están en los option menú
             profesor = self.menu_profes.get()
             asignatura = self.menu_asignaturas.get()
             
+            #Se cargan los datos de los profesores y las asignaturas
             datos_profesores = cargar_jsons(PROFESORES)
             datos_asignaturas = cargar_jsons(ASIGNATURAS)
             
+            #Por cada profesor que hay en los datos
             for profe in datos_profesores:
+            
                 if datos_profesores[profe]["nombre"] == profesor:
                     datos_profesores[profe]["asignaturas"].append(asignatura)
             
@@ -616,7 +622,7 @@ class VentanaAsignacion(ctk.CTkToplevel):
             
             self.destroy()
         
-        ctk.CTkButton(self, text="Asignar asignatura",command=asignacion).pack()
+        ctk.CTkButton(self, text="Asignar asignatura",command=asignacion, font=Fonts.m2bold).pack(pady=50)
         
     def actualizar_asignaturas(self, profesor):
         asignaturas = asignaturas_totales()
@@ -627,7 +633,7 @@ class VentanaAsignacion(ctk.CTkToplevel):
         self.menu_asignaturas.configure(values = ramo, state="normal")
 
 
-
+#Ventana la cual permitirá ver los alumnos que hay en cierta asignatura de un profesor
 class VentanaVerAlumnos(ctk.CTkToplevel):
     def __init__(self, email, asignatura):
         super().__init__()
@@ -638,9 +644,11 @@ class VentanaVerAlumnos(ctk.CTkToplevel):
         self.resizable(False, False)
         self.title("Alumnos")
         
+        #Se cargan los datos del profesor
         datos_profes = cargar_jsons(PROFESORES)
         info = datos_profes[email]
         
+        #Se crea al profesor
         profe = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"], info["alumnos"])
         
         #Titulo

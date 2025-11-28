@@ -4,6 +4,7 @@ import tkinter as tk
 ventana = tk.Tk()
 ventana.withdraw()
 
+#Alto y ancho de la pantalla
 ANCHO = ventana.winfo_screenwidth()
 ALTO = ventana.winfo_screenheight()
 

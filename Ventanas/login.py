@@ -2,7 +2,7 @@
 import customtkinter as ctk
 from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO
 from Utils.paths import ALUMNOS, PROFESORES, ADMINISTRADORES
-from Utils.funcions import cargar_jsons
+from Utils.functions import cargar_jsons
 from Ventanas.ventana_alumno import VentanaAlumno
 from Ventanas.ventana_admin import VentanaAdmin
 from Ventanas.ventana_profe import VentanaProfe

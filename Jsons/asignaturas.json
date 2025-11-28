@@ -11,8 +11,7 @@
             "Alejandro Ignacio Rodriguez Smith"
         ],
         "profesores": [
-            "Ana Maria DelCarmen Del Solar",
-            "Adolfo Mathei P\u00e9rez Hinostrosa"
+            "Ana Maria DelCarmen Del Solar"
         ],
         "cantidad_estudiantes": 1
     },
@@ -72,12 +71,8 @@
     },
     "Electromagnetismo": {
         "nombre": "Electromagnetismo",
-        "estudiantes": [
-            "Alejandro Ignacio Rodriguez Smith"
-        ],
-        "profesores": [
-            "Adolfo Mathei P\u00e9rez Hinostrosa"
-        ],
-        "cantidad_estudiantes": 1
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0
     }
 }

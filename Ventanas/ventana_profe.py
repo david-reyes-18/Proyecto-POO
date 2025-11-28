@@ -3,7 +3,7 @@
 #Librerias y modulos usados
 import customtkinter as ctk
 from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
-from Utils.funcions import cargar_jsons
+from Utils.functions import cargar_jsons
 from Utils.paths import PROFESORES
 from Utils.fonts import Fonts
 from Clases.profesor import Profesor

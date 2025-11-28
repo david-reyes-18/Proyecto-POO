@@ -1,16 +1,4 @@
 {
-    "profe": {
-        "nombre": "Adolfo Mathei P\u00e9rez Hinostrosa",
-        "rut": "17.432.452-5",
-        "asignaturas": [
-            "C\u00e1lculo I",
-            "Electromagnetismo"
-        ],
-        "contrasena": "profe",
-        "alumnos": [
-            "Alejandro Ignacio Rodriguez Smith,Electromagnetismo"
-        ]
-    },
     "armandojulio.paredes@profe.epsilon.cl": {
         "nombre": "Armando Julio Paredes Rojas",
         "rut": "18.542.543-2",

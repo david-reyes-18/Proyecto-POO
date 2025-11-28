@@ -1,3 +1,4 @@
+#Libreria para ver rutas
 import os
 
 #Ruta en donde se encuentra el archivo base
@@ -9,5 +10,6 @@ PROFESORES = os.path.join(BASE_DIR, "Jsons", "profesores.json")
 ADMINISTRADORES = os.path.join(BASE_DIR, "Jsons", "administradores.json")
 ASIGNATURAS = os.path.join(BASE_DIR, "Jsons", "asignaturas.json")
 
+#Rutas donde se encuentran los tipos de letras usados en el proyecto
 MONTSERRAT = os.path.join(BASE_DIR, "Fonts", "Montserrat.ttf")
 INTER = os.path.join(BASE_DIR, "Fonts", "Inter.ttf")

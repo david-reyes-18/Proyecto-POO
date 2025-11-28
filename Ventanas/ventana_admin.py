@@ -2,7 +2,7 @@
 
 import customtkinter as ctk
 from Utils.utils import MIN_ANCHO, MIN_ALTO, x, y, ANCHO, ALTO
-from Utils.funcions import cargar_jsons, eliminar_datos_alumno, eliminar_datos_profesor, eliminar_datos_asignatura
+from Utils.functions import cargar_jsons, eliminar_datos_alumno, eliminar_datos_profesor, eliminar_datos_asignatura
 from Utils.paths import ADMINISTRADORES, ALUMNOS, ASIGNATURAS, PROFESORES
 from Clases.administrador import Admin
 from Clases.asignatura import Asignatura
@@ -263,15 +263,17 @@ class VentanaAdmin(ctk.CTkToplevel):
         for widget in self.frame_inferior.winfo_children():
             widget.destroy()
 
-    
+    #Se eliminan los datos del alumnno y se recarga la ventana de alumnos
     def recargar_alumnos(self, email):
         eliminar_datos_alumno(email)
         self.mostrar_alumnos()
-        
+    
+    #Se eliminan los datos de lo profesore y se recarga la ventana de profesores 
     def recargar_profesores(self, email):
         eliminar_datos_profesor(email)
         self.mostrar_profesores()
     
+    #Se eliminan los datos de la asignatura y se recarga la ventana de asignaturas
     def recargar_asignaturas(self, asignatura):
         eliminar_datos_asignatura(asignatura)
         self.mostrar_asignaturas()
