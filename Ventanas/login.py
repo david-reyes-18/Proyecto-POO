@@ -1,6 +1,6 @@
 #Librerias y modulos que usaremos
 import customtkinter as ctk
-from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO
+from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO, COLOR_FONDO, COLOR_FONTS, img_epsilon
 from Utils.paths import ALUMNOS, PROFESORES, ADMINISTRADORES
 from Utils.functions import cargar_jsons
 from Ventanas.ventana_alumno import VentanaAlumno
@@ -16,6 +16,7 @@ class Login(ctk.CTk):
         #Configuracion de la ventana
         self.title("Iniciar Sesión en el Instituto Epsilon")
         self.geometry(f"{MIN_ANCHO}x{MIN_ALTO}+{x}+{y}")
+        self.configure(fg_color = COLOR_FONDO)
         self.minsize(MIN_ANCHO, MIN_ALTO)
         
         #Se cargan los tipos de letra que usará la aplicación
@@ -23,32 +24,36 @@ class Login(ctk.CTk):
         
         #                           Iniciar sesión
         
+        self.frame = ctk.CTkFrame(self, corner_radius=50, border_color="white", border_width=2)
+        self.frame.place(relx=0.5, rely=0.5, anchor="center")
+        
         #       Label inicio de sesión
-        label_inicio = ctk.CTkLabel(self, text="Iniciar sesión", font=Fonts.m1)
-        label_inicio.place(relx=0.05, rely=0.1)
+        label_inicio = ctk.CTkLabel(self.frame, text="Iniciar sesión", font=Fonts.m1, text_color=COLOR_FONTS, width=MIN_ANCHO*0.55)
+        label_inicio.pack(pady=50)
         
         #       Sección de email
         
-        label_email = ctk.CTkLabel(self, text="Ingrese su email:", font=Fonts.i1)
-        label_email.place(relx=0.05, rely=0.25)
+        label_email = ctk.CTkLabel(self.frame, text="Ingrese su email:", font=Fonts.i1, text_color=COLOR_FONTS, width=MIN_ANCHO*0.4, anchor="w")
+        label_email.pack(pady=20)
         
-        entrada_email = ctk.CTkEntry(self, placeholder_text="correo.institucional@rol.epsilon.cl", font=Fonts.m3, width=MIN_ANCHO*0.25, border_width=2)
-        entrada_email.place(relx=0.05, rely=0.3)
+        entrada_email = ctk.CTkEntry(self.frame, placeholder_text="correo.institucional@rol.epsilon.cl", font=Fonts.m3, width=MIN_ANCHO*0.25, border_width=2)
+        entrada_email.pack(pady=5)
         
-        label_error_email = ctk.CTkLabel(self, text="", font=Fonts.i4)
-        label_error_email.place(relx=0.07, rely=0.35)
+        label_error_email = ctk.CTkLabel(self.frame, text="", font=Fonts.i4)
+        label_error_email.pack()
         
         #       Sección contraseña
         
-        label_contrasena = ctk.CTkLabel(self, text="Ingrese su contraseña", font=Fonts.i1)
-        label_contrasena.place(relx=0.05, rely=0.4)
+        label_contrasena = ctk.CTkLabel(self.frame, text="Ingrese su contraseña:", font=Fonts.i1, text_color=COLOR_FONTS)
+        label_contrasena.pack()
         
-        entrada_contrasena = ctk.CTkEntry(self, show='*', placeholder_text="Contraseña", width=MIN_ANCHO*0.25, border_width=2, font=Fonts.m3)
-        entrada_contrasena.place(relx=0.05, rely=0.45)
+        entrada_contrasena = ctk.CTkEntry(self.frame, show='*', placeholder_text="Contraseña", width=MIN_ANCHO*0.25, border_width=2, font=Fonts.m3)
+        entrada_contrasena.pack()
         
-        label_error_contra = ctk.CTkLabel(self, text="", font=Fonts.i4)
-        label_error_contra.place(relx=0.07, rely=0.5)
+        label_error_contra = ctk.CTkLabel(self.frame, text="", font=Fonts.i4)
+        label_error_contra.pack()
         
+        ctk.CTkLabel(self, image=img_epsilon, text="").place(relx=0.85, rely=0.02)
         #       Mostrar/Ocultar contraseña
         
         def mostrar_contrasena():
@@ -58,8 +63,8 @@ class Login(ctk.CTk):
                 entrada_contrasena.configure(show="")
         
         check_val = ctk.StringVar(value="on")
-        seccion_checkeo = ctk.CTkCheckBox(self, variable=check_val, command=mostrar_contrasena, onvalue="off", offvalue="on", text="Mostrar Contraseña", font=Fonts.i2)
-        seccion_checkeo.place(relx = 0.08, rely=0.56)
+        seccion_checkeo = ctk.CTkCheckBox(self.frame, variable=check_val, command=mostrar_contrasena, onvalue="off", offvalue="on", text="Mostrar Contraseña", font=Fonts.i2)
+        seccion_checkeo.pack()
         
         
         #                  Boton iniciar sesión
@@ -123,5 +128,6 @@ class Login(ctk.CTk):
                 label_error_contra.configure(text="Contraseña Incorrecta", text_color="red")
         
         #Boton de inicio de sesión
-        boton_sesion = ctk.CTkButton(self, text="Iniciar sesión", command=iniciar_sesion, font=Fonts.m3, width=190, height=60)
-        boton_sesion.place(relx = 0.09, rely=0.7)
+        boton_sesion = ctk.CTkButton(self.frame, text="Iniciar sesión", command=iniciar_sesion, font=Fonts.m3, width=190, height=60)
+        boton_sesion.pack()
+        print(ctk.__version__)

@@ -13,3 +13,6 @@ ASIGNATURAS = os.path.join(BASE_DIR, "Jsons", "asignaturas.json")
 #Rutas donde se encuentran los tipos de letras usados en el proyecto
 MONTSERRAT = os.path.join(BASE_DIR, "Fonts", "Montserrat.ttf")
 INTER = os.path.join(BASE_DIR, "Fonts", "Inter.ttf")
+
+#Rutas de las imagenes
+EPSILON_PNG = os.path.join(BASE_DIR, "Images", "IconoEpsilon.png")

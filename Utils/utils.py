@@ -1,4 +1,7 @@
 import tkinter as tk
+import customtkinter as ctk
+from PIL import Image
+from Utils.paths import EPSILON_PNG
 
 #Visualizar el alto y ancho de la ventana del computador
 ventana = tk.Tk()
@@ -22,3 +25,10 @@ y = int((ALTO // 2) - (MIN_ALTO // 2))
 #Tamaño de las ventanas Top Level
 TOPLEVEL_ANCHO = 800
 TOPLEVEL_ALTO = 700
+
+#Colores Institucionales
+COLOR_FONDO = "#1A262D"
+COLOR_FONTS = "#98B4C3"
+
+#Imagenes
+img_epsilon = ctk.CTkImage(dark_image=Image.open(EPSILON_PNG), size=(150,150))
