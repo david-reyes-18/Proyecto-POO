@@ -17,3 +17,4 @@ INTER = os.path.join(BASE_DIR, "Fonts", "Inter.ttf")
 #Rutas de las imagenes
 EPSILON_PNG = os.path.join(BASE_DIR, "Images", "IconoEpsilon.png")
 FONDO_INICIO = os.path.join(BASE_DIR, "Images", "ImagenFondo.png")
+VOLVER = os.path.join(BASE_DIR, "Images", "Volver.png")

@@ -30,11 +30,7 @@ COLOR_FONDO = "#1A262D"
 COLOR_AZUL = "#2C404B"
 COLOR_FONTS = "#98B4C3"
 
-NOCHE = "#0E132B"
-ARANDANO = "#323554"
-ACERO = "#8194A4"
-
-
 #Imagenes
 img_epsilon = ctk.CTkImage(dark_image=Image.open(EPSILON_PNG), size=(125,125))
 img_fondo = ctk.CTkImage(dark_image=Image.open(FONDO_INICIO), size=(ANCHO, ALTO))
+img_volver = ctk.CTkImage(dark_image=Image.open(VOLVER), size=(80, 80))
