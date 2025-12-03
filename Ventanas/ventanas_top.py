@@ -1,6 +1,6 @@
 #Librerias nesesarias
 import customtkinter as ctk
-from Utils.utils import TOPLEVEL_ANCHO, TOPLEVEL_ALTO, x, y
+from Utils.utils import TOPLEVEL_ANCHO, TOPLEVEL_ALTO, x, y, COLOR_AZUL, COLOR_FONDO, COLOR_FONTS
 from Utils.functions import cargar_jsons, correo_institucional, contrasena, guardar_datos, profesores_totales, asignaturas_totales, es_string, verificar_rut
 from Utils.paths import ALUMNOS, ASIGNATURAS, PROFESORES
 from Utils.fonts import Fonts
@@ -19,46 +19,69 @@ class VentanaMatricula(ctk.CTkToplevel):
         self.resizable(False, False)
         self.title("Matricula Alumno Nuevo")
         
+        frame_superior = ctk.CTkFrame(self, fg_color=COLOR_FONDO, border_width=2, border_color=COLOR_FONTS, height=TOPLEVEL_ALTO*0.2)
+        frame_superior.pack(fill="both", expand=True)
+        
+        ctk.CTkLabel(frame_superior, text="Formulario de matricula", font=Fonts.m1, text_color=COLOR_FONTS).place(relx=0.5, rely=0.5, anchor="center")
+        
         #Creación del frame
-        frame_interno = ctk.CTkScrollableFrame(self)
+        frame_interno = ctk.CTkScrollableFrame(self, height=TOPLEVEL_ALTO*0.8, fg_color=COLOR_AZUL)
         frame_interno.pack(fill="both", expand=True)
         
+        frame = ctk.CTkFrame(frame_interno, fg_color=COLOR_FONDO, width=TOPLEVEL_ANCHO*0.95)
+        frame.pack(pady=20)
+        
             #Labeles de cabecera del formulario
-        ctk.CTkLabel(frame_interno, text="Formulario de matricula", font=Fonts.m2bold).pack(fill="x", pady=40)
-        ctk.CTkLabel(frame_interno, text="Ingrese adecuadamente los datos del estudiante a matricular, indicando sus nombres, apellidos, rut y la carrera en la cual se va a matricular. Posterior a la matricula al alumno se le asignará un correo institucional y una contraseña para ingresar a visualizar sus asignaturas, después podrá cambiar la contraseña a voluntas.", wraplength=TOPLEVEL_ANCHO* 0.75, font=Fonts.i2, justify="left").pack(fill="x")
+        frame_info = ctk.CTkFrame(frame, border_width=1, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
+        frame_info.pack()
+            
+        ctk.CTkLabel(frame_info, text="Ingrese adecuadamente los datos del estudiante a matricular, indicando sus nombres, apellidos, rut y la carrera en la cual se va a matricular. Posterior a la matricula al alumno se le asignará un correo institucional y una contraseña para ingresar a visualizar sus asignaturas, después podrá cambiar la contraseña a voluntad.", wraplength=TOPLEVEL_ANCHO* 0.75, font=Fonts.i2, justify="left", text_color=COLOR_FONTS).pack(padx=30, pady=30)
         
         #Ingresar los nombres
-        ctk.CTkLabel(frame_interno, text="Nombres: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w").pack(pady=40)
+        frame_nombres = ctk.CTkFrame(frame, border_width=1, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
+        frame_nombres.pack(fill="x", expand=True)
         
-        nombres_alumnos = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Alejandro Ignacio", border_width=2)
+        
+        ctk.CTkLabel(frame_nombres, text="Nombres: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w", text_color=COLOR_FONTS).pack(pady=40)
+        
+        nombres_alumnos = ctk.CTkEntry(frame_nombres, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Alejandro Ignacio", border_width=2, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, height=47)
         nombres_alumnos.pack()
         
-        label_nombres = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
-        label_nombres.pack()
+        label_nombres = ctk.CTkLabel(frame_nombres, text="", font=Fonts.i3)
+        label_nombres.pack(pady=10)
         
         #Ingresar los apellidos
-        ctk.CTkLabel(frame_interno, text="Apellidos: ", font=Fonts.i1, width=TOPLEVEL_ANCHO*0.75, anchor="w").pack(pady=40)
-        apellidos_alumnos = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Gonzales Diaz", border_width=2)
+        frame_apellidos = ctk.CTkFrame(frame, border_width=1, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
+        frame_apellidos.pack(fill="x", expand=True)
+        
+        ctk.CTkLabel(frame_apellidos, text="Apellidos: ", font=Fonts.i1, width=TOPLEVEL_ANCHO*0.75, anchor="w", text_color=COLOR_FONTS).pack(pady=40)
+        apellidos_alumnos = ctk.CTkEntry(frame_apellidos, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Gonzales Diaz", border_width=2, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, height=47)
         apellidos_alumnos.pack()
         
-        label_apellidos = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
-        label_apellidos.pack()
+        label_apellidos = ctk.CTkLabel(frame_apellidos, text="", font=Fonts.i3)
+        label_apellidos.pack(pady=10)
         
         #Ingresar rut
-        ctk.CTkLabel(frame_interno, text="Ingrese su rut: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w", ).pack(pady=40)
-        rut_alumnos = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: 12.345.678-9", border_width=2)
+        frame_rut = ctk.CTkFrame(frame, border_width=1, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
+        frame_rut.pack(fill="x", expand=True)
+        
+        ctk.CTkLabel(frame_rut, text="Ingrese su rut: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w", text_color=COLOR_FONTS).pack(pady=40)
+        rut_alumnos = ctk.CTkEntry(frame_rut, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: 12.345.678-9", border_width=2, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, height=47)
         rut_alumnos.pack()
         
-        label_rut = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
-        label_rut.pack()
+        label_rut = ctk.CTkLabel(frame_rut, text="", font=Fonts.i3)
+        label_rut.pack(pady=10)
         
         #Ingresar carrera
-        ctk.CTkLabel(frame_interno, text="Ingrese la carrera: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w").pack(pady=40)
-        carrera_alumno = ctk.CTkEntry(frame_interno, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Ingenieria Civil en Informatica", border_width=2)
+        frame_carrera = ctk.CTkFrame(frame, border_width=1, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
+        frame_carrera.pack(fill="x", expand=True)
+        
+        ctk.CTkLabel(frame_carrera, text="Ingrese la carrera: ", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w", text_color=COLOR_FONTS).pack(pady=40)
+        carrera_alumno = ctk.CTkEntry(frame_carrera, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.6, placeholder_text="Ej: Ingenieria Civil en Informatica", border_width=2, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, height=47)
         carrera_alumno.pack()
         
-        label_carrera = ctk.CTkLabel(frame_interno, text="", font=Fonts.i3)
-        label_carrera.pack()
+        label_carrera = ctk.CTkLabel(frame_carrera, text="", font=Fonts.i3)
+        label_carrera.pack(pady=10)
         
         #Función que ejecuta el botón para matricular
         def matricular():
@@ -137,22 +160,26 @@ class VentanaMatricula(ctk.CTkToplevel):
             
         
         #Boton que ejecuta la función matricula
-        ctk.CTkButton(frame_interno, text="Matricular Alumno", command=matricular, font=Fonts.m2).pack(pady=100)
+        ctk.CTkButton(frame_interno, text="Matricular Alumno", command=matricular, font=Fonts.m2bold, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, border_width=2, border_color=COLOR_FONTS).pack(pady=50)
 
         #Se defune la funcion para mover el frame scrolleable
         def scroll(event):
-            #Accerder al scroll
-            canvas = frame_interno._parent_canvas  
+            try:
+                #Accerder al scroll
+                canvas = frame_interno._parent_canvas  
 
-            #       Scroll tanto para Windows, MacOS y Linux
-            
-            #Si el scroll es positivo (en caso de Linux el scroll hacia arriba se considera el boton 4), se realiza el scroll
-            if event.num == 4 or event.delta > 0:
-                canvas.yview_scroll(-1, "units")
+                #       Scroll tanto para Windows, MacOS y Linux
                 
-            #Si el scroll es negativo (en caso de Linux el scroll hacia abajo se considera el boton 5), se realiza el scroll
-            elif event.num == 5 or event.delta < 0:
-                canvas.yview_scroll(1, "units")
+                #Si el scroll es positivo (en caso de Linux el scroll hacia arriba se considera el boton 4), se realiza el scroll
+                if event.num == 4 or event.delta > 0:
+                    canvas.yview_scroll(-1, "units")
+                    
+                #Si el scroll es negativo (en caso de Linux el scroll hacia abajo se considera el boton 5), se realiza el scroll
+                elif event.num == 5 or event.delta < 0:
+                    canvas.yview_scroll(1, "units")
+            except Exception:
+                pass
+                
         
         #Scroll para Windows y MacOS
         frame_interno.bind_all("<MouseWheel>", scroll)

@@ -132,3 +132,5 @@ class Login(ctk.CTk):
         #Boton de inicio de sesión
         boton_sesion = ctk.CTkButton(self.frame, text="Iniciar sesión", command=iniciar_sesion, font=Fonts.m3, width=190, height=60, corner_radius=15,fg_color=COLOR_FONDO, hover_color=COLOR_AZUL,text_color=COLOR_FONTS, border_color=COLOR_FONTS, border_width=2)
         boton_sesion.place(relx=0.5, rely=0.88, anchor="center")
+        
+        self.bind("<Return>", lambda event: iniciar_sesion())
