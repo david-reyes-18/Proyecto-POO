@@ -3,7 +3,9 @@
         "nombre": "Armando Julio Paredes Rojas",
         "rut": "18.542.543-2",
         "asignaturas": [
-            "Anatomia"
+            "Anatomia",
+            "C\u00e1lculo I",
+            "C\u00e1lculo II"
         ],
         "contrasena": "profe",
         "alumnos": []
@@ -25,7 +27,9 @@
     "gerardojulian.pacheco@profe.epsilon.cl": {
         "nombre": "Gerardo Julian Pacheco Fuentes ",
         "rut": "16.653.736-5",
-        "asignaturas": [],
+        "asignaturas": [
+            "Historia"
+        ],
         "contrasena": "16653",
         "alumnos": []
     },
@@ -57,21 +61,29 @@
     "georgeangel.llopis@profe.epsilon.cl": {
         "nombre": "George Angel Llopis Steve ",
         "rut": "16.756.743-6",
-        "asignaturas": [],
+        "asignaturas": [
+            "Quimica"
+        ],
         "contrasena": "16756",
         "alumnos": []
     },
     "esmeraldadaniela.mansilla@profe.epsilon.cl": {
-        "nombre": "Esmeralda Daniela Mansilla  Grau",
+        "nombre": "Esmeralda Daniela Mansilla Grau",
         "rut": "19.865.436-1",
-        "asignaturas": [],
+        "asignaturas": [
+            "Fisica",
+            "Electromagnetismo",
+            "Anatomia"
+        ],
         "contrasena": "19865",
         "alumnos": []
     },
     "gloriaangelina.herrera@profe.epsilon.cl": {
         "nombre": "Gloria Angelina Herrera Segovia",
         "rut": "16.765.745-1",
-        "asignaturas": [],
+        "asignaturas": [
+            "Teologia"
+        ],
         "contrasena": "16765",
         "alumnos": []
     }

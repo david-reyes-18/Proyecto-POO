@@ -13,8 +13,8 @@ ALTO = ventana.winfo_screenheight()
 ventana.destroy()
 
 #El minimo alto y ancho que debe tener la ventana
-MIN_ANCHO = int(ANCHO * 0.8)
-MIN_ALTO = int(ALTO * 0.8)
+MIN_ANCHO = int(ANCHO * 0.85)
+MIN_ALTO = int(ALTO * 0.85)
 
 
 #Coordenadas para centrar las ventanas
@@ -22,8 +22,8 @@ x = int((ANCHO // 2) - (MIN_ANCHO // 2))
 y = int((ALTO // 2) - (MIN_ALTO // 2))
 
 #Tamaño de las ventanas Top Level
-TOPLEVEL_ANCHO = 900
-TOPLEVEL_ALTO = 800
+TOPLEVEL_ANCHO = 800
+TOPLEVEL_ALTO = 700
 
 #Colores Institucionales
 COLOR_FONDO = "#1A262D"

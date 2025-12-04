@@ -9,26 +9,33 @@
         "nombre": "Anatomia",
         "estudiantes": [],
         "profesores": [
-            "Armando Julio Paredes Rojas"
+            "Armando Julio Paredes Rojas",
+            "Esmeralda Daniela Mansilla  Grau"
         ],
         "cantidad_estudiantes": 0
     },
     "Fisica": {
         "nombre": "Fisica",
         "estudiantes": [],
-        "profesores": [],
+        "profesores": [
+            "Esmeralda Daniela Mansilla  Grau"
+        ],
         "cantidad_estudiantes": 0
     },
     "Historia": {
         "nombre": "Historia",
         "estudiantes": [],
-        "profesores": [],
+        "profesores": [
+            "Gerardo Julian Pacheco Fuentes "
+        ],
         "cantidad_estudiantes": 0
     },
     "Teologia": {
         "nombre": "Teologia",
         "estudiantes": [],
-        "profesores": [],
+        "profesores": [
+            "Gloria Angelina Herrera Segovia"
+        ],
         "cantidad_estudiantes": 0
     },
     "Programaci\u00f3n": {
@@ -43,7 +50,8 @@
             "Alejandro Ignacio Rodriguez Smith"
         ],
         "profesores": [
-            "Aurora Joselin Huerta Casas"
+            "Aurora Joselin Huerta Casas",
+            "Armando Julio Paredes Rojas"
         ],
         "cantidad_estudiantes": 1
     },
@@ -56,11 +64,29 @@
     "Quimica": {
         "nombre": "Quimica",
         "estudiantes": [],
-        "profesores": [],
+        "profesores": [
+            "George Angel Llopis Steve "
+        ],
         "cantidad_estudiantes": 0
     },
     "Electromagnetismo": {
         "nombre": "Electromagnetismo",
+        "estudiantes": [],
+        "profesores": [
+            "Esmeralda Daniela Mansilla  Grau"
+        ],
+        "cantidad_estudiantes": 0
+    },
+    "C\u00e1lculo I": {
+        "nombre": "C\u00e1lculo I",
+        "estudiantes": [],
+        "profesores": [
+            "Armando Julio Paredes Rojas"
+        ],
+        "cantidad_estudiantes": 0
+    },
+    "Arquitectura de Computadores": {
+        "nombre": "Arquitectura de Computadores",
         "estudiantes": [],
         "profesores": [],
         "cantidad_estudiantes": 0
