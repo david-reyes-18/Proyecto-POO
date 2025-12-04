@@ -114,7 +114,7 @@ def eliminar_datos_asignatura(asignatura):
             del datos_alumnos[alumno]["profesores"][indice]
             for profe in datos_profesores:
                 if datos_profesores[profe]["nombre"] == profesor:
-                    datos_profesores[profe]["alumnos"].remove(datos_alumnos[alumno]["nombre"])
+                    datos_profesores[profe]["alumnos"].remove(f"{datos_alumnos[alumno]['nombre']},{asignatura}")
     for profe in datos_profesores:
         if asignatura in datos_profesores[profe]["asignaturas"]:
             datos_profesores[profe]["asignaturas"].remove(asignatura)

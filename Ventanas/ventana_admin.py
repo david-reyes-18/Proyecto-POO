@@ -169,8 +169,8 @@ class VentanaAdmin(ctk.CTkToplevel):
         datos_profesores = cargar_jsons(PROFESORES)
         
         #Se crean los botones para añadir y asignar profesores
-        ctk.CTkButton(self.frame_superior, text="Añadir Profesor", command=lambda: VentanaAñadirProfe(master=self), font=Fonts.m3).place(relx=0.7, rely=0.3)
-        ctk.CTkButton(self.frame_superior, text="Asignar Profesor", command=VentanaAsignacion, font=Fonts.m3).place(relx=0.85, rely=0.3)
+        ctk.CTkButton(self.frame_superior, text="Añadir Profesor", command=lambda: VentanaAñadirProfe(master=self), font=Fonts.m2bold, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, border_width=2, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.11)
+        ctk.CTkButton(self.frame_superior, text="Asignar Profesor", command=VentanaAsignacion, font=Fonts.m2bold, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, border_width=2, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.59)
         
         #Listado de profesores
         ctk.CTkLabel(self.frame_inferior, text="Listado de Profesores", font=Fonts.m1, text_color=COLOR_FONTS).place(relx=0.5, rely=0.07, anchor="center")
@@ -215,11 +215,22 @@ class VentanaAdmin(ctk.CTkToplevel):
         
         #Enlistar todas las asignaturas que estan en el sistema
         asignaturas = [asignatura for asignatura in datos]
-            
-        #Boton para añadir asignaturas
-        ctk.CTkButton(self.frame_superior, text="Añadir Asignatura", command=lambda: VentanaAñadirAsignatura(master=self), font=Fonts.m3).place(relx=0.8, rely=0.3)
+        
+        frame_superior2 = ctk.CTkFrame(self.frame_inferior, height=MIN_ALTO*0.1, fg_color=COLOR_AZUL)
+        frame_superior2.pack(fill="x", expand=True)
+        
         #Boton para volver a la ventana principal
-        ctk.CTkButton(self.frame_inferior, text="Volver", command=self.volver).place(relx=0.01, rely=0.01)
+        ctk.CTkButton(frame_superior2, command=self.volver, image=img_volver, hover_color=COLOR_AZUL, text="", fg_color=COLOR_AZUL).place(relx=0.05, rely=0.5, anchor="center")
+        ctk.CTkLabel(frame_superior2, text="Listado de Asignaturas", font=Fonts.m1, text_color=COLOR_FONTS).place(relx=0.5, rely=0.5, anchor="center")
+        
+        
+        frame_inferior2= ctk.CTkFrame(self.frame_inferior, height=MIN_ALTO*0.9, fg_color=COLOR_AZUL)
+        frame_inferior2.pack(fill="x", expand=True)
+        
+        #Boton para añadir asignaturas
+        ctk.CTkButton(self.frame_superior, text="Añadir Asignatura", command=lambda: VentanaAñadirAsignatura(master=self), font=Fonts.m2bold, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, border_width=2, border_color=COLOR_FONTS).place(relx=0.65, rely=0.3)
+        #Boton para volver a la ventana principal
+        
         
         #Se crea un contenedor por cada asignatura en la lista
         for i, asignatura in enumerate(asignaturas):
@@ -232,23 +243,23 @@ class VentanaAdmin(ctk.CTkToplevel):
             columnas = i % 3
             
             #Contenedor de la información 
-            frame_asignatura = ctk.CTkFrame(self.frame_inferior, width=ANCHO*0.1, height=ALTO*0.3, fg_color="#2b2b2b")
-            frame_asignatura.grid(row=filas, column=columnas, sticky="nsew", padx=20, pady=60)
+            frame_asignatura = ctk.CTkFrame(frame_inferior2, width=ANCHO*0.1, height=ALTO*0.25, fg_color=COLOR_FONDO, border_width=2, border_color=COLOR_FONTS)
+            frame_asignatura.grid(row=filas, column=columnas, sticky="nsew", padx=10, pady=30)
             
             #Información de la asignatura del alumno
             ctk.CTkLabel(frame_asignatura, text=ramo.nombre, font=Fonts.m2bold, wraplength=ANCHO*0.2).place(relx = 0.1, rely=0.15)
             ctk.CTkLabel(frame_asignatura, text=f"Cantidad Alumnos: {ramo.cantidad_estudiantes}", font=Fonts.i2).place(relx = 0.1, rely=0.5)
             
-            #Boton para ver alumnos de la asignatura, para ver
-            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", command=lambda a=asignatura: VisualizarAlumnosProfes("alumno", a), font=Fonts.m4).place(relx=0.05, rely=0.8)
-            ctk.CTkButton(frame_asignatura, text="Ver Profesores", command=lambda a=asignatura: VisualizarAlumnosProfes("profesor", a), font=Fonts.m4).place(relx=0.34, rely=0.8)
-            ctk.CTkButton(frame_asignatura, text="Eliminar", command=lambda a=asignatura: self.recargar_asignaturas(a), font=Fonts.m4).place(relx=0.72, rely=0.8)
+            #Boton para ver alumnos de la asignatura
+            ctk.CTkButton(frame_asignatura, text="Ver Alumnos", command=lambda a=asignatura: VisualizarAlumnosProfes("alumno", a), font=Fonts.m4, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.03, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Ver Profesores", command=lambda a=asignatura: VisualizarAlumnosProfes("profesor", a), font=Fonts.m4, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.33, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Eliminar", command=lambda a=asignatura: self.recargar_asignaturas(a), font=Fonts.m4, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.8)
         
         num_filas = (len(datos) + 2) // 3 
         for f in range(num_filas):
-            self.frame_inferior.rowconfigure(f, weight=1)
+            frame_inferior2.rowconfigure(f, weight=1)
         for c in range(3):
-            self.frame_inferior.columnconfigure(c, weight=1)
+            frame_inferior2.columnconfigure(c, weight=1)
             
         def scroll(event):
             #Accerder al scroll

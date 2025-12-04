@@ -536,6 +536,7 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
             if not verificar_rut(rut):
                 label_rut.configure(text="Rut Invalido", text_color="red")
                 rut_profe.configure(border_color="red")
+                return
             #Si tiene el formato correcto se pondra verde el entry
             else:
                 label_rut.configure(text="", text_color="green")

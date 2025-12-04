@@ -2,20 +2,18 @@
     "profe": {
         "nombre": "Armando Julio Paredes Rojas",
         "rut": "18.542.543-2",
-        "asignaturas": [],
+        "asignaturas": [
+            "Anatomia"
+        ],
         "contrasena": "profe",
         "alumnos": []
     },
     "anamaria.delcarmen@profe.epsilon.cl": {
         "nombre": "Ana Maria DelCarmen Del Solar",
         "rut": "18.424.423-5",
-        "asignaturas": [
-            "C\u00e1lculo I"
-        ],
+        "asignaturas": [],
         "contrasena": "18424",
-        "alumnos": [
-            "Alejandro Ignacio Rodriguez Smith,C\u00e1lculo I"
-        ]
+        "alumnos": []
     },
     "ricardoalejandro.rodriguez@profe.epsilon.cl": {
         "nombre": "Ricardo Alejandro Rodriguez Soto",
@@ -29,6 +27,52 @@
         "rut": "16.653.736-5",
         "asignaturas": [],
         "contrasena": "16653",
+        "alumnos": []
+    },
+    "valentinojos\u00e9.bahamondes@profe.epsilon.cl": {
+        "nombre": "Valentino Jos\u00e9 Bahamondes Fuentes",
+        "rut": "18.423.644-8",
+        "asignaturas": [],
+        "contrasena": "18423",
+        "alumnos": []
+    },
+    "aurorajoselin.huerta@profe.epsilon.cl": {
+        "nombre": "Aurora Joselin Huerta Casas",
+        "rut": "17.432.652-k",
+        "asignaturas": [
+            "C\u00e1lculo II"
+        ],
+        "contrasena": "17432",
+        "alumnos": [
+            "Alejandro Ignacio Rodriguez Smith,C\u00e1lculo II"
+        ]
+    },
+    "claramauricia.montes@profe.epsilon.cl": {
+        "nombre": "Clara Mauricia Montes Salamanca",
+        "rut": "19.168.898-j",
+        "asignaturas": [],
+        "contrasena": "19168",
+        "alumnos": []
+    },
+    "georgeangel.llopis@profe.epsilon.cl": {
+        "nombre": "George Angel Llopis Steve ",
+        "rut": "16.756.743-6",
+        "asignaturas": [],
+        "contrasena": "16756",
+        "alumnos": []
+    },
+    "esmeraldadaniela.mansilla@profe.epsilon.cl": {
+        "nombre": "Esmeralda Daniela Mansilla  Grau",
+        "rut": "19.865.436-1",
+        "asignaturas": [],
+        "contrasena": "19865",
+        "alumnos": []
+    },
+    "gloriaangelina.herrera@profe.epsilon.cl": {
+        "nombre": "Gloria Angelina Herrera Segovia",
+        "rut": "16.765.745-1",
+        "asignaturas": [],
+        "contrasena": "16765",
         "alumnos": []
     }
 }

@@ -22,8 +22,8 @@ x = int((ANCHO // 2) - (MIN_ANCHO // 2))
 y = int((ALTO // 2) - (MIN_ALTO // 2))
 
 #Tamaño de las ventanas Top Level
-TOPLEVEL_ANCHO = 800
-TOPLEVEL_ALTO = 700
+TOPLEVEL_ANCHO = 900
+TOPLEVEL_ALTO = 800
 
 #Colores Institucionales
 COLOR_FONDO = "#1A262D"

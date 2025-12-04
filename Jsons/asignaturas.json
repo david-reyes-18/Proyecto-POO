@@ -5,26 +5,12 @@
         "profesores": [],
         "cantidad_estudiantes": 0
     },
-    "C\u00e1lculo I": {
-        "nombre": "C\u00e1lculo I",
-        "estudiantes": [
-            "Alejandro Ignacio Rodriguez Smith"
-        ],
-        "profesores": [
-            "Ana Maria DelCarmen Del Solar"
-        ],
-        "cantidad_estudiantes": 1
-    },
-    "Biologia": {
-        "nombre": "Biologia",
-        "estudiantes": [],
-        "profesores": [],
-        "cantidad_estudiantes": 0
-    },
     "Anatomia": {
         "nombre": "Anatomia",
         "estudiantes": [],
-        "profesores": [],
+        "profesores": [
+            "Armando Julio Paredes Rojas"
+        ],
         "cantidad_estudiantes": 0
     },
     "Fisica": {
@@ -53,9 +39,13 @@
     },
     "C\u00e1lculo II": {
         "nombre": "C\u00e1lculo II",
-        "estudiantes": [],
-        "profesores": [],
-        "cantidad_estudiantes": 0
+        "estudiantes": [
+            "Alejandro Ignacio Rodriguez Smith"
+        ],
+        "profesores": [
+            "Aurora Joselin Huerta Casas"
+        ],
+        "cantidad_estudiantes": 1
     },
     "C\u00e1lculo III": {
         "nombre": "C\u00e1lculo III",
