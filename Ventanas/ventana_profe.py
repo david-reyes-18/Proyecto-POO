@@ -26,7 +26,7 @@ class VentanaProfe(ctk.CTkToplevel):
         info = datos[email]
         nombre_profe = f"{info['nombre'].split(" ")[0]} {info['nombre'].split(" ")[2]}" if len(info['nombre'].split(" ")) == 4 else f"{info['nombre'].split(" ")[0]} {info['nombre'].split(" ")[3]}"
         
-        profesor = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"], info["alumnos"])
+        profesor = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"], info["alumnos"], info["especialidad"])
         
         
         #Creando el frame superior (Datos del estudiante)
@@ -61,7 +61,7 @@ class VentanaProfe(ctk.CTkToplevel):
         #Cargar los datos del estudiante y guardarlos en la clase Alumno
         datos = cargar_jsons(PROFESORES)
         info = datos[email]
-        profe = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"], info["alumnos"])
+        profe = Profesor(email, info["nombre"], info["rut"], info["asignaturas"], info["contrasena"], info["alumnos"], info["especialidad"])
         #Se crea un contenedor por cada asignatura que tenga el estudiante
         for i, asignatura in enumerate(profe.asignaturas):
             #Iran 3 asignaturas por cada fila

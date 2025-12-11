@@ -1,0 +1,33 @@
+{
+    "Facultad de Ciencias de la Salud": {
+        "nombre": "Facultad de Ciencias de la Salud",
+        "carreras": [
+            "Enfermer\u00eda"
+        ]
+    },
+    "Facultad de Educaci\u00f3n": {
+        "nombre": "Facultad de Educaci\u00f3n",
+        "carreras": []
+    },
+    "Facultad de Ciencias y Tecnolog\u00eda": {
+        "nombre": "Facultad de Ciencias y Tecnolog\u00eda",
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica",
+            "Ingenier\u00eda Civil en Obras Civiles",
+            "Ingenier\u00eda Civil El\u00e9ctrica",
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ]
+    },
+    "Facultad de Administraci\u00f3n y Finanzas": {
+        "nombre": "Facultad de Administraci\u00f3n y Finanzas",
+        "carreras": []
+    },
+    "Facultad de Artes": {
+        "nombre": "Facultad de Artes",
+        "carreras": []
+    },
+    "Facultad de Ciencias Sociales": {
+        "nombre": "Facultad de Ciencias Sociales",
+        "carreras": []
+    }
+}

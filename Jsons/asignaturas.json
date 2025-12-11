@@ -1,94 +1,870 @@
 {
-    "Lengua y literatura": {
-        "nombre": "Lengua y literatura",
+    "Introducci\u00f3n a la Matem\u00e1tica": {
+        "nombre": "Introducci\u00f3n a la Matem\u00e1tica",
         "estudiantes": [],
         "profesores": [],
-        "cantidad_estudiantes": 0
-    },
-    "Anatomia": {
-        "nombre": "Anatomia",
-        "estudiantes": [],
-        "profesores": [
-            "Armando Julio Paredes Rojas",
-            "Esmeralda Daniela Mansilla  Grau"
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
         ],
-        "cantidad_estudiantes": 0
-    },
-    "Fisica": {
-        "nombre": "Fisica",
-        "estudiantes": [],
-        "profesores": [
-            "Esmeralda Daniela Mansilla  Grau"
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
         ],
-        "cantidad_estudiantes": 0
+        "semestre": 1
     },
-    "Historia": {
-        "nombre": "Historia",
+    "Introducci\u00f3n al C\u00e1lculo": {
+        "nombre": "Introducci\u00f3n al C\u00e1lculo",
         "estudiantes": [],
-        "profesores": [
-            "Gerardo Julian Pacheco Fuentes "
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "Introducci\u00f3n a la Matem\u00e1tica"
         ],
-        "cantidad_estudiantes": 0
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 2
     },
-    "Teologia": {
-        "nombre": "Teologia",
+    "C\u00e1lculo Diferencial e Integral": {
+        "nombre": "C\u00e1lculo Diferencial e Integral",
         "estudiantes": [],
-        "profesores": [
-            "Gloria Angelina Herrera Segovia"
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "Introducci\u00f3n al C\u00e1lculo"
         ],
-        "cantidad_estudiantes": 0
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 3
+    },
+    "Habilidades Comunicativas para Ingenieros": {
+        "nombre": "Habilidades Comunicativas para Ingenieros",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Arte y Humanidades"
+        ],
+        "semestre": 1
     },
     "Programaci\u00f3n": {
         "nombre": "Programaci\u00f3n",
         "estudiantes": [],
         "profesores": [],
-        "cantidad_estudiantes": 0
-    },
-    "C\u00e1lculo II": {
-        "nombre": "C\u00e1lculo II",
-        "estudiantes": [
-            "Alejandro Ignacio Rodriguez Smith"
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
         ],
-        "profesores": [
-            "Aurora Joselin Huerta Casas",
-            "Armando Julio Paredes Rojas"
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
         ],
-        "cantidad_estudiantes": 1
+        "semestre": 1
     },
-    "C\u00e1lculo III": {
-        "nombre": "C\u00e1lculo III",
+    "Programaci\u00f3n Orientada a Objetos": {
+        "nombre": "Programaci\u00f3n Orientada a Objetos",
         "estudiantes": [],
         "profesores": [],
-        "cantidad_estudiantes": 0
-    },
-    "Quimica": {
-        "nombre": "Quimica",
-        "estudiantes": [],
-        "profesores": [
-            "George Angel Llopis Steve "
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "Programaci\u00f3n"
         ],
-        "cantidad_estudiantes": 0
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 2
+    },
+    "Qu\u00edmica": {
+        "nombre": "Qu\u00edmica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 1
+    },
+    "Taller de Introducci\u00f3n a la Ingenier\u00eda Inform\u00e1tica": {
+        "nombre": "Taller de Introducci\u00f3n a la Ingenier\u00eda Inform\u00e1tica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 1
+    },
+    "\u00c1lgebra": {
+        "nombre": "\u00c1lgebra",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 2
+    },
+    "Introducci\u00f3n a la F\u00edsica": {
+        "nombre": "Introducci\u00f3n a la F\u00edsica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 2
+    },
+    "Ciudadan\u00eda": {
+        "nombre": "Ciudadan\u00eda",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias Sociales"
+        ],
+        "semestre": 2
+    },
+    "\u00c1lgebra Superior": {
+        "nombre": "\u00c1lgebra Superior",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "\u00c1lgebra"
+        ],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 3
+    },
+    "F\u00edsica Newtoniana": {
+        "nombre": "F\u00edsica Newtoniana",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 3
+    },
+    "Estructura de Datos": {
+        "nombre": "Estructura de Datos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 3
+    },
+    "Taller de Programaci\u00f3n Aplicada": {
+        "nombre": "Taller de Programaci\u00f3n Aplicada",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 3
+    },
+    "Ingl\u00e9s I": {
+        "nombre": "Ingl\u00e9s I",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Educaci\u00f3n",
+            "Arte y Humanidades"
+        ],
+        "semestre": 3
+    },
+    "C\u00e1lculo en Varias Variables": {
+        "nombre": "C\u00e1lculo en Varias Variables",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "C\u00e1lculo Diferencial e Integral"
+        ],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 4
+    },
+    "Estructuras Discretas": {
+        "nombre": "Estructuras Discretas",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas",
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 4
     },
     "Electromagnetismo": {
         "nombre": "Electromagnetismo",
         "estudiantes": [],
-        "profesores": [
-            "Esmeralda Daniela Mansilla  Grau"
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "C\u00e1lculo Diferencial e Integral",
+            "F\u00edsica Newtoniana"
         ],
-        "cantidad_estudiantes": 0
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 4
     },
-    "C\u00e1lculo I": {
-        "nombre": "C\u00e1lculo I",
+    "Aut\u00f3matas y Lenguajes Formales": {
+        "nombre": "Aut\u00f3matas y Lenguajes Formales",
         "estudiantes": [],
-        "profesores": [
-            "Armando Julio Paredes Rojas"
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
         ],
-        "cantidad_estudiantes": 0
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 4
+    },
+    "Ingl\u00e9s II": {
+        "nombre": "Ingl\u00e9s II",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "Ingl\u00e9s I"
+        ],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Educaci\u00f3n",
+            "Arte y Humanidades"
+        ],
+        "semestre": 4
+    },
+    "Ecuaciones Diferenciales": {
+        "nombre": "Ecuaciones Diferenciales",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "C\u00e1lculo en Varias Variables"
+        ],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 5
+    },
+    "F\u00edsica Moderna y Ondas": {
+        "nombre": "F\u00edsica Moderna y Ondas",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 5
+    },
+    "Estad\u00edsticas y Probabilidad": {
+        "nombre": "Estad\u00edsticas y Probabilidad",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 5
+    },
+    "An\u00e1lisis y Dise\u00f1o de Algoritmos": {
+        "nombre": "An\u00e1lisis y Dise\u00f1o de Algoritmos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 5
+    },
+    "Base de Datos": {
+        "nombre": "Base de Datos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 5
+    },
+    "Ingl\u00e9s III": {
+        "nombre": "Ingl\u00e9s III",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "Ingl\u00e9s II"
+        ],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Educaci\u00f3n",
+            "Arte y Humanidades"
+        ],
+        "semestre": 5
+    },
+    "C\u00e1lculo Num\u00e9rico": {
+        "nombre": "C\u00e1lculo Num\u00e9rico",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ciencias B\u00e1sicas"
+        ],
+        "semestre": 6
+    },
+    "Taller de Dise\u00f1o": {
+        "nombre": "Taller de Dise\u00f1o",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 6
+    },
+    "Bases Digitales de Datos Avanzadas": {
+        "nombre": "Bases Digitales de Datos Avanzadas",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 6
+    },
+    "Tecnolog\u00edas M\u00f3viles y Web": {
+        "nombre": "Tecnolog\u00edas M\u00f3viles y Web",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 6
+    },
+    "Ingenier\u00eda de Sistemas": {
+        "nombre": "Ingenier\u00eda de Sistemas",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 6
+    },
+    "Ingl\u00e9s IV": {
+        "nombre": "Ingl\u00e9s IV",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [
+            "Ingl\u00e9s III"
+        ],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Educaci\u00f3n",
+            "Arte y Humanidades"
+        ],
+        "semestre": 6
     },
     "Arquitectura de Computadores": {
         "nombre": "Arquitectura de Computadores",
         "estudiantes": [],
         "profesores": [],
-        "cantidad_estudiantes": 0
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 7
+    },
+    "Econom\u00eda": {
+        "nombre": "Econom\u00eda",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Econom\u00eda y Administraci\u00f3n"
+        ],
+        "semestre": 7
+    },
+    "Gesti\u00f3n de Empresas": {
+        "nombre": "Gesti\u00f3n de Empresas",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Econom\u00eda y Administraci\u00f3n"
+        ],
+        "semestre": 7
+    },
+    "Sistemas de Informaci\u00f3n": {
+        "nombre": "Sistemas de Informaci\u00f3n",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 7
+    },
+    "Taller de Ingenier\u00eda Inform\u00e1tica": {
+        "nombre": "Taller de Ingenier\u00eda Inform\u00e1tica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 7
+    },
+    "Ingl\u00e9s para Inform\u00e1ticos I": {
+        "nombre": "Ingl\u00e9s para Inform\u00e1ticos I",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Educaci\u00f3n",
+            "Arte y Humanidades"
+        ],
+        "semestre": 7
+    },
+    "Practica Intermedia": {
+        "nombre": "Practica Intermedia",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 7
+    },
+    "Investigaci\u00f3n Operativa": {
+        "nombre": "Investigaci\u00f3n Operativa",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 8
+    },
+    "Sistemas Operativos": {
+        "nombre": "Sistemas Operativos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 8
+    },
+    "Ingenier\u00eda de Software": {
+        "nombre": "Ingenier\u00eda de Software",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 8
+    },
+    "Contabilidad y Costos": {
+        "nombre": "Contabilidad y Costos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Econom\u00eda y Administraci\u00f3n"
+        ],
+        "semestre": 8
+    },
+    "Formaci\u00f3n y Evaluaci\u00f3n de Proyectos": {
+        "nombre": "Formaci\u00f3n y Evaluaci\u00f3n de Proyectos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Econom\u00eda y Administraci\u00f3n"
+        ],
+        "semestre": 8
+    },
+    "Ingl\u00e9s para Inform\u00e1ticos II": {
+        "nombre": "Ingl\u00e9s para Inform\u00e1ticos II",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Educaci\u00f3n",
+            "Arte y Humanidades"
+        ],
+        "semestre": 8
+    },
+    "Redes y Comunicaciones": {
+        "nombre": "Redes y Comunicaciones",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 9
+    },
+    "Inteligencia Artificial": {
+        "nombre": "Inteligencia Artificial",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 9
+    },
+    "Taller de Ingenier\u00eda de Software": {
+        "nombre": "Taller de Ingenier\u00eda de Software",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 9
+    },
+    "Innovaci\u00f3n y Emprendimiento en Inform\u00e1tica": {
+        "nombre": "Innovaci\u00f3n y Emprendimiento en Inform\u00e1tica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Econom\u00eda y Administraci\u00f3n"
+        ],
+        "semestre": 9
+    },
+    "Sistemas Distribuidos": {
+        "nombre": "Sistemas Distribuidos",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 10
+    },
+    "Seguridad Inform\u00e1tica": {
+        "nombre": "Seguridad Inform\u00e1tica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 10
+    },
+    "Taller de Integraci\u00f3n Tecnol\u00f3gica": {
+        "nombre": "Taller de Integraci\u00f3n Tecnol\u00f3gica",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 10
+    },
+    "Anteproyecto de T\u00edtulo": {
+        "nombre": "Anteproyecto de T\u00edtulo",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 10
+    },
+    "Proyecto de T\u00edtulo": {
+        "nombre": "Proyecto de T\u00edtulo",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 11
+    },
+    "Pr\u00e1ctica Profesional": {
+        "nombre": "Pr\u00e1ctica Profesional",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 11
+    },
+    "Electivo Profesional I": {
+        "nombre": "Electivo Profesional I",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 9
+    },
+    "Electivo Profesional II": {
+        "nombre": "Electivo Profesional II",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 9
+    },
+    "Electivo Profesional III": {
+        "nombre": "Electivo Profesional III",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 10
+    },
+    "Electivo Profesional IV": {
+        "nombre": "Electivo Profesional IV",
+        "estudiantes": [],
+        "profesores": [],
+        "cantidad_estudiantes": 0,
+        "prerequisitos": [],
+        "carreras": [
+            "Ingenier\u00eda Civil en Inform\u00e1tica"
+        ],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ],
+        "semestre": 10
     }
 }

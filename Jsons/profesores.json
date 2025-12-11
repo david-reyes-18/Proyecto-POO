@@ -1,90 +1,22 @@
 {
-    "profe": {
-        "nombre": "Armando Julio Paredes Rojas",
-        "rut": "18.542.543-2",
-        "asignaturas": [
-            "Anatomia",
-            "C\u00e1lculo I",
-            "C\u00e1lculo II"
-        ],
-        "contrasena": "profe",
-        "alumnos": []
-    },
-    "anamaria.delcarmen@profe.epsilon.cl": {
-        "nombre": "Ana Maria DelCarmen Del Solar",
-        "rut": "18.424.423-5",
+    "carmensof\u00eda.vargas@profe.epsilon.cl": {
+        "nombre": "Carmen Sof\u00eda Vargas D\u00edaz",
+        "rut": "17.634.987-5",
         "asignaturas": [],
-        "contrasena": "18424",
-        "alumnos": []
-    },
-    "ricardoalejandro.rodriguez@profe.epsilon.cl": {
-        "nombre": "Ricardo Alejandro Rodriguez Soto",
-        "rut": "15.432.129-5",
-        "asignaturas": [],
-        "contrasena": "15432",
-        "alumnos": []
-    },
-    "gerardojulian.pacheco@profe.epsilon.cl": {
-        "nombre": "Gerardo Julian Pacheco Fuentes ",
-        "rut": "16.653.736-5",
-        "asignaturas": [
-            "Historia"
-        ],
-        "contrasena": "16653",
-        "alumnos": []
-    },
-    "valentinojos\u00e9.bahamondes@profe.epsilon.cl": {
-        "nombre": "Valentino Jos\u00e9 Bahamondes Fuentes",
-        "rut": "18.423.644-8",
-        "asignaturas": [],
-        "contrasena": "18423",
-        "alumnos": []
-    },
-    "aurorajoselin.huerta@profe.epsilon.cl": {
-        "nombre": "Aurora Joselin Huerta Casas",
-        "rut": "17.432.652-k",
-        "asignaturas": [
-            "C\u00e1lculo II"
-        ],
-        "contrasena": "17432",
-        "alumnos": [
-            "Alejandro Ignacio Rodriguez Smith,C\u00e1lculo II"
+        "contrasena": "17634",
+        "alumnos": [],
+        "especialidad": [
+            "Arte y Humanidades"
         ]
     },
-    "claramauricia.montes@profe.epsilon.cl": {
-        "nombre": "Clara Mauricia Montes Salamanca",
-        "rut": "19.168.898-j",
+    "jos\u00e9manuel.p\u00e9rez@profe.epsilon.cl": {
+        "nombre": "Jos\u00e9 Manuel P\u00e9rez Fuentes",
+        "rut": "16.546.733-7",
         "asignaturas": [],
-        "contrasena": "19168",
-        "alumnos": []
-    },
-    "georgeangel.llopis@profe.epsilon.cl": {
-        "nombre": "George Angel Llopis Steve ",
-        "rut": "16.756.743-6",
-        "asignaturas": [
-            "Quimica"
-        ],
-        "contrasena": "16756",
-        "alumnos": []
-    },
-    "esmeraldadaniela.mansilla@profe.epsilon.cl": {
-        "nombre": "Esmeralda Daniela Mansilla Grau",
-        "rut": "19.865.436-1",
-        "asignaturas": [
-            "Fisica",
-            "Electromagnetismo",
-            "Anatomia"
-        ],
-        "contrasena": "19865",
-        "alumnos": []
-    },
-    "gloriaangelina.herrera@profe.epsilon.cl": {
-        "nombre": "Gloria Angelina Herrera Segovia",
-        "rut": "16.765.745-1",
-        "asignaturas": [
-            "Teologia"
-        ],
-        "contrasena": "16765",
-        "alumnos": []
+        "contrasena": "16546",
+        "alumnos": [],
+        "especialidad": [
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ]
     }
 }

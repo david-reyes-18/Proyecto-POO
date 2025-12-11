@@ -1,0 +1,112 @@
+{
+    "Ingenier\u00eda Civil en Inform\u00e1tica": {
+        "nombre": "Ingenier\u00eda Civil en Inform\u00e1tica",
+        "facultad": "Facultad de Ciencias y Tecnolog\u00eda",
+        "malla": {
+            "1": [
+                "Introducci\u00f3n a la Matem\u00e1tica",
+                "Habilidades Comunicativas para Ingenieros",
+                "Qu\u00edmica",
+                "Taller de Introducci\u00f3n a la Ingenier\u00eda Inform\u00e1tica",
+                "Programaci\u00f3n"
+            ],
+            "2": [
+                "Introducci\u00f3n al C\u00e1lculo",
+                "Introducci\u00f3n a la F\u00edsica",
+                "Programaci\u00f3n Orientada a Objetos",
+                "\u00c1lgebra",
+                "Ciudadan\u00eda"
+            ],
+            "3": [
+                "C\u00e1lculo Diferencial e Integral",
+                "Estructura de Datos",
+                "F\u00edsica Newtoniana",
+                "Taller de Programaci\u00f3n Aplicada",
+                "\u00c1lgebra Superior",
+                "Ingl\u00e9s I"
+            ],
+            "4": [
+                "C\u00e1lculo en Varias Variables",
+                "Electromagnetismo",
+                "Estructuras Discretas",
+                "Aut\u00f3matas y Lenguajes Formales",
+                "Ingl\u00e9s II"
+            ],
+            "5": [
+                "An\u00e1lisis y Dise\u00f1o de Algoritmos",
+                "Base de Datos",
+                "Ecuaciones Diferenciales",
+                "Estad\u00edsticas y Probabilidad",
+                "F\u00edsica Moderna y Ondas",
+                "Ingl\u00e9s III"
+            ],
+            "6": [
+                "C\u00e1lculo Num\u00e9rico",
+                "Bases Digitales de Datos Avanzadas",
+                "Ingenier\u00eda de Sistemas",
+                "Taller de Dise\u00f1o",
+                "Tecnolog\u00edas M\u00f3viles y Web",
+                "Ingl\u00e9s IV"
+            ],
+            "7": [
+                "Arquitectura de Computadores",
+                "Econom\u00eda",
+                "Gesti\u00f3n de Empresas",
+                "Sistemas de Informaci\u00f3n",
+                "Taller de Ingenier\u00eda Inform\u00e1tica",
+                "Practica Intermedia",
+                "Ingl\u00e9s para Inform\u00e1ticos I"
+            ],
+            "8": [
+                "Contabilidad y Costos",
+                "Formaci\u00f3n y Evaluaci\u00f3n de Proyectos",
+                "Ingenier\u00eda de Software",
+                "Investigaci\u00f3n Operativa",
+                "Sistemas Operativos",
+                "Ingl\u00e9s para Inform\u00e1ticos II"
+            ],
+            "9": [
+                "Innovaci\u00f3n y Emprendimiento en Inform\u00e1tica",
+                "Inteligencia Artificial",
+                "Taller de Ingenier\u00eda de Software",
+                "Redes y Comunicaciones",
+                "Electivo Profesional I",
+                "Electivo Profesional II"
+            ],
+            "10": [
+                "Seguridad Inform\u00e1tica",
+                "Sistemas Distribuidos",
+                "Taller de Integraci\u00f3n Tecnol\u00f3gica",
+                "Electivo Profesional III",
+                "Electivo Profesional IV",
+                "Anteproyecto de T\u00edtulo"
+            ],
+            "11": [
+                "Proyecto de T\u00edtulo",
+                "Pr\u00e1ctica Profesional"
+            ]
+        },
+        "semestres": 11,
+        "alumnos": [],
+        "habilitado": true
+    },
+    "Enfermer\u00eda": {
+        "nombre": "Enfermer\u00eda",
+        "facultad": "Facultad de Ciencias de la Salud",
+        "malla": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "semestres": 10,
+        "alumnos": [],
+        "habilitado": false
+    }
+}

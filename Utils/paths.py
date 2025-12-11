@@ -9,6 +9,9 @@ ALUMNOS = os.path.join(BASE_DIR, "Jsons", "alumnos.json")
 PROFESORES = os.path.join(BASE_DIR, "Jsons", "profesores.json")
 ADMINISTRADORES = os.path.join(BASE_DIR, "Jsons", "administradores.json")
 ASIGNATURAS = os.path.join(BASE_DIR, "Jsons", "asignaturas.json")
+FACULTADES = os.path.join(BASE_DIR, "Jsons", "facultades.json")
+CARRERAS = os.path.join(BASE_DIR, "Jsons", "carreras.json")
+MALLAS = os.path.join(BASE_DIR, "Jsons", "mallas.json")
 
 #Rutas donde se encuentran los tipos de letras usados en el proyecto
 MONTSERRAT = os.path.join(BASE_DIR, "Fonts", "Montserrat.ttf")

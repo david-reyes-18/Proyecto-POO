@@ -26,9 +26,12 @@ TOPLEVEL_ANCHO = 800
 TOPLEVEL_ALTO = 700
 
 #Colores Institucionales
+COLOR_OSCURO = "#161F24"
 COLOR_FONDO = "#1A262D"
 COLOR_AZUL = "#2C404B"
 COLOR_FONTS = "#98B4C3"
+COLOR_ELIMINAR = "#c62222"
+COLOR_CONFIRMACION = "#0f9545"
 
 #Imagenes
 img_epsilon = ctk.CTkImage(dark_image=Image.open(EPSILON_PNG), size=(125,125))

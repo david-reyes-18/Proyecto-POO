@@ -163,7 +163,12 @@ def asignaturas_totales():
     return asignaturas
 
 #Función que verifica que una palabra es un string sin numeros ni caracteres especiales
-def es_string(palabra: str):
+def es_string(palabra: str) -> bool:
+    
+    if palabra.strip() != palabra: return False
+    
+    if "  " in palabra: return False
+    
     #Por cada caracter en la palabra
     for char in palabra:
         #Si no es alphanumerico y ademas no es un espacio se retorna False
@@ -174,7 +179,7 @@ def es_string(palabra: str):
 
 
 #Función para verificar un rut
-def verificar_rut(rut: str):
+def verificar_rut(rut: str) -> bool:
     #Primero se trata de ejecutar la siguiente linea de código
     try:
         #Si no tiene el siguiente formato XX.XXX.XXXX entonces no retorna False
@@ -234,4 +239,16 @@ def verificar_rut(rut: str):
         return False
     
     #Si todo salió bien, entonces efectivamente es un rut correcto
+    return True
+
+def verificar_facultad(facultad: str) -> bool:
+    
+    if not es_string(facultad): return False
+    
+    facultad = facultad.split(" ")
+    
+    if len(facultad) < 3 or len(facultad) > 14: return False
+    
+    if facultad[0] != "Facultad" or facultad[1] != "de": return False
+    
     return True
