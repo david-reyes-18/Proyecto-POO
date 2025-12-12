@@ -16,5 +16,23 @@
         "contrasena": "alum",
         "profesores": [],
         "semestre": 1
+    },
+    "benjam\u00ednalonso.rojas@alumnos.epsilon.cl": {
+        "nombre": "Benjam\u00edn Alonso Rojas D\u00edaz",
+        "rut": "22.874.647-9",
+        "carrera": "Ingenier\u00eda Civil en Inform\u00e1tica",
+        "asignaturas": [],
+        "contrasena": "22874",
+        "profesores": [],
+        "semestre": 1
+    },
+    "sebasti\u00e1nandr\u00e9s.p\u00e9rez@alumnos.epsilon.cl": {
+        "nombre": "Sebasti\u00e1n Andr\u00e9s P\u00e9rez Soto",
+        "rut": "21.243.745-k",
+        "carrera": "Ingenier\u00eda Civil en Inform\u00e1tica",
+        "asignaturas": [],
+        "contrasena": "21243",
+        "profesores": [],
+        "semestre": 1
     }
 }

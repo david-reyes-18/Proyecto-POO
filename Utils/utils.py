@@ -32,6 +32,7 @@ COLOR_AZUL = "#2C404B"
 COLOR_FONTS = "#98B4C3"
 COLOR_ELIMINAR = "#c62222"
 COLOR_CONFIRMACION = "#0f9545"
+COLOR_BOTON = "#3b83c2"
 
 #Imagenes
 img_epsilon = ctk.CTkImage(dark_image=Image.open(EPSILON_PNG), size=(125,125))

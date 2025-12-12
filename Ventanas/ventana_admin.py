@@ -82,7 +82,7 @@ class VentanaAdmin(ctk.CTkToplevel):
         ctk.CTkLabel(frame_asignaturas, text="Asignaturas", font=Fonts.m1, text_color=COLOR_FONTS).place(relx=0.5, rely=0.2, anchor="center")
         ctk.CTkLabel(frame_asignaturas, text="Aquí se podrá visualizar todas las asignaturas que se imparten dentro del instituto.", wraplength=ANCHO*0.17, font=Fonts.i2, text_color=COLOR_FONTS).place(relx=0.5, rely=0.5, anchor="center")
             
-        ctk.CTkButton(frame_asignaturas, text="Ver Asignaturas", command=self.mostrar_asignaturas, font=Fonts.m2bold, border_width=2, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, text_color=COLOR_FONTS, hover_color=COLOR_AZUL).place(relx=0.5, rely= 0.8, anchor="center")
+        ctk.CTkButton(frame_asignaturas, text="Ver Asignaturas", command=self.filtrar_asignaturas, font=Fonts.m2bold, border_width=2, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, text_color=COLOR_FONTS, hover_color=COLOR_AZUL).place(relx=0.5, rely= 0.8, anchor="center")
         
         
         #   Frame Carreras
@@ -175,11 +175,11 @@ class VentanaAdmin(ctk.CTkToplevel):
             #información de los alumnos
             ctk.CTkLabel(contenedor, text=f"{i}.-", font=Fonts.i3, text_color=COLOR_FONTS).place(relx=0.01, rely=0.2)
             ctk.CTkLabel(contenedor, text=f"{nombre}", font=Fonts.i3, text_color=COLOR_FONTS).place(relx=0.035, rely=0.2)
-            ctk.CTkLabel(contenedor, text=f"{email}", font=Fonts.i3, text_color=COLOR_FONTS).place(relx=0.31, rely=0.2)
+            ctk.CTkLabel(contenedor, text=f"{datos_alumnos[email]["carrera"]}", font=Fonts.i3, text_color=COLOR_FONTS).place(relx=0.31, rely=0.2)
             
             #Botones de ver datos y eliminar alumnos
-            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e), font=Fonts.m3, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, border_width=2, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.2)
-            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: VentanaConfirmacion(master=self, email_alumno=e, email_profesor=None, asignatura=None, rol="Alumno"), font=Fonts.m3, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, border_width=2, hover_color=COLOR_AZUL).place(relx=0.85, rely=0.2)
+            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosAlumno(e), font=Fonts.m3, text_color=COLOR_BOTON, fg_color=COLOR_FONDO, border_color=COLOR_BOTON, border_width=2, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.2)
+            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: VentanaConfirmacion(master=self, email_alumno=e, email_profesor=None, asignatura=None, rol="Alumno", area=None, carrera=None, semestre=None), font=Fonts.m3, text_color=COLOR_ELIMINAR, fg_color=COLOR_FONDO, border_color=COLOR_ELIMINAR, border_width=2, hover_color=COLOR_AZUL).place(relx=0.85, rely=0.2)
 
 
     #Ventana que muestra todos los prodesores, en el cual se puede añadir profesores, eliminar, ver datos y asignar a un profesor una asignatura
@@ -223,31 +223,122 @@ class VentanaAdmin(ctk.CTkToplevel):
             ctk.CTkLabel(contenedor, text=f"{email}", font=Fonts.i3, text_color=COLOR_FONTS).place(relx=0.31, rely=0.2)
             
             #Botones par ver información y eliminar profesores del sistema
-            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosProfesor(e), font=Fonts.m3, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, border_width=2, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.2)
-            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: VentanaConfirmacion(master=self, email_alumno=None, email_profesor=e, asignatura=None, rol="Profesor"), font=Fonts.m3, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, border_color=COLOR_FONTS, border_width=2, hover_color=COLOR_AZUL).place(relx=0.85, rely=0.2)
+            ctk.CTkButton(contenedor, text="Ver Datos", command=lambda e=email: VentanaDatosProfesor(e), font=Fonts.m3, text_color=COLOR_BOTON, fg_color=COLOR_FONDO, border_color=COLOR_BOTON, border_width=2, hover_color=COLOR_AZUL).place(relx=0.7, rely=0.2)
+            ctk.CTkButton(contenedor, text="Eliminar", command=lambda e=email: VentanaConfirmacion(master=self, email_alumno=None, email_profesor=e, asignatura=None, rol="Profesor", area=None, semestre=None, carrera=None), font=Fonts.m3, text_color=COLOR_ELIMINAR, fg_color=COLOR_FONDO, border_color=COLOR_ELIMINAR, border_width=2, hover_color=COLOR_AZUL).place(relx=0.85, rely=0.2)
     
     
-    """def filtrar(self):
+    def filtrar_asignaturas(self):
+        #Se limpia la ventana
         self.limpiar_widgets()
         
+        #Boton para añadir asignaturas
+        ctk.CTkButton(self.frame_superior, text="Añadir Asignatura", command=lambda: VentanaAñadirAsignatura(master=self), font=Fonts.m2bold, text_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, border_width=2, border_color=COLOR_FONTS).place(relx=0.65, rely=0.3)
+        
+        #Se crea un contenedor que contendrá los widgets
         frame_contenedor = ctk.CTkFrame(self.frame_inferior, height=MIN_ALTO*0.7, width=MIN_ANCHO*0.7, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
         frame_contenedor.pack(pady=30)
         
-        ctk.CTkLabel(frame_contenedor, text="Filtrar asignaturas", font=Fonts.m1, text_color=COLOR_FONTS).place(relx=0.5, rely=0.1, anchor="center")"""
+        #Boton para volver a la ventana principal
+        ctk.CTkButton(self.frame_inferior, text="", command=self.volver, image=img_volver, fg_color="transparent", hover_color=COLOR_AZUL).place(relx=0.01, rely=0.02)  
         
+        #Título
+        ctk.CTkLabel(frame_contenedor, text="Filtrar asignaturas", font=Fonts.m1, text_color=COLOR_FONTS).place(relx=0.5, rely=0.1, anchor="center")
+        
+        ctk.CTkLabel(frame_contenedor, text="Mediante la filtración de asignaturas de puede refinar la búsqueda mediante el área de conocimiento, la carrera y los semestres. Se pueden seleccionar todos los campos asi como solo seleccionar sólo uno.", font=Fonts.i3, text_color=COLOR_FONTS, wraplength=MIN_ANCHO*0.55, width=MIN_ANCHO*0.55).place(relx=0.5, rely=0.25, anchor="center")
+        
+        areas = [
+            "Ciencias Básicas",
+            "Ingeniería y Tecnología",
+            "Ciencias Sociales",
+            "Salud",
+            "Educación",
+            "Economía y Administración",
+            "Arte y Humanidades"
+        ]
+        
+        #       ÁREAS
+        
+        #Label
+        ctk.CTkLabel(frame_contenedor, text="Seleccione un área:", font=Fonts.m2bold, text_color=COLOR_FONTS).place(relx=0.05, rely=0.36)
+        
+        #Option menu para selecionar áreas
+        self.menu_areas = ctk.CTkOptionMenu(frame_contenedor, width=MIN_ANCHO*0.29, height=47, fg_color=COLOR_AZUL, button_color=COLOR_OSCURO, dropdown_font=Fonts.i2, dropdown_fg_color=COLOR_AZUL, dropdown_text_color=COLOR_FONTS,font=Fonts.i2, text_color=COLOR_FONTS, dropdown_hover_color=COLOR_FONDO, values=areas, anchor="center")
+        self.menu_areas.set("Seleccione el área")
+        self.menu_areas.place(relx=0.05, rely=0.45)
+        
+        
+        #       CARRERAS
+        
+        #se cargan los datos de las carreras
+        datos_carreras = cargar_jsons(CARRERAS)
+        #Se crean las opciones de carreras
+        carreras = [carrera for carrera in datos_carreras if datos_carreras[carrera]["habilitado"]]
+        
+        #Label
+        ctk.CTkLabel(frame_contenedor, text="Seleccione una carrera:", font=Fonts.m2bold, text_color=COLOR_FONTS).place(relx=0.55, rely=0.36)
+        
+        #Option menu para seleccionar carreras
+        self.menu_carreras = ctk.CTkOptionMenu(frame_contenedor, width=MIN_ANCHO*0.29, height=47, fg_color=COLOR_AZUL, button_color=COLOR_OSCURO, dropdown_font=Fonts.i2, dropdown_fg_color=COLOR_AZUL, dropdown_text_color=COLOR_FONTS,font=Fonts.i2, text_color=COLOR_FONTS, dropdown_hover_color=COLOR_FONDO, anchor="center", values=carreras, command=self.actualizar_semestres)
+        self.menu_carreras.set("Seleccione la carrera")
+        self.menu_carreras.place(relx=0.55, rely=0.45)
+        
+        
+        #       SEMESTRES
+        
+        #Label
+        ctk.CTkLabel(frame_contenedor, text="Seleccione un semestre:", font=Fonts.m2bold, text_color=COLOR_FONTS).place(relx=0.5, rely=0.56, anchor="center")
+        
+        #Option menu para seleccionar semestres
+        self.menu_semestre = ctk.CTkOptionMenu(frame_contenedor, width=MIN_ANCHO*0.29, height=47, fg_color=COLOR_AZUL, button_color=COLOR_OSCURO, dropdown_font=Fonts.i2, dropdown_fg_color=COLOR_AZUL, dropdown_text_color=COLOR_FONTS,font=Fonts.i2, text_color=COLOR_FONTS, dropdown_hover_color=COLOR_FONDO, anchor="center", state="disabled")
+        self.menu_semestre.set("Seleccione el semestre")
+        self.menu_semestre.place(relx=0.5, rely=0.65, anchor="center")
+        
+        ctk.CTkButton(frame_contenedor, text="Filtrar", fg_color=COLOR_FONDO, border_width=2, border_color=COLOR_FONTS, border_spacing=10, hover_color=COLOR_AZUL, font=Fonts.m2bold, text_color=COLOR_FONTS, width=MIN_ANCHO*0.2, command=self.filtrar).place(relx=0.5, rely=0.8, anchor="center")
+        
+        self.label_error = ctk.CTkLabel(frame_contenedor, text="", font=Fonts.i3)
+        self.label_error.place(relx=0.5, rely=0.9, anchor="center")
         
 
     #Ventana que mostrará las asignaturas totales que se imparten en el instituto, donde se podrá visualizar, añadir y eliminar asignaturas
-    def mostrar_asignaturas(self):
+    def mostrar_asignaturas(self, area, carrera, semestre):
         
         #Se limpia el espacio donde se verán las asignaturas
         self.limpiar_widgets()
         
         #Se cargan los datos de todas las asignaturas
         datos = cargar_jsons(ASIGNATURAS)
+        asignaturas = []
         
-        #Enlistar todas las asignaturas que estan en el sistema
-        asignaturas = sorted([asignatura for asignatura in datos])
+        if area and carrera and semestre:
+            for asig in datos:
+                if area in datos[asig]["especialidad"] and carrera in datos[asig]["carreras"] and datos[asig]["semestre"] == int(semestre):
+                    asignaturas.append(asig)
+            
+        elif area and carrera:
+            for asig in datos:
+                if area in datos[asig]["especialidad"] and datos[asig]["semestre"] == int(semestre):
+                    asignaturas.append(asig)
+        
+        elif carrera and semestre:
+            for asig in datos:
+                if carrera in datos[asig]["carreras"] and datos[asig]["semestre"] == int(semestre):
+                    asignaturas.append(asig)
+            
+        elif area:
+            for asig in datos:
+                if area in datos[asig]["especialidad"]:
+                    asignaturas.append(asig)
+        
+        elif carrera:
+            for asig in datos:
+                if carrera in datos[asig]["carreras"]:
+                    asignaturas.append(asig)
+        
+        elif semestre:
+            for asig in datos:
+                if datos[asig]["semestre"] == int(semestre):
+                    asignaturas.append(asig)
+        
         
         frame_superior2 = ctk.CTkFrame(self.frame_inferior, height=MIN_ALTO*0.1, fg_color=COLOR_AZUL)
         frame_superior2.pack(fill="x", expand=True)
@@ -286,9 +377,9 @@ class VentanaAdmin(ctk.CTkToplevel):
             
             #Boton para ver alumnos de la asignatura
             if ramo.semestre > 1:
-                ctk.CTkButton(frame_asignatura, text="Añadir PreRequisitos", command=lambda a=asignatura: AñadirPreRequisitos(master=self, asignatura=a), font=Fonts.m4, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.03, rely=0.8)
+                ctk.CTkButton(frame_asignatura, text="Añadir PreRequisitos", command=lambda a=asignatura: self.añadir_prerequisitos(a), font=Fonts.m4, text_color=COLOR_BOTON, border_width=2, border_color=COLOR_BOTON, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.03, rely=0.8)
             
-            ctk.CTkButton(frame_asignatura, text="Eliminar", command=lambda a=asignatura: VentanaConfirmacion(master=self, asignatura=a, rol="Asignatura", profesor=None, alumno=None), font=Fonts.m4, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.5, rely=0.8)
+            ctk.CTkButton(frame_asignatura, text="Eliminar", command=lambda a=asignatura: VentanaConfirmacion(master=self, asignatura=a, rol="Asignatura", email_profesor=None, email_alumno=None, area=area, carrera=carrera, semestre=semestre), font=Fonts.m4, text_color=COLOR_ELIMINAR, border_width=2, border_color=COLOR_ELIMINAR, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL).place(relx=0.5, rely=0.8)
         
         num_filas = (len(datos) + 2) // 3 
         for f in range(num_filas):
@@ -326,7 +417,6 @@ class VentanaAdmin(ctk.CTkToplevel):
         
         #Enlistar todas las asignaturas que estan en el sistema
         facultades = sorted(datos.keys())
-        print(facultades)
         
         frame_superior2 = ctk.CTkFrame(self.frame_inferior, height=MIN_ALTO*0.1, fg_color=COLOR_AZUL)
         frame_superior2.pack(fill="x", expand=True)
@@ -518,3 +608,39 @@ class VentanaAdmin(ctk.CTkToplevel):
             VentanaNegacion()
         else:
             VentanaHabilitacion(master=self, carrera=carrera, boton=boton)
+    
+    def añadir_prerequisitos(self, asignatura):
+        datos_asignaturas = cargar_jsons(ASIGNATURAS)
+        cantidad_prerequisitos = len(datos_asignaturas[asignatura]["prerequisitos"])
+        
+        if cantidad_prerequisitos >= 2:
+            VerificarPrerequisitos()
+        else:
+            AñadirPreRequisitos(master=self, asignatura=asignatura)
+    
+    
+    def actualizar_semestres(self, carrera):
+        datos_carreras = cargar_jsons(CARRERAS)
+        
+        opciones = [str(i) for i in range(1, int(datos_carreras[carrera]["semestres"]) + 1)]
+        self.menu_semestre.configure(state="normal", values=opciones)
+    
+    def filtrar(self):
+        area = self.menu_areas.get()
+        carrera = self.menu_carreras.get()
+        semestre = self.menu_semestre.get()
+        
+        if area == "Seleccione el área" and carrera == "Seleccione la carrera" and semestre == "Seleccione el semestre":
+            self.label_error.configure(text="No se ha seleccionado nada.", text_color=COLOR_ELIMINAR)
+            return
+
+        if area == "Seleccione el área":
+            area = None
+        
+        if carrera == "Seleccione la carrera":
+            carrera = None
+            
+        if semestre == "Seleccione el semestre":
+            semestre = None
+        
+        self.mostrar_asignaturas(area=area, carrera=carrera, semestre=semestre)

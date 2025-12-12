@@ -18,5 +18,26 @@
         "especialidad": [
             "Ingenier\u00eda y Tecnolog\u00eda"
         ]
+    },
+    "profe": {
+        "nombre": "Mat\u00edas Ignacio G\u00f3mez Silva",
+        "rut": "22.321.653-6",
+        "asignaturas": [],
+        "contrasena": "profe",
+        "alumnos": [],
+        "especialidad": [
+            "Ciencias B\u00e1sicas",
+            "Ingenier\u00eda y Tecnolog\u00eda"
+        ]
+    },
+    "joaqu\u00ednemilio.l\u00f3pez@profe.epsilon.cl": {
+        "nombre": "Joaqu\u00edn Emilio L\u00f3pez Torres",
+        "rut": "21.433.765-7",
+        "asignaturas": [],
+        "contrasena": "21433",
+        "alumnos": [],
+        "especialidad": [
+            "Educaci\u00f3n"
+        ]
     }
 }

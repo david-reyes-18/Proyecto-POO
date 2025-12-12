@@ -180,7 +180,10 @@
         "estudiantes": [],
         "profesores": [],
         "cantidad_estudiantes": 0,
-        "prerequisitos": [],
+        "prerequisitos": [
+            "Introducci\u00f3n al C\u00e1lculo",
+            "Introducci\u00f3n a la F\u00edsica"
+        ],
         "carreras": [
             "Ingenier\u00eda Civil en Inform\u00e1tica"
         ],

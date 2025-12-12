@@ -1,7 +1,7 @@
 #Librerias y modulos que usaremos
 import customtkinter as ctk
-from Utils.utils import x, y, MIN_ANCHO, MIN_ALTO, COLOR_FONDO, COLOR_FONTS, img_epsilon, COLOR_AZUL, img_fondo
-from Utils.paths import ALUMNOS, PROFESORES, ADMINISTRADORES
+from Utils.utils import *
+from Utils.paths import *
 from Utils.functions import cargar_jsons
 from Ventanas.ventana_alumno import VentanaAlumno
 from Ventanas.ventana_admin import VentanaAdmin
@@ -92,11 +92,11 @@ class Login(ctk.CTk):
                     VentanaAlumno(email, master=self)
                     self.withdraw()
                 else:
-                    entrada_email.configure(border_color="green")
+                    entrada_email.configure(border_color=COLOR_CONFIRMACION)
                     label_error_email.configure(text="")
                     
-                    entrada_contrasena.configure(border_color="red")
-                    label_error_contra.configure(text="Contraseña Incorrecta", text_color="red")
+                    entrada_contrasena.configure(border_color=COLOR_ELIMINAR)
+                    label_error_contra.configure(text="Contraseña Incorrecta", text_color=COLOR_ELIMINAR)
             
             #Verificar si es profesor
             elif email in datos_profesor:
@@ -104,11 +104,11 @@ class Login(ctk.CTk):
                     VentanaProfe(email, master=self)
                     self.withdraw()
                 else:
-                    entrada_email.configure(border_color="green")
+                    entrada_email.configure(border_color=COLOR_CONFIRMACION)
                     label_error_email.configure(text="")
                     
-                    entrada_contrasena.configure(border_color="red")
-                    label_error_contra.configure(text="Contraseña Incorrecta", text_color="red")
+                    entrada_contrasena.configure(border_color=COLOR_ELIMINAR)
+                    label_error_contra.configure(text="Contraseña Incorrecta", text_color=COLOR_ELIMINAR)
                     
             #Verificar si es administrador
             elif email in datos_administradores:
@@ -116,18 +116,18 @@ class Login(ctk.CTk):
                     VentanaAdmin(email, master=self)
                     self.withdraw()
                 else:
-                    entrada_email.configure(border_color="green")
+                    entrada_email.configure(border_color=COLOR_CONFIRMACION)
                     label_error_email.configure(text="")
                     
-                    entrada_contrasena.configure(border_color="red")
-                    label_error_contra.configure(text="Contraseña Incorrecta", text_color="red")
+                    entrada_contrasena.configure(border_color=COLOR_ELIMINAR)
+                    label_error_contra.configure(text="Contraseña Incorrecta", text_color=COLOR_ELIMINAR)
             
             #De no estar el correo en la base de datos se le dirá al usuario que el correo esta incorrecto
             else:
-                entrada_email.configure(border_color="red")
-                label_error_email.configure(text="Email no registrado", text_color="red")
+                entrada_email.configure(border_color=COLOR_ELIMINAR)
+                label_error_email.configure(text="Email no registrado", text_color=COLOR_ELIMINAR)
                 
-                entrada_contrasena.configure(border_color="red")
+                entrada_contrasena.configure(border_color=COLOR_ELIMINAR)
         
         #Boton de inicio de sesión
         boton_sesion = ctk.CTkButton(self.frame, text="Iniciar sesión", command=iniciar_sesion, font=Fonts.m3, width=190, height=60,fg_color=COLOR_FONDO, hover_color=COLOR_AZUL,text_color=COLOR_FONTS, border_color=COLOR_FONTS, border_width=2)

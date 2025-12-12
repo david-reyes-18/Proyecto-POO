@@ -1,6 +1,8 @@
 #Aqui se encuentran funciones importantes que se usarán dentro de sistema
 import json
-from Utils.paths import ALUMNOS, PROFESORES, ASIGNATURAS
+from Utils.paths import *
+from Utils.utils import *
+from Utils.fonts import Fonts
 
 #Funcion que carga los datos de un archivo json y entrega esos datos
 def cargar_jsons(archivo):
@@ -95,9 +97,28 @@ def eliminar_datos_profesor(email):
     guardar_datos(ASIGNATURAS, datos_asignatura)
     guardar_datos(ALUMNOS, datos_alumno)
 
+
+#Ventana para aclarar que la carrera seleccionada no posee malla
+class VentanaNegacionEliminar(ctk.CTkToplevel):
+    def __init__(self):
+        super().__init__()
+        self.title("Eliminación Interrumpida")
+        self.configure(fg_color=COLOR_FONDO)
+        self.minsize(TOPLEVEL_ANCHO*0.5, TOPLEVEL_ALTO*0.4)
+        self.resizable(False, False)
+        
+        ctk.CTkLabel(self, text="Esta asignatura no se puede eliminar por que está dentro de una malla curricular. Eliminela de la malla para poder borrar la asignatura", font=Fonts.i2, wraplength=TOPLEVEL_ANCHO*0.45, text_color=COLOR_FONTS).place(relx=0.5, rely=0.5, anchor="center")
+
 def eliminar_datos_asignatura(asignatura):
     
     datos_asignatura = cargar_jsons(ASIGNATURAS)
+    datos_carreras = cargar_jsons(CARRERAS)
+    
+    for carre in datos_carreras:
+        for i in range(1, datos_carreras[carre]["semestres"] + 1):
+            if asignatura in datos_carreras[carre]["malla"][str(i)]:
+                VentanaNegacionEliminar()
+                return
     
     del datos_asignatura[asignatura]
     
@@ -241,6 +262,7 @@ def verificar_rut(rut: str) -> bool:
     #Si todo salió bien, entonces efectivamente es un rut correcto
     return True
 
+#Función que verifica el nombre de la facultad
 def verificar_facultad(facultad: str) -> bool:
     
     if not es_string(facultad): return False

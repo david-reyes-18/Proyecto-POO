@@ -83,7 +83,7 @@ class VentanaMatricula(ctk.CTkToplevel):
         
         carreras = [carrera for carrera in datos_carrera if datos_carrera[carrera]["habilitado"]]
         
-        carrera_alumno = ctk.CTkOptionMenu(frame_carrera, values=carreras, font=Fonts.i2, width=TOPLEVEL_ANCHO*0.45, height=47, fg_color=COLOR_AZUL, button_color=COLOR_OSCURO, dropdown_font=Fonts.i2, dropdown_fg_color=COLOR_AZUL, dropdown_text_color=COLOR_FONTS)
+        carrera_alumno = ctk.CTkOptionMenu(frame_carrera, values=carreras, font=Fonts.i2, text_color=COLOR_FONTS, width=TOPLEVEL_ANCHO*0.45, height=47, fg_color=COLOR_AZUL, button_color=COLOR_OSCURO, dropdown_font=Fonts.i2, dropdown_fg_color=COLOR_AZUL, dropdown_text_color=COLOR_FONTS)
         carrera_alumno.set("Seleccionar Carrera")
         carrera_alumno.pack()
         
@@ -101,41 +101,41 @@ class VentanaMatricula(ctk.CTkToplevel):
             
             #Verificación de que el formato del nombre sea correcto
             if (len(nombres.split()) > 3 or len(nombres.split()) < 2) or (not es_string(nombres)) or not (len(nombres) > 6):
-                label_nombres.configure(text="Nombres invalido", text_color="red")
-                nombres_alumnos.configure(border_color="red")
+                label_nombres.configure(text="Nombres invalido", text_color=COLOR_ELIMINAR)
+                nombres_alumnos.configure(border_color=COLOR_ELIMINAR)
                 return
             else:
                 label_nombres.configure(text="")
-                nombres_alumnos.configure(border_color = "green")
+                nombres_alumnos.configure(border_color = COLOR_CONFIRMACION)
             
             #Verificación de los apellidoss
             if not (len(apellidos.split()) == 2 and es_string(apellidos) and len(apellidos) > 6):
-                label_apellidos.configure(text="Apellidos invalido", text_color="red")
-                apellidos_alumnos.configure(border_color="red")
+                label_apellidos.configure(text="Apellidos invalido", text_color=COLOR_ELIMINAR)
+                apellidos_alumnos.configure(border_color=COLOR_ELIMINAR)
                 return
             else:
                 label_apellidos.configure(text="")
-                apellidos_alumnos.configure(border_color="green")
+                apellidos_alumnos.configure(border_color=COLOR_CONFIRMACION)
 
             ruts_prueba = ["11.111.111-1", "22.222.222-2", "33.333.333-3", "44.444.444-4", "55.555.555-5", "66.666.666-6", "77.777.777-7", "88.888.888-8", "99.999.999-9", "00.000.000-0"]
             
             #Verificar que tenga el formato
             if not verificar_rut(rut):
-                label_rut.configure(text="Rut invalido", text_color="red")
-                rut_alumnos.configure(border_color="red")
+                label_rut.configure(text="Rut invalido", text_color=COLOR_ELIMINAR)
+                rut_alumnos.configure(border_color=COLOR_ELIMINAR)
                 return
             #Verificar que no sea un rut de prueba
             elif rut in ruts_prueba:
-                label_rut.configure(text="Rut invalido", text_color="red")
-                rut_alumnos.configure(border_color="red")
+                label_rut.configure(text="Rut invalido", text_color=COLOR_ELIMINAR)
+                rut_alumnos.configure(border_color=COLOR_ELIMINAR)
                 return
             else:
                 label_rut.configure(text="")
-                rut_alumnos.configure(border_color="green")
+                rut_alumnos.configure(border_color=COLOR_CONFIRMACION)
             
             #Verificación de la carrera
             if carrera == "Seleccionar Carrera":
-                label_carrera.configure(text="No se ha seleccionado una carrera.", text_color="red")
+                label_carrera.configure(text="No se ha seleccionado una carrera.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_carrera.configure(text="")
@@ -378,8 +378,8 @@ class VentanaAñadirAsignatura(ctk.CTkToplevel):
         
         for area in areas:
             valor = ctk.BooleanVar()
-            box = ctk.CTkCheckBox(frame_area, text=area, variable=valor, command=estado)
-            box.pack(anchor="w", pady=10)
+            box = ctk.CTkCheckBox(frame_area, text=area, variable=valor, command=estado, font=Fonts.i2, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, hover_color=COLOR_AZUL, checkmark_color=COLOR_FONDO)
+            box.pack(anchor="w", pady=10, padx=30)
             checks[box] = valor
         
         
@@ -411,31 +411,31 @@ class VentanaAñadirAsignatura(ctk.CTkToplevel):
             
             #Se verifica que el nombre sea válido
             if len(nombre) < 4 or not es_string(nombre):
-                nombre_asignatura.configure(border_color="red")
-                label_nombre.configure(text="Nombre Inválido", text_color="red")
+                nombre_asignatura.configure(border_color=COLOR_ELIMINAR)
+                label_nombre.configure(text="Nombre Inválido", text_color=COLOR_ELIMINAR)
                 return
             else:
-                nombre_asignatura.configure(border_color="green")
+                nombre_asignatura.configure(border_color=COLOR_CONFIRMACION)
                 label_nombre.configure(text="")
             
             #Se verifica que se haya seleccionado un área
             if area == []:
-                label_area.configure(text="No se ha seleccionado un área.", text_color="red")
+                label_area.configure(text="No se ha seleccionado un área.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_area.configure(text="")
             
             #Verificar los semestres
             if not semestre.isdigit():
-                entry_semestres.configure(border_color = "red")
-                label_semestre.configure(text="Sólo se permiten números.", text_color="red")
+                entry_semestres.configure(border_color = COLOR_ELIMINAR)
+                label_semestre.configure(text="Sólo se permiten números.", text_color=COLOR_ELIMINAR)
                 return
             elif not (1 <= int(semestre) <= 14):
-                entry_semestres.configure(border_color = "red")
-                label_semestre.configure(text="Número Inválido.", text_color="red")
+                entry_semestres.configure(border_color = COLOR_ELIMINAR)
+                label_semestre.configure(text="Número Inválido.", text_color=COLOR_ELIMINAR)
                 return
             else:
-                entry_semestres.configure(border_color = "green")
+                entry_semestres.configure(border_color = COLOR_CONFIRMACION)
                 label_semestre.configure(text="")
             
             #Cargar los datos que hay en las carreras
@@ -457,11 +457,11 @@ class VentanaAñadirAsignatura(ctk.CTkToplevel):
             guardar_datos(ASIGNATURAS, datos_asignatura)
             
             #Se actualiza la pantalla
-            master.mostrar_asignaturas()
+            master.filtrar_asignaturas()
             #Se destruye la ventana
             self.destroy()
         
-        ctk.CTkButton(frame_inferior, text="Añadir Carrera", font=Fonts.m2bold, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, command=añadir_asignatura).pack(pady=40)
+        ctk.CTkButton(frame_inferior, text="Añadir Asignatura", font=Fonts.m2bold, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, command=añadir_asignatura, border_spacing=15).pack(pady=40)
         
         #Se define el scroll para la ventana
         def scroll(event):
@@ -487,7 +487,7 @@ class VentanaAñadirAsignatura(ctk.CTkToplevel):
 
 
 
-
+#Ventana para añadir PreRequisitos a cierta asignatura
 class AñadirPreRequisitos(ctk.CTkToplevel):
     def __init__(self, master, asignatura):
         super().__init__()
@@ -511,7 +511,7 @@ class AñadirPreRequisitos(ctk.CTkToplevel):
         
         #Frame contenedor que contendrá los datos
         frame_contenedor = ctk.CTkFrame(frame_inferior, fg_color=COLOR_FONDO)
-        frame_contenedor.pack(pady=20)
+        frame_contenedor.pack(pady=40)
         
         #Frame para la información inicial
         frame_info = ctk.CTkFrame(frame_contenedor, border_width=1, border_color=COLOR_FONTS, fg_color=COLOR_FONDO)
@@ -528,32 +528,33 @@ class AñadirPreRequisitos(ctk.CTkToplevel):
         #Label indicativo
         ctk.CTkLabel(frame_prerequisito, text="Ingrese el PreRequisito:", width=TOPLEVEL_ANCHO*0.75, font=Fonts.i1, anchor="w", text_color=COLOR_FONTS).pack(pady=40)
         
-        #Entrada de texto para el nombre
-        
+        #Se cargan los datos de la asignatura
         datos_asignatura = cargar_jsons(ASIGNATURAS)
-        
+        #Se guarda su especialidad en una variable
         especialidad = datos_asignatura[asignatura]["especialidad"]
-        
+        #Se guarda el semestre en una variable
         semestre = datos_asignatura[asignatura]["semestre"]
         
+        #Variable que contendrá las opciones totales
         opciones = []
         
+        #Por cada asigantura dentro de los datos
         for asig in datos_asignatura:
+            #Se verifica que el semestre sea igual al anterior del actual
             if datos_asignatura[asig]["semestre"] == semestre - 1:
+                #Se verifica que almenos una especialidad este dentro de las especialidades de la asignatura
                 if any(esp in especialidad for esp in datos_asignatura[asig]["especialidad"]):
+                    #Si la asignatura cumplió con todos los requisitos se añade a la lista de opciones
                     opciones.append(asig)
         
-        if datos_asignatura[asignatura]["prerequisitos"]:
-            if len(datos_asignatura[asignatura]["prerequisitos"]) == 2:
-                opciones = []
-            else:
-                for asig in datos_asignatura[asignatura]["prerequisitos"]:
-                    if asig in opciones:
-                        opciones.remove(asig)
+        #Para todas las asignaturas en los prerequisitos de la asigantura
+        for asig in datos_asignatura[asignatura]["prerequisitos"]:
+            #Si la asignatura que está en los prerequisitos está en las opciones se elimina
+            if asig in opciones:
+                opciones.remove(asig)
         
-        
-        
-        prerequisito = ctk.CTkOptionMenu(frame_prerequisito, values=opciones)
+        #Se crea el option menu del prerequisito
+        prerequisito = ctk.CTkOptionMenu(frame_prerequisito, values=opciones, width=TOPLEVEL_ANCHO*0.45, height=47, fg_color=COLOR_AZUL, button_color=COLOR_OSCURO, dropdown_font=Fonts.i2, dropdown_fg_color=COLOR_AZUL, dropdown_text_color=COLOR_FONTS,font=Fonts.i2, text_color=COLOR_FONTS, dropdown_hover_color=COLOR_FONDO)
         prerequisito.set("Seleccione un PreRequisito")
         prerequisito.pack()
         
@@ -561,22 +562,38 @@ class AñadirPreRequisitos(ctk.CTkToplevel):
         label_prerequisito = ctk.CTkLabel(frame_prerequisito, text="", font=Fonts.i3)
         label_prerequisito.pack(pady=10)
         
+        #Función para añadir prerequisitos
         def añadir_prerequisito():
+            #Se obtiene el valor del option menu
             pre = prerequisito.get()
             
+            #Si el prerequisito no tiene valor se avisa al usuario
             if pre == "Seleccione un PreRequisito":
-                label_prerequisito.configure(text="No se ha seleccionado un prerequisito.", text_color="red")
+                label_prerequisito.configure(text="No se ha seleccionado un prerequisito.", text_color=COLOR_ELIMINAR)
                 return
             
+            #Dentro de los prerequisitos de la asignatura se añade el reciente
             datos_asignatura[asignatura]["prerequisitos"].append(pre)
-            
+            #Se guardan los datos
             guardar_datos(ASIGNATURAS, datos_asignatura)
-            
-            master.mostrar_asignaturas()
-            
+            #Se destruye la ventana
             self.destroy()
         
-        ctk.CTkButton(frame_inferior, text="Añadir PreRequisito", font=Fonts.m2bold, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, command=añadir_prerequisito).pack(pady=40)
+        #Botón para añadir prerequisitos
+        ctk.CTkButton(frame_inferior, text="Añadir PreRequisito", font=Fonts.m2bold, text_color=COLOR_FONTS, border_width=2, border_color=COLOR_FONTS, fg_color=COLOR_FONDO, hover_color=COLOR_AZUL, command=añadir_prerequisito, border_spacing=10).pack(pady=(40, 100))
+
+
+class VerificarPrerequisitos(ctk.CTkToplevel):
+    def __init__(self):
+        super().__init__()
+        self.title("Cantidad máxima alcanzada")
+        self.configure(fg_color=COLOR_FONDO)
+        self.minsize(TOPLEVEL_ANCHO*0.5, TOPLEVEL_ALTO*0.4)
+        self.resizable(False, False)
+        
+        ctk.CTkLabel(self, text="Esta asignatura ya posee el límite máximo de asignaturas en prerequisitos", font=Fonts.i2, wraplength=TOPLEVEL_ANCHO*0.45, text_color=COLOR_FONTS).place(relx=0.5, rely=0.5, anchor="center")
+        
+
 
 #Ventana que permite ver todos los alumnos o profesores, dependiendo el rol que  se le de a la ventana, del instituto que estan inscritos a dicha asignatura
 class VisualizarAlumnosProfes(ctk.CTkToplevel):
@@ -867,44 +884,44 @@ class VentanaAñadirProfe(ctk.CTkToplevel):
             
             #Comprobar que los nombres estan correctos
             if (len(nombres.split()) > 3 or len(nombres.split()) < 2) or (not es_string(nombres)) or not (len(apellidos) > 6):
-                label_nombre.configure(text="Nombres inválidos", text_color="red")
-                nombres_profe.configure(border_color="red")
+                label_nombre.configure(text="Nombres inválidos", text_color=COLOR_ELIMINAR)
+                nombres_profe.configure(border_color=COLOR_ELIMINAR)
                 return
             #Si pasa la verificación se pondrá de color verde el entry de los nombres
             else:
-                label_nombre.configure(text="", text_color="green")
-                nombres_profe.configure(border_color="green")
+                label_nombre.configure(text="", text_color=COLOR_CONFIRMACION)
+                nombres_profe.configure(border_color=COLOR_CONFIRMACION)
             
             #Comprobar que los apellidos estan correctos
             if not (len(apellidos.split()) == 2 and es_string(apellidos) and len(apellidos) > 6):
-                label_apellido.configure(text="Apellidos Inválidos", text_color="red")
-                apellidos_profe.configure(border_color="red")
+                label_apellido.configure(text="Apellidos Inválidos", text_color=COLOR_ELIMINAR)
+                apellidos_profe.configure(border_color=COLOR_ELIMINAR)
                 return
             #Si pasa la verificación se pondrá verde el entry de los apellidos
             else:
-                label_apellido.configure(text="", text_color="green")
-                apellidos_profe.configure(border_color="green")
+                label_apellido.configure(text="", text_color=COLOR_CONFIRMACION)
+                apellidos_profe.configure(border_color=COLOR_CONFIRMACION)
             
             ruts_prueba = ["11.111.111-1", "22.222.222-2", "33.333.333-3", "44.444.444-4", "55.555.555-5", "66.666.666-6", "77.777.777-7", "88.888.888-8", "99.999.999-9", "00.000.000-0"]
             
             #Verificar si el rut tiene el formato correcto
             if not verificar_rut(rut):
-                label_rut.configure(text="Rut Inválido", text_color="red")
-                rut_profe.configure(border_color="red")
+                label_rut.configure(text="Rut Inválido", text_color=COLOR_ELIMINAR)
+                rut_profe.configure(border_color=COLOR_ELIMINAR)
                 return
             #Verificar si está dentro de los ruts de prueba
             elif rut in ruts_prueba:
-                label_rut.configure(text="Rut Invalido", text_color="red")
-                rut_profe.configure(border_color="red")
+                label_rut.configure(text="Rut Invalido", text_color=COLOR_ELIMINAR)
+                rut_profe.configure(border_color=COLOR_ELIMINAR)
                 return
             #Si tiene el formato correcto se pondra verde el entry
             else:
-                label_rut.configure(text="", text_color="green")
-                rut_profe.configure(border_color="green")
+                label_rut.configure(text="", text_color=COLOR_CONFIRMACION)
+                rut_profe.configure(border_color=COLOR_CONFIRMACION)
             
             #Verificar que se haya seleccionado al menos un área
             if not area:
-                label_area.configure(text="Seleccione al menos 1 área.", text_color="red")
+                label_area.configure(text="Seleccione al menos 1 área.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_area.configure(text="")
@@ -1087,32 +1104,32 @@ class VentanaAsignacion(ctk.CTkToplevel):
             
             #Se verifica que se haya seleccionado un área
             if area == "Seleccione el área":
-                label_area.configure(text="No se ha seleccionado un área.", text_color="red")
+                label_area.configure(text="No se ha seleccionado un área.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_area.configure(text="")
             
             #Se verificca que se haya seleccionado un semestre válido
             if not semestre.isdigit():
-                label_semestre.configure(text="Semestre Inválido.", text_color="red")
+                label_semestre.configure(text="Semestre Inválido.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 if not (1 <= int(semestre) <= 14):
-                    label_semestre.configure(text="Semestre Inválido.", text_color="red")
+                    label_semestre.configure(text="Semestre Inválido.", text_color=COLOR_ELIMINAR)
                     return
                 else:
                     label_semestre.configure(text="")
 
             #Se verifica que se haya seleccionado una asignatura
             if asignatura == "Seleccione la asignatura":
-                label_asignatura.configure(text="No se ha seleccionado una asignatura.", text_color="red")
+                label_asignatura.configure(text="No se ha seleccionado una asignatura.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_asignatura.configure(text="")
             
             #Se verificaque se haya seleccionado un profesor
             if profesor == "Seleccione al profesor":
-                label_profe.configure(text="No se ha seleccionado un profesor.", text_color="red")
+                label_profe.configure(text="No se ha seleccionado un profesor.", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_profe.configure(text="")
@@ -1323,8 +1340,8 @@ class AñadirFacultad(ctk.CTkToplevel):
             facultad = nombre_facultad.get()
             
             if not verificar_facultad(facultad):
-                nombre_facultad.configure(border_color = "red")
-                label_facultad.configure(text="Nombre de facultad inválido", text_color="red")
+                nombre_facultad.configure(border_color = COLOR_ELIMINAR)
+                label_facultad.configure(text="Nombre de facultad inválido", text_color=COLOR_ELIMINAR)
                 return
 
             datos = cargar_jsons(FACULTADES)
@@ -1433,23 +1450,23 @@ class AñadirCarreras(ctk.CTkToplevel):
             
             #Se verifica que el nombre sea válido
             if len(nombre) < 4 or not es_string(nombre):
-                nombre_carrera.configure(border_color="red")
-                label_nombre.configure(text="Nombre Inválido", text_color="red")
+                nombre_carrera.configure(border_color=COLOR_ELIMINAR)
+                label_nombre.configure(text="Nombre Inválido", text_color=COLOR_ELIMINAR)
                 return
             else:
-                nombre_carrera.configure(border_color="green")
+                nombre_carrera.configure(border_color=COLOR_CONFIRMACION)
                 label_nombre.configure(text="")
             
             #Se verifica que se haya seleccionado los semestres
             if semestres == "Seleccione la duración":
-                label_semestres.configure(text="Seleccione un semestre", text_color="red")
+                label_semestres.configure(text="Seleccione un semestre", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_semestres.configure(text="")
             
             #Se verifica que se haya seleccionado una facultad
             if facultad == "Seleccione una facultad":
-                label_facultades.configure(text="Seleccione una facultad", text_color="red")
+                label_facultades.configure(text="Seleccione una facultad", text_color=COLOR_ELIMINAR)
                 return
             else:
                 label_facultades.configure(text="")
@@ -1539,7 +1556,7 @@ class VentanaCrearMalla(ctk.CTkToplevel):
             #Se comprueba si hay algún semestre que no posea asignaturas
             for i in range(self.info_carrera["semestres"]):
                 if self.malla[str(i + 1)] == []:
-                    label_error.configure(text=f"Falta añadir asignatuars en el {i + 1}° Semestre.", text_color="red")
+                    label_error.configure(text=f"Falta añadir asignatuars en el {i + 1}° Semestre.", text_color=COLOR_ELIMINAR)
                     return
             
             #Se cargan los datos de la carrera
@@ -1685,10 +1702,10 @@ class VentanaCrearMalla(ctk.CTkToplevel):
             
             #Si hay menos de 2 se le avisa al admin que no cumple con las minimas asignaturas
             if len(seleccionadas) < 2:
-                label_error.configure(text="Seleccione al menos 2 Asignaturas.", text_color="red")
+                label_error.configure(text="Seleccione al menos 2 Asignaturas.", text_color=COLOR_ELIMINAR)
                 return
             else:
-                label_error.configure(text="Asignaturas guardadas.", text_color="green")
+                label_error.configure(text="Asignaturas guardadas.", text_color=COLOR_CONFIRMACION)
             
             #Por cada menu este se desactivará
             for i in range(7):
@@ -1740,7 +1757,7 @@ class VentanaCrearMalla(ctk.CTkToplevel):
 
 #Ventana para la confirmación de eliminación
 class VentanaConfirmacion(ctk.CTkToplevel):
-    def __init__(self, rol: str, asignatura, master, email_profesor, email_alumno):
+    def __init__(self, rol: str, asignatura, master, email_profesor, email_alumno, area, carrera, semestre):
         super().__init__()
         
         #Configuración de la ventana
@@ -1749,6 +1766,9 @@ class VentanaConfirmacion(ctk.CTkToplevel):
         self.master = master
         self.email_profesor = email_profesor
         self.email_alumno = email_alumno
+        self.area = area
+        self.carrera = carrera
+        self.semestre = semestre
         self.title("Confirmación")
         self.configure(fg_color=COLOR_FONDO)
         self.minsize(TOPLEVEL_ANCHO*0.6, TOPLEVEL_ALTO*0.4)
@@ -1775,7 +1795,10 @@ class VentanaConfirmacion(ctk.CTkToplevel):
             eliminar_datos_profesor(self.email_profesor)
             self.master.mostrar_profesores()
             self.destroy()
-            
+        elif self.rol == "Asignatura":
+            eliminar_datos_asignatura(self.asignatura)
+            self.master.mostrar_asignaturas(area=self.area, carrera=self.carrera, semestre=self.semestre)
+            self.destroy()
 
 
 #Ventana para confirmar la habilitacion de la carrera
@@ -1856,6 +1879,9 @@ class VentanaNegacion(ctk.CTkToplevel):
         ctk.CTkLabel(self, text="Esta carrera no posee una malla curricular. Necesita crear una primero", font=Fonts.i2, wraplength=TOPLEVEL_ANCHO*0.45, text_color=COLOR_FONTS).place(relx=0.5, rely=0.5, anchor="center")
 
 
+
+
+
 #Ventana para crear la malla curricular de dicha carrera
 class VentanaModificarMalla(ctk.CTkToplevel):
     def __init__(self, master, carrera):
@@ -1890,7 +1916,7 @@ class VentanaModificarMalla(ctk.CTkToplevel):
             #Se comprueba si hay algún semestre que no posea asignaturas
             for i in range(self.info_carrera["semestres"]):
                 if self.malla[str(i + 1)] == []:
-                    label_error.configure(text=f"Falta añadir asignatuars en el {i + 1}° Semestre.", text_color="red")
+                    label_error.configure(text=f"Falta añadir asignatuars en el {i + 1}° Semestre.", text_color=COLOR_ELIMINAR)
                     return
             
             #Se cargan los datos de la carrera
@@ -2045,10 +2071,10 @@ class VentanaModificarMalla(ctk.CTkToplevel):
             
             #Si hay menos de 2 se le avisa al admin que no cumple con las minimas asignaturas
             if len(seleccionadas) < 2:
-                label_error.configure(text="Seleccione al menos 2 Asignaturas.", text_color="red")
+                label_error.configure(text="Seleccione al menos 2 Asignaturas.", text_color=COLOR_ELIMINAR)
                 return
             else:
-                label_error.configure(text="Asignaturas guardadas.", text_color="green")
+                label_error.configure(text="Asignaturas guardadas.", text_color=COLOR_CONFIRMACION)
             
             #Por cada menu este se desactivará
             for i in range(6):
